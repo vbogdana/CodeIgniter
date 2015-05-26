@@ -236,7 +236,7 @@ input:-moz-placeholder {
 }
 
 /* **		NOTES		** */
-.Notes {
+.BoardContainer {
 margin: 0;
 position: absolute;
 top: 12%;

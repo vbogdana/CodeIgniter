@@ -1,5 +1,5 @@
 			<!-- NOTES -->
-			<div class="Notes">
+			<div class="BoardContainer">
 				<div class="one-row">
 					<div class="one-note">
 						<h1><a href='javascript:fg_popup_form("fg_formContainer","fg_form_InnerContainer","fg_backgroundpopup");'> dodaj novu belesku</a></h1>
