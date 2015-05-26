@@ -1,0 +1,16 @@
+/*
+Projekat za predmet Principi sofverskog inzinjerstva,Elektrotehnicki fakultet u Beogradu, Maj 2015.
+	Tim Mracni vitezovi: Bogdana Veselinovic,Aleksa Milosevic,Luka Jovanovic,Dusan Spasojevic.
+*/
+
+/* Basic */
+
+	body, input, select, textarea {
+		font-size: 13pt;
+	}
+
+/* Banner */
+
+	#banner {
+		padding: 10em 0 18em 0;
+	}

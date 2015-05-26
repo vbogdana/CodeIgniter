@@ -1,0 +1,769 @@
+/*autori: Bogdana Veselinovic, Dusan Spasojevic, Luka Jovanovic*/
+
+.Body {
+margin: 0;
+overflow-x: hidden;
+}
+
+a {
+text-decoration: none;
+}
+
+.Menu a {
+color: red;
+}
+
+.Sidebar a {
+color:white;
+}
+
+#bg {
+position: fixed;
+left: 0;
+top: 0;
+opacity: 0.8;
+width: 100%;
+height: 100%;
+z-index: -1
+}
+
+.Slide {
+height: 100%;
+width: 100%;
+opacity: 0.8;
+font-family: 'Open Sans';
+color: white;
+}
+
+.SlideTitle {
+position: absolute;
+left: 24%;
+top: 41%;
+font-weight: 300;
+font-family: 'Open Sans';
+font-size: 70px;
+width: 52%;
+text-align: center;
+-webkit-transition: top 3s;
+}
+
+.SlideTitle:hover {
+top: 20%;
+cursor: default;
+}
+
+.HomeOption {
+position: absolute;
+left: 33%;
+top: 60%;
+width: 12%;
+height: 7%;
+font-weight: 100;
+color: #a18d6c;
+font-family: 'Open Sans';
+font-size: 30px;
+text-align: center;
+-webkit-transition: background 1s ease-out;
+}
+
+.HomeOptionBackground {
+position: absolute;
+left: 33%;
+top: 60%;
+width: 12.5%;
+height: 8%;
+background: #fff;
+border-radius: 3px;
+/*background: red;
+opacity: 0.5;*/
+}
+
+.HomeOption:hover {
+cursor: pointer;
+opacity: 0.5;
+}
+
+.Header {
+width: 100%; 
+height: 12%; 
+margin: 0;
+background-color: white;
+font-family: 'Open Sans';
+font-weight: 100;
+color: red;
+border-bottom: solid 1px red;
+}
+
+.User {
+width: 20%;
+height: 100%;
+font-size: 25px;
+text-align: left;
+border-bottom: solid 1px white;
+background-color: red;
+color: white;
+-webkit-transition: color 1s, background-color 1s;
+}
+
+.User:hover {
+color: red;
+background-color: #FFCCCC;
+border-bottom: solid 1px white;
+}
+
+.UserPicture {
+position: relative;
+top: 10%;
+left: 10%;
+border-radius: 25px;
+}
+
+.UserName {
+position: relative;
+top: -50%;
+left: 40%;
+width: 60%;
+height: 70%;
+}
+
+.UserName:hover {
+color: red;
+cursor: pointer;
+}
+
+.Logo {
+position: absolute;
+top: 0%;
+left: 20%;
+width: 60%;
+height: 100%;
+font-size: 50px;
+text-align: center;
+}
+
+.Menu {
+position: relative;
+top: -100%;
+left: 80%;
+width: 20%;
+height: 100%;
+font-size: 25px;
+text-align: center;
+}
+
+.Option {
+display: inline;
+position: relative;
+top: 30%;
+left: 0%;
+width: 50%;
+height: 100%;
+padding: 10%;
+padding-right: 8%;
+vertical-align:center;
+-webkit-transition: color 1s;
+}
+
+.Option:hover {
+color: #FFCCCC;
+cursor: pointer;
+}
+
+.Board {
+width: 100%; 
+height: 88%;
+font-family: 'Open Sans';
+font-weight: 100;
+}
+
+.Sidebar {
+height: 100%;
+width: 20%;
+background-color: red;
+color: white;
+z-index:-1;
+}
+/*
+visibility: hidden;
+-webkit-transition: visibility 1s;
+opacity: 0.6;
+*/
+
+.NewGroup {
+padding: 10%;
+font-size: 25px;
+border-bottom: solid 1px white;
+-webkit-transition: background-color 1s, color 1s;
+}
+
+.NewGroup:hover {
+background-color: #FFCCCC;
+color: red;
+cursor: pointer;
+}
+
+.SidebarFooter {
+position: absolute;
+bottom: 0%;
+height: 10%;
+width: 100%;
+}
+
+.Search {
+position: relative;
+width: 100%;
+height: 50%;
+}
+
+.Searchbar {
+position: absolute;
+bottom: 0%;
+left: 0.5%;
+-webkit-border-radius: 5px; 
+-moz-border-radius: 5px; 
+border-radius: 5px; 
+border: 1px solid #848484; 
+outline:0; 
+height:50%; 
+width: 15%;
+transition: box-shadow 0.3s, border 0.3s;
+padding: 1%;
+ } 
+ 
+.Searchbar:focus,
+.Searchbar.focus {
+  border: solid 1px #707070;
+  box-shadow: 0 0 5px 1px #969696;
+}
+
+.SearchButton {
+position: absolute;
+bottom: 0%;
+left: 16%;
+height:80%; 
+width: 4%;
+text-align: center;
+ } 
+ 
+.SearchButton:hover {
+cursor: pointer;
+}
+
+.Groups {
+font-size: 18px;
+margin: 0;
+}
+
+.Group {
+padding: 2%;
+padding-left: 10%;
+-webkit-transition: background-color 1s, color 1s;
+border-bottom: dashed 1px white;
+}
+
+.Group:hover {
+background-color: #FFCCCC;
+color: red;
+cursor: pointer;
+}
+
+.Notes-bar {
+position: relative;
+top: -100%;
+left: 20%;
+height: 100%;
+width: 80%;
+background-color: white;
+ 
+}
+
+.Row {
+width: 100%;
+height: 45%;
+}
+
+.Hspace {
+width: 100%;
+height: 3%;
+}
+
+.Cell {
+float: left;
+height: 95%;
+width: 20%;
+padding-left: 3%;
+padding-right: 2%;
+}
+
+.CreateNote {
+background-color: #FFCCCC;
+height: 100%;
+width: 100%;
+border: dashed 1px red;
+border-radius: 5%;
+box-shadow: 7px 7px 7px #888888;
+color: red;
+font-size: 20px;
+text-align: center;
+-webkit-transition: width 0.7s, height 0.7s;
+}
+
+.CreateNote:hover {
+width: 101%;
+height: 101%;
+cursor: pointer;
+}
+
+.Note {
+background-color: #CCFFFF;
+height: 100%;
+width: 100%;
+border-radius: 5%;
+box-shadow: 7px 7px 5px #888888;
+-webkit-transition: width 0.7s, height 0.7s;
+}
+
+.NoteHeader {
+position: relative;
+height: 20%;
+margin: 0;
+font-size: 22px;
+}
+
+.NoteTitle {
+position: absolute;
+bottom: 0;
+left: 2%;
+width: 68%;
+font-family: 'Shadows Into Light', cursive;
+}
+
+.NoteHide {
+position: absolute;
+bottom: 20%;
+left: 70%;
+height: 80%;
+width: 20%;
+font-family: 'Shadows Into Light', cursive;
+font-size: 30px;
+text-align: center;
+-webkit-transition: font-size 1s;
+}
+
+.NoteHide:hover {
+font-size: 34px;
+cursor: pointer;
+}
+
+.NoteOptions {
+position: absolute;
+bottom: 0%;
+left: 90%;
+height: 100%;
+width: 10%;
+font-family: 'Open Sans';
+-webkit-transition: font-size 1s;
+font-size: 35px;
+}
+
+.NoteOptions:hover {
+font-size: 37px;
+cursor: pointer;
+}
+
+.NoteContent {
+position: relative;
+height: 60%;
+font-family: 'Shadows Into Light', cursive;
+font-size: 17px;
+}
+
+.Text {
+position: absolute;
+left: 3%; top: 3%; bottom: 3%; right: 3%;
+}
+
+.NoteReminder {
+height: 10%;
+text-align: center;
+font-size: 16px;
+border-top: dashed 1px;
+border-bottom: dashed 1px;
+}
+
+.NoteFooter {
+position: relative;
+height: 10%;
+margin: 0;
+font-size: 13px;
+font-style: italic;
+}
+
+.NoteOwner {
+position: absolute;
+bottom: 0;
+left: 2%;
+height: 100%;
+width: 38%;
+text-align: center;
+}
+
+.NoteDate {
+position: absolute;
+bottom: 0;
+left: 40%;
+right: 2%;
+height: 100%;
+width: 58%;
+text-align: right;
+}
+
+/*EditProfile*/
+
+.EditPicture {
+position:absolute;
+right: 100px;
+left: 40px;
+top: 30px;
+width: 30%; 
+height: 94%; 
+}
+
+.Upload{
+position:relative;
+left: 46px;
+}
+
+.Upload:hover {
+cursor: pointer;
+}
+
+.Link {
+width: 100%;
+height: 12%;
+margin: 0;
+background-color: white;
+font-family: 'Arial';
+font-weight: 12;
+color: #F00;
+}
+
+.Line{ 
+position:relative;
+right: 30px;
+left: 30%;
+top: 40px;
+}
+
+.editProfile {
+position:relative;
+right: 30px;
+left:34%;
+top: -250px;
+}
+
+.Korisnik {
+width: 40%; 
+height: 10%; 
+margin: 0;
+background-color: white;
+font-family: 'Open Sans';
+font-weight: 100;
+font-size:28px;
+font-style:normal;
+color: red;
+}
+
+.Polja{
+right:100%;
+width: 100%; 
+height: 9%; 
+margin: 3;
+background-color: white;
+font-family: 'Open Sans';
+font-weight: 100;
+font-size:14px;
+color: red;
+}
+
+.textPolja {
+position: absolute;
+bottom: 0%;
+left: 0%;
+-webkit-border-radius: 5px; 
+-moz-border-radius: 5px; 
+border-radius: 5px; 
+border: 1px solid #848484; 
+outline:0; 
+height:20%; 
+width: 15%;
+transition: box-shadow 0.3s, border 0.3s;
+padding: 1%;
+ }
+
+.textPolja:focus,
+.textPolja.focus {
+  border: solid 1px #707070;
+  box-shadow: 0 0 5px 1px #969696;
+} 
+
+.ColorNotes{
+position: relative;
+bottom: 0%;
+left: 50%;	
+top: -66%;
+}
+
+.PickNotesColor{
+position: relative;
+top:-20%;
+left:0%;
+transition: box-shadow 0.3s, border 0.3s;
+padding: 1%;
+}
+
+.selectNotes:hover {
+cursor: pointer;
+
+}
+.selectNotes:active,
+.selectNotes.active {
+  border: solid 1px #707070;
+  box-shadow: 0 0 5px 1px #969696;
+}
+	
+/* add new group*/
+
+.ActivePage{
+padding: 10%;
+font-size: 25px;
+border-bottom: solid 1px white;
+-webkit-transition: background-color 1s, color 1s;
+background-color: #FFCCCC;
+color: red;
+}
+
+.makegroup{
+padding: 2%;
+padding-left: 10%;
+-webkit-transition: background-color 1s, color 1s;
+background-color: white;
+width: 450px;
+height:45px;
+border-bottom: dashed 1px white;
+border-right: dashed 1px white;
+}
+
+.Headergroup{
+width: 450px; 
+height: 12%; 
+margin: 0;
+background-color: white;
+font-family: 'Open Sans';
+font-weight: 100;
+color: red;	
+}
+
+.grouptext{
+color:#999999;
+float:right;
+-webkit-border-radius: 5px; 
+-moz-border-radius: 5px; 
+border-radius: 5px; 
+border: 1px solid #848484; 
+outline:0; 
+height:30px; 
+width: 350px;
+transition: box-shadow 0.3s, border 0.3s;
+padding: 1%;
+ }	
+
+.grouptext:focus,
+.grouptext.focus {
+  border: solid 1px #707070;
+  box-shadow: 0 0 5px 1px #969696;
+}
+
+.login{
+	position: absolute;
+	top: calc(50% + 35px);
+	left: calc(50% - 110px);
+	height: 150px;
+	width: 350px;
+	padding: 10px;
+	z-index: 2;
+}
+
+.login input[type=text]{
+	width: 250px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+}
+
+.login input[type=password]{
+	width: 250px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+	margin-top: 10px;
+}
+
+.login input[type=button]{
+	width: 250px;
+	height: 35px;
+	background: #fff;
+	border: 1px solid #fff;
+	cursor: pointer;
+	border-radius: 2px;
+	color: #a18d6c;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 6px;
+	margin-top: 10px;
+}
+
+.login input[type=button]:hover{
+	opacity: 0.8;
+}
+
+.login input[type=button]:active{
+	opacity: 0.6;
+}
+
+.login input[type=text]:focus{
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.9);
+}
+
+.login input[type=password]:focus{
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.9);
+}
+
+.login input[type=button]:focus{
+	outline: none;
+}
+
+.signup{
+	position: absolute;
+	top: calc(50% + 70px);
+	left: calc(50% - 250px);
+	height: 150px;
+	width: 700px;
+	padding: 10px;
+	z-index: 2;
+}
+
+.signup input[type=text]{
+	width: 504px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+	margin-top: 5px;
+}
+
+.signup input[type=password]{
+	width: 504px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+	margin-top: 10px;
+}
+
+.signup input[type=button]{
+	width: 500px;
+	height: 35px;
+	background: #fff;
+	border: 1px solid #fff;
+	cursor: pointer;
+	border-radius: 2px;
+	color: #a18d6c;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 6px;
+	margin-top: 10px;
+}
+
+.signup input[type=button]:hover{
+	opacity: 0.8;
+}
+
+.signup input[type=button]:active{
+	opacity: 0.6;
+}
+
+.signup input[type=text]:focus{
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.9);
+}
+
+.signup input[type=password]:focus{
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.9);
+}
+
+.signup input[type=button]:focus{
+	outline: none;
+}
+.signup1{
+	position: absolute;
+	top: calc(50% + 35px);
+	left: calc(50% - 250px);
+	height: 150px;
+	width: 702;
+	padding: 10px;
+	z-index: 2;
+}
+
+.signup1 input[type=text]{
+	width: 250px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+}
+.signup1 input[type=password]{
+	width: 250px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+	margin-top: 10px;
+}
