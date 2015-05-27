@@ -34,15 +34,29 @@ class User_Model extends CI_Model {
     }
     
     public function login($nickname, $password) {
-        $this->db->select('nickname, password');
+        //$this->db->select('nickname, password');
         $this->db->from('user');
         $this->db->where('nickname', $nickname);
         $this->db->where('password', $password);
         
         $query = $this->db->get();
+
         
-        if ($query->num_rows() == 1) { 
+        if($query->num_rows() == 1){    
+            foreach ($query->result() as $row) {
+                
+               $session_data=array(
+                   'idUser'=>$row->idUser,
+                   'nickname'=>$row->nickname,
+                   'email'=>$row->email    
+               );
+            }
+            $this->set_session($session_data);
+            
+            // $nickname=  $this->session->userdata('nickname');  PROVERA SESIJE
+            // echo "{$nickname}";
             return true;
+            
         } else {        
             return false;
         }
@@ -63,6 +77,34 @@ class User_Model extends CI_Model {
         } else {
             return false;
         };
+        
+        // $this->set_session($nickname,$email);
+        
+       // print_r($this->session->all_userdata());
+    }
+    
+     public function  set_session($session_data){
+       
+        $sess_data=array(
+                   'idUser'     =>$session_data['idUser'],
+                   'nickname'   =>$session_data['nickname'],
+                   'email'      =>$session_data['email'], 
+                   'logged_in' => 1
+               );
+        
+        $this->load->library('session');
+        
+        $this->session->set_userdata($sess_data);
+    }
+    
+     public function get_autocomplete($search)
+    {
+        $this->db->select("nickname");
+        $whereCondition = array('nickname' =>$search);
+        $this->db->where($whereCondition);
+        $this->db->from('user');
+        $query = $this->db->get();
+        return $query->result();
     }
 }
 
