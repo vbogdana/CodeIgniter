@@ -9,17 +9,38 @@
 class NewGroupController extends CI_Controller {
     //put your code here
     
-    public function index() {
-        $this->load->view('templates/page', array('menu'=> 'board/toolbar', 'container'=>'groups/newGroup'));
-    }
-    
-    public function createGroup() {
+    function __construct()
+	{
+        parent::__construct();
+        $this->load->library('form_validation');
+        $this->load->database();
+        $this->load->helper('form');
+        $this->load->helper('url');
         $this->load->model('Group_Model', 'group');
         $this->load->model('IsMember_Model', 'ismember');
         $this->load->model('User_Model', 'user');
+    }
+
+    public function index() {
+        $this->form_validation->set_rules('groupname', 'Group name', 'required|max_length[30]');
+        $this->form_validation->set_rules('member', 'Add a member', 'required|max_length[30]');
+        $this->form_validation->set_error_delimiters('<br /> <span class="error">', '</span>');
+
+        if ($this->form_validation->run() == FALSE) { 
+            // validation hasn't been passed
+            $this->load->view('templates/page', array('menu' => 'board/toolbar', 'container' => 'groups/newGroup'));
+        } else { 
+            // passed validation proceed to post success logic
+            $groupname = $this->input->post('groupname');
+            $member = $this->input->post('member');
+            $this->createGroup($groupname, $member);
+        }
+    }
+    
+    public function createGroup() {
         
         //$form_data = $this->input->post();
-        $groupname = $this->input->post("groupName");
+        $groupname = $this->input->post("groupname");
         $member = $this->input->post("member");
         
         if ($groupname == '') {
@@ -48,6 +69,13 @@ class NewGroupController extends CI_Controller {
                 echo "ON je vec clan grupe \n";
             }
         }    
+    }
+    
+    public function autocomplete()
+    {
+        $search=  $this->input->post('member');
+        $query = $this->user->get_autocomplete($search);
+        echo json_encode ($query);
     }
     
 }

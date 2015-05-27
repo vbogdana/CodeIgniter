@@ -257,39 +257,6 @@ margin-top: 15px;
 
 }
 
-.naslov {
-float:left;
-width: 100%;
-height: 40px;
-border-bottom: 3px solid;
-font-size:25px;
-margin-top: 15px;
-text-align:center;
-font-weight:bold;
-}
-
-.tekst {
-float:left;
-width: 100%;
-height: 160px;
-border-bottom: 3px solid;
-font-size:21px;
-padding-top:15px;
-text-align:center;
-font-weight:bold;
-}
-
-.datum{
-float:left;
-width: 100%;
-height: 15px;
-border-bottom: 3px solid;
-font-size:12px;
-text-align:center;
-font-weight:bold;
-}
-
-
 .one-row{
 margin-left: 0px;
 margin-top: 0px;
