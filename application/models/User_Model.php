@@ -33,19 +33,36 @@ class User_Model extends CI_Model {
         }
     }
     
-    public function login($nickname,$password) {
-        $this->db->select('nickname,password');
+    public function login($nickname, $password) {
+        $this->db->select('nickname, password');
         $this->db->from('user');
-        $this->db->where('nickname',$nickname);
-        $this->db->where('password',$password);
+        $this->db->where('nickname', $nickname);
+        $this->db->where('password', $password);
         
-        $query=$this->db->get();
+        $query = $this->db->get();
         
-        if($query->num_rows() == 1) { 
+        if ($query->num_rows() == 1) { 
             return true;
         } else {        
             return false;
         }
+    }
+    
+    public function createEntry($nickname, $pass, $email) {
+        $user = array(
+            'nickname' => $nickname,
+            'password' => $pass,
+            'email' => $email,
+            'note_color' => '1',
+            'link_photo' => '',
+            'is_Admin' => '',
+        );
+        
+        if ($this->db->insert('user', $user) == TRUE) {
+            return true;
+        } else {
+            return false;
+        };
     }
 }
 

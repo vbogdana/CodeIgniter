@@ -1448,4 +1448,14 @@
 			min-width: 12em;
 		}
 	
-	
+	/*===========================EROORS KOD LOGOVANJA================================*/
+        
+        .errors{
+           height: 50px;
+           width: 250px ! important;
+            
+            
+            
+            
+        }
+        

@@ -1,4 +1,4 @@
-<!-- autor: Luka Jovanovic-->
+<!-- autor: Luka Jovanovic, Dusan Spasojevic-->
 <html>
 	<head>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url()."/assets/css/css_index/style.css"; ?>">
@@ -35,7 +35,7 @@
 				<input type="text" placeholder="username" name="username"><br>
 				<input type="password" placeholder="password" name="password"><br>
 				
-					<input class="button"  type="submit" value="sign in">
+                                <input class="button"  type="submit" value="sign in">
 			
 			</div>
 		</div>

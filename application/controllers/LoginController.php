@@ -1,5 +1,7 @@
 <?php
 
+// autor Dusan Spasojevic
+
 class LoginController extends CI_Controller {
     
       
