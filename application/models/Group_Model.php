@@ -41,5 +41,6 @@ class Group_Model extends CI_Model {
         $this->db->insert('group', $group);
         $this->ismember->createEntry($creator, $idGroup, '1');
         
+        return $idGroup;
     }
 }
