@@ -1,16 +1,11 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of IsMember_Model
  *
  * @author Bogdana
  */
+
 class IsMember_Model extends CI_Model {
     //put your code here
     function __construct() {
@@ -22,10 +17,44 @@ class IsMember_Model extends CI_Model {
         return $this->db->get('ismember')->result();
     }
     
+    public function isAdmin($id_User, $id_Group) {
+        //$this->db->select();
+        $this->db->from('ismember');
+        $this->db->where('id_User', $id_User);
+        $this->db->where('id_Group', $id_Group);
+        $this->db->where('is_Admin ==', '1');
+        
+        $query = $this->db->get();
+        
+        if ($query->num_rows() == 1) {
+            return TRUE;
+        } else if ($query->num_rows() > 1) {
+            return FALSE;
+        }
+    }
+    
+    public function isMember($id_User, $id_Group) {
+        //$this->db->select('*');
+        $this->db->from('ismember');
+        $this->db->where('id_User', $id_User);
+        $this->db->where('id_Group', $id_Group);
+        
+        $query = $this->db->get();
+        
+        if ($query->num_rows() == 1) {
+            return TRUE;
+        } else if ($query->num_rows() > 1) {
+            return FALSE;
+        }
+    }
+    
     public function createEntry($id_User, $id_Group, $is_Admin) {
+        if ($this->isMember($id_User, $id_Group) == TRUE) {
+            return FALSE;
+        }
+        
         $this->load->helper('date');
         
-        //srediti kad aleksa sredi bazu
         $entry = array(
             'id_User' => $id_User,
             'id_Group' => $id_Group ,
@@ -33,6 +62,8 @@ class IsMember_Model extends CI_Model {
             'joined_On' => date('Y-m-d H:i:s')
         );
 
-        $this->db->insert('ismember', $entry); 
+        $this->db->insert('ismember', $entry);
+        return TRUE;
+        
     }
 }
