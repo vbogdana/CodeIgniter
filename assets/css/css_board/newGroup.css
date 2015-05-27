@@ -8,7 +8,18 @@ and open the template in the editor.
     Author     : Bogdana
 */
 
-.NewGroup  {
+.GroupName  {
+    position: absolute;
+    top: 5%;
+}
+
+.AddMember {
     position: absolute;
     top: 15%;
+}
+
+.Members {
+    position: absolute;
+    left: 50%;
+    top: 10%;
 }

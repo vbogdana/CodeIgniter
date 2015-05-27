@@ -8,18 +8,24 @@ and open the template in the editor.
     
     <form class="" action="newGroupController/createGroup/" method="post">
         <div class="GroupName">
-            Type in the name of the group
-            <input type="text" name="groupName" size="50" />
+            <input type="text" name="groupName" size="50" placeholder="name of the group..."/>
         </div>
 
 
         <div class="AddMember">
-            + Add a member
+            <input type="text" class="" name="member" placeholder="first member...">
+            <input class="" type="button" value="add" onclick="" />
+            <br /><br />
             <div class="">
-                <input class="" name="Member" placeholder="member...">
+                <input class="" type="submit" value="create" />
             </div>
-            <input class="" type="submit" value="create" />
         </div>
     </form>
+    
+    <div class="Members">
+        Members of the group...
+        <input type="textarea" rows="20" size="50" height="300px" name="members" />
+        
+    </div>
     
 </div>
