@@ -23,13 +23,17 @@ class Group_Model extends CI_Model {
         return $this->db->get('group')->result();
     }
     
+    public function getGroupID($groupname, $id_Creator) {
+        $this->db->select('');
+    }
+    
     public function createEntry($name, $idGroup) {
         $this->load->helper('date');
 
-        //srediti kad aleksa sredi bazu da bude autoinkrement i kad dule namesti login
+        //srediti kad dule namesti login
         $creator='1';
+        ///////////////////
         $group = array(
-            'idGroup' => $idGroup,
             'name' => $name ,
             'id_Creator' => $creator ,
             'created_On' => date('Y-m-d H:i:s')
@@ -40,6 +44,7 @@ class Group_Model extends CI_Model {
 
         $this->db->insert('group', $group);
         $this->ismember->createEntry($creator, $idGroup, '1');
+        
         
         return $idGroup;
     }
