@@ -5,7 +5,7 @@
  *
  * @author Bogdana
  */
-class MUser extends CI_Model {
+class User_Model extends CI_Model {
     //put your code here
     function __construct() {
         $this->load->database();

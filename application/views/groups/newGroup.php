@@ -5,5 +5,21 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <div class="BoardContainer">
-    <input type="text" name="groupName" size="100" />  
+    
+    <form class="" action="newGroupController/createGroup/" method="post">
+        <div class="GroupName">
+            Type in the name of the group
+            <input type="text" name="groupName" size="50" />
+        </div>
+
+
+        <div class="AddMember">
+            + Add a member
+            <div class="">
+                <input class="" name="Member" placeholder="member...">
+            </div>
+            <input class="" type="submit" value="create" />
+        </div>
+    </form>
+    
 </div>
