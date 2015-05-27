@@ -24,7 +24,9 @@ and open the template in the editor.
     
     <div class="Members">
         Members of the group...
-        <input type="textarea" rows="20" size="50" height="300px" name="members" />
+        <textarea size="50" rows="20" name="members" >
+
+        </textarea>
         
     </div>
     
