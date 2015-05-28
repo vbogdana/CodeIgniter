@@ -1,4 +1,4 @@
-<!-- autor: Luka Jovanovic, Dusan Spasojevic-->
+<!-- autor: Dusan Spasojevic-->
 <html>
 	<head>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url()."/assets/css/css_index/style.css"; ?>">
@@ -23,6 +23,8 @@
 	<div id="bg">
 		<img src="<?php echo base_url()."/assets/images/photos/wallpaper2.jpg"; ?>" width="100%" height="100%">
 	</div>
+            
+            
 		<div class="Slide">
 			<div class="SlideTitle">
 			welcome to PinBoard!
@@ -33,9 +35,9 @@
                              <?php echo form_open('LoginController/checkLogin');?>
                             
 				<input type="text" placeholder="username" name="username"><br>
-				<input type="password" placeholder="password" name="password"><br>
-				
+				<input type="password" placeholder="password" name="password"><br>	
                                 <input class="button"  type="submit" value="sign in">
+                            <?php echo form_close() ?>
 			
 			</div>
 		</div>

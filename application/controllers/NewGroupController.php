@@ -23,6 +23,15 @@ class NewGroupController extends CI_Controller {
 
     public function index() {
 
+        //  UKOLIKO KORISNIK NIJE LOGOVAN NE MOZE PRISTUPITI BORDU
+         $logged_in = $this->session->userdata('logged_in');
+
+        if($logged_in<>1){
+              redirect('loginController/firstlogin');
+        }else{
+               $this->load->view('templates/page', array('menu' => 'board/toolbar', 'container' => 'groups/newGroup'));
+        }
+        
         $this->form_validation->set_rules('groupname', 'Group name', 'required|max_length[30]');
         $this->form_validation->set_rules('member', 'Add a member', 'required|max_length[30]');
         $this->form_validation->set_error_delimiters('<br /> <span class="error">', '</span>');
@@ -36,6 +45,8 @@ class NewGroupController extends CI_Controller {
             $member = $this->input->post('member');
             $this->createGroup($groupname, $member);
         }
+        
+        
     }
     
     public function createGroup() {

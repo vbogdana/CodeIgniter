@@ -31,20 +31,19 @@
     <body class="Body">
         
         <header id="header" class="alt">
-			<h1> by Mračni vitezovi</h1>
-				<nav id="nav">
-					<ul>
-						<li>
-							You dont have accaunt?
-						</li>
-						<li>
-                                                <a  href="<?php echo base_url()."index.php/HomeController/signUp"; ?>"class="button"> SignUp </a>
-							
-						</li>
-					</ul>
-				</nav>
-				<a name="toppage"></a>
-			</header>
+            <h1> by Mračni vitezovi</h1>
+            <nav id="nav">
+                <ul>
+                    <li>
+                        You don't have an account?
+                    </li>
+                    <li>
+                        <a  href="<?php echo base_url() . "index.php/HomeController/signUp"; ?>"class="button"> Sign up </a>	
+                    </li>
+                </ul>
+            </nav>
+            <a name="toppage"></a>
+        </header>
 
 
         <div id="bg">
@@ -52,19 +51,20 @@
         </div>
         <div class="Slide">
             <div class="SlideTitle">
-                <?php echo "You are not SignIn" ?>
+                <?php echo "welcome to PinBoard" ?>
             </div>
             <div class="login">
                 <br>
                 <br>
-                 <h3>Please SignIn </h3>
+                 <h2>Please Sign in </h2>
                 <?php echo validation_errors(); ?>
                 <?php echo form_open('LoginController/checkLogin'); ?>
 
                 <input type="text" placeholder="username" name="username"><br>
                 <input type="password" placeholder="password" name="password"><br>
-
                 <input class="button"  type="submit" value="sign in">
+                
+                <?php echo form_close(); ?>
             </div>
         </div>
 
