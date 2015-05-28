@@ -1,6 +1,8 @@
-<!--	Toolbar	-->
-			<div class="Toolbar">
-				
+
+                            <!--	Toolbar	-->
+                            <div class="Toolbar">
+				      
+                                    
 				<!-- Menu Buttons -->
 				<div class="ToolButton AddButton" onClick="menuClick(3)">
 						<div class="ToolbarImg" id="1">
@@ -29,12 +31,18 @@
 						</div>
 					</div>
 				</div>
-				
+                                         <?php
+                                          $nickname = $this->session->userdata('nickname');
+                                          echo  " <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp ".
+                                                "User $nickname"  ;              
+                                         ?>  
+                                          <a href="<?php echo base_url()."index.php/LogoutController"; ?>"> SignOut </a>
 				<div class="ToolButton NotifButton" onClick="menuClick(4)">
 						<div class="ToolbarImg" id="2">
 							<img src="<?php echo base_url()."/assets/images/png/notification.png"; ?>" />
 						</div>
 				</div>	
+                             
 				<div class="HiddenMenu NotifMenu" id="4">
 					<div class="NotifWrapper"> </div>
 					<div class="NotifWrapper"> </div>
@@ -54,8 +62,9 @@
 							</form>
 							<div id="livesearch"></div>
 					</div>
+
 				</div>
-				<!-- End of Search bar -->
-				
+                                <!-- End of Search bar -->
+
 			</div>
-			<!--	End of Toolbar		-->
+                        <!--	End of Toolbar		-->
