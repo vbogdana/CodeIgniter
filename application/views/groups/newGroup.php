@@ -31,70 +31,99 @@ and open the template in the editor.
         
     </div>
     -->
-    
-    <script type="text/javascript">
-        $(document).ready(function(){
-      $("#member").keyup(function(){
-        if($("#member").val().length>3){
-        $.ajax({
-            type: "post",
-            url: "http://localhost/CodeIgniter/index.php/NewGroupController/autocomplete",
-            cache: false,               
-            data:'member='+$("#member").val(),
-            success: function(response){
-                $('#finalResult').html("");
-                var obj = JSON.parse(response);
-                if(obj.length>0){
-                    try{
-                        var items=[];   
-                        $.each(obj, function(i,val){                                            
-                            items.push($('<li/>').text(val.NAME));
-                        }); 
-                        $('#finalResult').append.apply($('#finalResult'), items);
-                    }catch(e) {     
-                        alert('Exception while request..');
-                    }       
-                }else{
-                    $('#finalResult').html($('<li/>').text("No Data Found"));       
-                }       
 
-            },
-            error: function(){                      
-                alert('Error while request..');
+    <script type="text/javascript">
+        function ajaxSearch() {
+            var input_data = $('#member').val();        // uzmi vrednost sa inputa
+            if (input_data.length === 0) {              // ako nema nista sakrij predloge
+                $('#suggestions').hide();
+            } else {                                    // u suprotnom postavi parametar member
+                var post_data = {
+                    'member': input_data,
+                    '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
+                };
+
+                $.ajax({
+                    type: "POST",
+                    //url: "<?php echo base_url(); ?>index.php/NewGroupController/autocomplete/",
+                    url: "http://localhost/CodeIgniter/index.php/NewGroupController/autocomplete",
+                    data: post_data,
+                    success: function(data) {   // ako je funkcija kontrolera uspesna
+                        // return success    
+                        if (data.length > 0) {
+                            $('#suggestions').show();
+                            $('#autoSuggestionsList').addClass('auto_list');
+                            $('#autoSuggestionsList').html(data);
+                        }
+                    }
+                });
+
             }
-        });
         }
-        return false;
-      });
-    });
-</script>
-    
+        
+        function chooseMember(member) {
+            document.getElementById("member").value = member;
+            $('#suggestions').hide();
+            
+            var input_data = $('#member').val();
+            var post_data = {
+                    'member': input_data,
+                    '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
+                };
+
+            $.ajax({
+                    type: "POST",
+                    //url: "<?php echo base_url(); ?>index.php/NewGroupController/addMember/",
+                    url: "http://localhost/CodeIgniter/index.php/NewGroupController/addMember",
+                    data: post_data,
+                    success: function(data) {
+                        // return success    
+                        if (data.length > 0) {
+                            $('#members').show();
+                            //$('#members').addClass('auto_list');
+                            //$('#members').html(data);
+                            $('ol').append(data);
+                        }
+                    }
+                });
+
+        }
+    </script>
+
+
     <?php
-        // Change the css classes to suit your needs    
-        $attributes = array('class' => '', 'id' => '');
-        echo form_open('NewGroupController', $attributes);
+    // Change the css classes to suit your needs    
+    $attributes = array('class' => '', 'id' => '');
+    echo form_open('NewGroupController', $attributes);
     ?>
 
     <p>
         <label for="groupname">Group name <span class="required">*</span></label>
         <?php echo form_error('groupname'); ?>
         <br />
-        <input id="groupname" type="text" name="groupname" maxlength="30" value="<?php echo set_value('groupname'); ?>"  />
+        <input id="groupname" type="text" name="groupname" maxlength="30" value="<?php echo set_value('groupname'); ?>" />
     </p>
 
     <p>
         <label for="member">Add a member <span class="required">*</span></label>
         <?php echo form_error('member'); ?>
         <br />
-        <input id="member" type="text" name="member" maxlength="30" value="<?php echo set_value('member'); ?>" onkeyup="ajaxSearch()" /> 
-        <ul id="finalResult"></ul>
-
+        <input id="member" type="text" name="member" maxlength="30" value="<?php echo set_value('member'); ?>" onkeyup="ajaxSearch();" /> 
+        <div id="suggestions">
+            <div id="autoSuggestionsList">  
+            </div>
+        </div>
     </p>
 
     <p>
-    <?php echo form_submit('submit', 'Submit'); ?>
+        <br /> <br /> <br /> <br />
+        <?php echo form_submit('submit', 'Submit'); ?>
     </p>
 
     <?php echo form_close(); ?>
+    
+    <div id="members">
+        <ol></ol>
+    </div>
     
 </div>
