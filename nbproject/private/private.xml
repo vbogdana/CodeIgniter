@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/CodeIgniter/application/views/home/signUp.php</file>
-            <file>file:/C:/wamp/www/CodeIgniter/application/controllers/LoginController.php</file>
-            <file>file:/C:/wamp/www/CodeIgniter/application/controllers/RegisterController.php</file>
-            <file>file:/C:/wamp/www/CodeIgniter/application/config/autoload.php</file>
+            <file>file:/C:/wamp/www/CodeIgniter/application/controllers/NewGroupController.php</file>
+            <file>file:/C:/wamp/www/CodeIgniter/application/views/groups/newGroup.php</file>
+            <file>file:/C:/wamp/www/CodeIgniter/application/models/User_Model.php</file>
+            <file>file:/C:/wamp/www/CodeIgniter/assets/css/css_board/style.css</file>
+            <file>file:/C:/wamp/www/CodeIgniter/assets/css/css_board/newGroup.css</file>
         </group>
     </open-files>
 </project-private>
