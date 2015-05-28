@@ -22,6 +22,7 @@ class NewGroupController extends CI_Controller {
     }
 
     public function index() {
+
         $this->form_validation->set_rules('groupname', 'Group name', 'required|max_length[30]');
         $this->form_validation->set_rules('member', 'Add a member', 'required|max_length[30]');
         $this->form_validation->set_error_delimiters('<br /> <span class="error">', '</span>');
@@ -38,8 +39,6 @@ class NewGroupController extends CI_Controller {
     }
     
     public function createGroup() {
-        
-        //$form_data = $this->input->post();
         $groupname = $this->input->post("groupname");
         $member = $this->input->post("member");
         
@@ -59,23 +58,34 @@ class NewGroupController extends CI_Controller {
             } 
         }
           
-        $id_group = $this->group->createEntry($groupname);
-        // provera da li postoji grupa
+        $id_group = $this->group->createEntry($groupname); // provera da li postoji grupa
         if ($id_group == '-1') {
             echo "NEUSPESNO KREIRANO \n";
-        } else {
-            // ubaci clana
+        } else {        // ubaci clana  
             if ($this->ismember->createEntry($id_member, $id_group, '0') == FALSE) {
                 echo "ON je vec clan grupe \n";
             }
-        }    
+        } 
+
     }
     
     public function autocomplete()
     {
-        $search=  $this->input->post('member');
+     
+        $search = $this->input->post('member');
         $query = $this->user->get_autocomplete($search);
-        echo json_encode ($query);
+
+        foreach ($query->result() as $row):
+            // za svaki predlog u padajucoj listi chooseMember radi ubacuje u listu clanova
+            echo '<li onclick="chooseMember(\''.$row->nickname.'\')" >'. $row->nickname . '</li>';
+        endforeach;
+    }
+    
+    public function addMember() {
+        
+        $member = $this->input->post('member');
+        echo '<li>'. $member .'</li>';
+                
     }
     
 }

@@ -47,7 +47,7 @@ class Group_Model extends CI_Model {
     
     public function createEntry($name) {
         //srediti kad dule namesti login
-        $creator='1';
+        $creator =  $this->session->userdata('userID');
         ///////////////////
         
         $exist = $this->existGroup($name, $creator);

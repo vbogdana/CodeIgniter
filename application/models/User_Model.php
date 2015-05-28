@@ -99,12 +99,9 @@ class User_Model extends CI_Model {
     
      public function get_autocomplete($search)
     {
-        $this->db->select("nickname");
-        $whereCondition = array('nickname' =>$search);
-        $this->db->where($whereCondition);
-        $this->db->from('user');
-        $query = $this->db->get();
-        return $query->result();
+        $this->db->select('nickname');
+        $this->db->like('nickname', $search);
+        return $this->db->get('user', 10);
     }
 }
 

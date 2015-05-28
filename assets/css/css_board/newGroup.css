@@ -23,3 +23,40 @@ and open the template in the editor.
     left: 50%;
     top: 10%;
 }
+
+#suggestions {
+    position: relative;
+    display: inline;
+}
+
+#autoSuggestionsList > li {
+    background: none repeat scroll 0 0 #F3F3F3;
+    border-bottom: 1px solid #E3E3E3;
+    list-style: none outside none;
+    padding: 3px 15px 3px 15px;
+    text-align: left;
+}
+#autoSuggestionsList > li:hover {
+    cursor: pointer;
+    background: none repeat scroll 0 0 red;
+}
+
+#autoSuggestionsList > li a { 
+    color: #800000; 
+}
+
+.auto_list {
+    border: 1px solid #E3E3E3;
+    border-radius: 5px 5px 5px 5px;
+    position: absolute;
+}
+
+#members {
+
+    position: absolute;
+    top: 10%;
+    left: 70%;
+    /*height: 50%;
+    width: 20%;
+    */
+}
