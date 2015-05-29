@@ -1,6 +1,6 @@
 
                             <!--	Toolbar	-->
-                            <div class="Toolbar">
+                            <div class="Toolbar"> 
 				      
                                     
 				<!-- Menu Buttons -->
@@ -31,12 +31,24 @@
 						</div>
 					</div>
 				</div>
-                                         <?php
-                                          $nickname = $this->session->userdata('nickname');
-                                          echo  " <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp ".
-                                                "User $nickname"  ;              
-                                         ?>  
-                                          <a href="<?php echo base_url()."index.php/LogoutController"; ?>"> SignOut </a>
+                                
+                                <div class="ToolButton User" onClick="">
+                                        <p>   
+                                            <?php
+                                            $nickname = $this->session->userdata('nickname');
+                                            echo "$nickname";              
+                                            ?>  
+                                        </p>        
+				</div>
+                                
+                                <div class="ToolButton LogOut" onClick="">
+                                        <p>   
+                                            <a href="<?php echo base_url()."index.php/LogoutController"; ?>">Sign out</a>
+                                        </p>        
+				</div>
+                                 
+                                
+                                        
 				<div class="ToolButton NotifButton" onClick="menuClick(4)">
 						<div class="ToolbarImg" id="2">
 							<img src="<?php echo base_url()."/assets/images/png/notification.png"; ?>" />
