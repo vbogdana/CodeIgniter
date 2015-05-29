@@ -7,7 +7,7 @@
 	
 	<!-- Title of the page -->
 	<head>
-		<title>	Pinboard - <?php echo $username ?> </title>
+		<title>	Pinboard - <?php echo ($nickname = $this->session->userdata('nickname')) ?> </title>
 	</head>
 	
 	<body onload="javascript:fg_hideform('fg_formContainer','fg_backgroundpopup');">

@@ -3,9 +3,7 @@
 // autor Dusan Spasojevic
 
 class LoginController extends CI_Controller {
-    
-      
-	
+    	
 	public function signin() {
 		$this->load->view('home/signIn');
 	}
@@ -17,8 +15,7 @@ class LoginController extends CI_Controller {
             if($this->form_validation->run()== false){
                 $this->load->view('home/signIn');
             }else{
-                redirect('BoardController');
-                
+                redirect('BoardController');      
             }
         }   
 
@@ -35,6 +32,10 @@ class LoginController extends CI_Controller {
                 return false;
             }
         }
+        
+        public function firstLogin() {
+		$this->load->view('home/firstLogin');
+	}
         
          
 }

@@ -1,4 +1,4 @@
-<!-- autor: Luka Jovanovic-->
+<!-- autor: Dusan Spasojevic-->
 <html>
 	<head>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url()."/assets/css/css_index/style.css"; ?>">

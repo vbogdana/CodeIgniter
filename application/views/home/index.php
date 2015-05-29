@@ -65,7 +65,7 @@
 							<a href="#contactus" class="icon fa-angle-down">Contact us</a>
 						</li>
 						<li>
-							<a href="SignIn.html" class="button">Sign In</a>
+							<a href="SignIn" class="button">Sign In</a>
 						</li>
 					</ul>
 				</nav>
