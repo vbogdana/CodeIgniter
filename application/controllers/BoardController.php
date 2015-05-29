@@ -1,4 +1,8 @@
-<?php
+ <?php
+ 
+ /*
+    autori Dusan Spasojevic, Aleksa Milosevic
+        */
 
 class BoardController extends CI_Controller {
 

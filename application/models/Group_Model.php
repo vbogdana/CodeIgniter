@@ -1,11 +1,5 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of mgroup
  *
@@ -46,16 +40,17 @@ class Group_Model extends CI_Model {
     }
     
     public function createEntry($name) {
-        //srediti kad dule namesti login
-        $creator =  $this->session->userdata('userID');
-        ///////////////////
+        $creator =  $this->session->userdata('idUser');
         
+        /*
         $exist = $this->existGroup($name, $creator);
         if ($exist != '-1') {
             // vec postoji
             echo "GRUPA VEC POSTOJI \n";
             return '-1';
         }
+         * 
+         */
         
         $this->load->helper('date');
 

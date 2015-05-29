@@ -3,8 +3,9 @@
 /**
  * Description of MUser
  *
- * @author Bogdana
+ * @author Bogdana, Dusan Spasojevic
  */
+
 class User_Model extends CI_Model {
     //put your code here
     function __construct() {
@@ -53,8 +54,6 @@ class User_Model extends CI_Model {
             }
             $this->set_session($session_data);
             
-            // $nickname=  $this->session->userdata('nickname');  PROVERA SESIJE
-            // echo "{$nickname}";
             return true;
             
         } else {        
@@ -76,11 +75,8 @@ class User_Model extends CI_Model {
             return true;
         } else {
             return false;
-        };
+        }
         
-        // $this->set_session($nickname,$email);
-        
-       // print_r($this->session->all_userdata());
     }
     
      public function  set_session($session_data){
@@ -101,7 +97,7 @@ class User_Model extends CI_Model {
     {
         $this->db->select('nickname');
         $this->db->like('nickname', $search);
-        return $this->db->get('user', 10);
+        return $this->db->get('user', 8);
     }
 }
 
