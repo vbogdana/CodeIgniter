@@ -1,7 +1,11 @@
+@import url(font-awesome.min.css);
+@import url("http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,300italic,400italic");
+
 body {
 margin: 0;
 overflow-y: hidden;
 background-color: #f7f7f7;	/* **	FFFAF0 floral, F0FFFF azure, FFF5EE sea shell, F4FAFA blueish ** */
+font-family: "Source Sans Pro", sans-serif;
 }
 
 .Container {
@@ -15,6 +19,7 @@ border-radius: 2px;
 
 /*	**		TOOLBAR		**	*/
 .Toolbar {
+font-family: "Source Sans Pro", sans-serif;
 position: absolute;
 top: 0px;
 width: 100%;
@@ -62,7 +67,33 @@ right: 10px;
 }
 
 .AddButton {
-left: 10px;
+    left: 10px;
+}
+
+.User{
+    height: 60px;
+    width:  100px;
+    left: 85px;
+}
+
+p{
+    float: left;
+    color: #a18d6c;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 20px;
+    text-align: center;
+    -webkit-transition: background 1s ease-out; 
+
+}
+
+.LogOut {
+    height: 60px;
+    width:  100px;
+    right: 85px;
+}
+
+.LogOut a {
+    color: #a18d6c;
 }
 
 .HiddenMenu {
@@ -180,6 +211,7 @@ border-width: 2px;
 margin-top: 15px;
 color: #333;
 font-family: 'Calibri Light', sans-serif;
+font-family: "Source Sans Pro", sans-serif;
 font-size: 14px;
 -webkit-appearance: none;
 -moz-appearance: none;
@@ -246,6 +278,7 @@ height: 100%;
 background-color: white;
 border-radius: 2px;
 font-family: 'Calibri Light', sans-serif;
+font-family: "Source Sans Pro", sans-serif;
 }
 
 .one-note {
@@ -338,13 +371,13 @@ height: 265px;
 		-ms-appearance: none;
 		appearance: none;
 		/*background: #f8f8f8;*/
-                background: white;
+        background: white;
 		border-radius: 6px;
 		border: solid 1px #e5e5e5;
 		color: inherit;
 		display: block;
 		outline: 0;
-                padding: 0 1em;
+		padding: 0 1em;
 		text-decoration: none;
 		width: 100%;
 	}
@@ -510,5 +543,4 @@ height: 265px;
 		color: #999 !important;
 		opacity: 1.0;
 	}
-        
-        
+    

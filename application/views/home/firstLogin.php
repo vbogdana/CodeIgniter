@@ -35,7 +35,7 @@
             <nav id="nav">
                 <ul>
                     <li>
-                        You don't have an account?
+                        You don not have an account?
                     </li>
                     <li>
                         <a  href="<?php echo base_url() . "index.php/HomeController/signUp"; ?>"class="button"> Sign up </a>	

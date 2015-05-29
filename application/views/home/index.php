@@ -65,7 +65,7 @@
 							<a href="#contactus" class="icon fa-angle-down">Contact us</a>
 						</li>
 						<li>
-							<a href="SignIn" class="button">Sign In</a>
+							<a href="<?php echo base_url()."index.php/homeController/signin"; ?>" class="button">Sign In</a>
 						</li>
 					</ul>
 				</nav>
@@ -85,7 +85,7 @@
 		
 			<section id="main" class="container">
 				<ul class="actions"><center>
-					<li><a href="SignUp.html" class="button special">Sign Up</a></li>
+					<li><a href="<?php echo base_url()."index.php/homeController/signup"; ?>" class="button special">Sign Up</a></li>
 					<li> <nav class="nav"><a id="link2" class="nav-section1 button"  href="#section2">Take tour</a></nav></li>
 				</center></ul>
 				
@@ -101,14 +101,14 @@
 					<div class="features-row">
 						
 						<section>
-						<a href="SignUp.html">
+						<a href="<?php echo base_url()."index.php/homeController/signup"; ?>">
 							<img class="socialnetwork" src="<?php echo base_url()."/assets/images/facebook.png"; ?>" alt="" />
 							<h3>Login with Facebook</h3>
 							</a>
 						</section>
 						
 						<section>
-							<a href="SignUp.html">
+							<a href="<?php echo base_url()."index.php/homeController/signup"; ?>">
 							<img class="socialnetwork" src="<?php echo base_url()."/assets/images/googleplus.png"; ?>" alt="" />
 							<h3>Login with Google+</h3>
 							</a>
