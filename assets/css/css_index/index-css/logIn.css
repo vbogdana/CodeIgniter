@@ -432,6 +432,7 @@ header p {
 				}
                                 .akaunt{
                                       position: absolute;
+                                          top: calc(3% + 160px);
    
                                 }                        
         
