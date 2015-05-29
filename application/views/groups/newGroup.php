@@ -7,7 +7,7 @@ and open the template in the editor.
 autor Bogdana 
 -->
 
-<div class="BoardContainer">
+<div class="BoardContainer" style="height: 85%;">
     
 
     <?php

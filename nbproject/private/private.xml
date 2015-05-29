@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/CodeIgniter/application/controllers/NewGroupController.php</file>
+            <file>file:/C:/wamp/www/CodeIgniter/application/views/board/toolbar.php</file>
             <file>file:/C:/wamp/www/CodeIgniter/application/views/groups/newGroup.php</file>
-            <file>file:/C:/wamp/www/CodeIgniter/application/models/User_Model.php</file>
+            <file>file:/C:/wamp/www/CodeIgniter/assets/js/js_menu/script.js</file>
+            <file>file:/C:/wamp/www/CodeIgniter/application/controllers/BoardController.php</file>
             <file>file:/C:/wamp/www/CodeIgniter/assets/css/css_board/style.css</file>
             <file>file:/C:/wamp/www/CodeIgniter/assets/css/css_board/newGroup.css</file>
         </group>
