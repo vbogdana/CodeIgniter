@@ -11,11 +11,15 @@
 .Options {
     position: absolute;
     display: inline;
-    top: 5%;
+    margin-top:2%;
+    margin-left: 2%;
     width: 30%;
-    background: #F7F7F7;
+    background-color: #FBFBFF;
     padding: 3em 3em 1em 3em;
     border: solid 1px #E4E4E4;
+    border-radius: 4px;
+    height: 70%;
+    
 }
 
 .Options > li {
@@ -25,7 +29,7 @@
 
 #existsGroup {
     height: 10%;
-    width: 70%;
+    width: 80%;
     margin-top: 1em;
     visibility: visible;
     position: absolute;
@@ -67,14 +71,17 @@
 #members {
 
     position: absolute;
-    top: 5%;
-    width: 45%;
-    height: 60%;
-    right: 0%;
-    background: #F7F7F7;
+    top:0%;
+    margin-top: 2%;
+    margin-right: 2%;
+    right:0%;
+    width: 42%;
+    height: 70%;
+    background-color: #FBFBFF;
     padding: 3em 3em 1em 3em;
     border: solid 1px #E4E4E4;
     border-left: solid 2px #e89980;
+    border-radius: 4px;
     
 }
 

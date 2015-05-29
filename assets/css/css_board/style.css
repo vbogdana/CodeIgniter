@@ -7,8 +7,8 @@
 
 body {
     margin: 0;
-    overflow-y: hidden;
-    background-color: #FBFBFF;	/* **	FFFAF0 floral, F0FFFF azure, FFF5EE sea shell, F4FAFA blueish, #F7F7F7 ** */
+    
+    background-color: white;	/* **	FFFAF0 floral, F0FFFF azure, FFF5EE sea shell, F4FAFA blueish, #F7F7F7, FBFBFF poslednje dve sive ** */
     font-family: "Source Sans Pro", sans-serif;
 }
 
@@ -24,7 +24,7 @@ body {
 /*	**		TOOLBAR		**	*/
 .Toolbar {
     font-family: "Source Sans Pro", sans-serif;
-    position: absolute;
+    position: fixed;
     top: 0px;
     width: 100%;
     height: 50px;
@@ -145,13 +145,13 @@ body {
 .User {
     height: 50px;
     width:  200px;
-    right: 200px;
+    right: calc(10% + 100px);
 }
 
 .LogOut {
     height: 50px;
     width:  100px;
-    right: 85px;
+    right: 10%;
 }
 
 .Text {
@@ -335,62 +335,107 @@ input:-moz-placeholder {
     top: 12%;
     left: 10%;
     width: 80%;
-    height: 100%;
-    background-color: transparent;
-    border-radius: 2px;
+    height: 190%;
+    border-radius: 4px;
+    background: #F7F7F7;
+    border: solid 1px #E4E4E4;
     font-family: 'Calibri Light', sans-serif;
     font-family: "Source Sans Pro", sans-serif;
 }
 
+.AddNote {
+    background: #FBFBFF;
+    text-align: center;
+    top: 40%;
+    position: relative;
+    border-top: solid 1px #E4E4E4;
+    border-bottom: solid 1px #E4E4E4;
+}
+
+.one-row{
+    //position: absolute;
+    margin-left: 0px;
+    margin-top: 0px;
+    width: 100%;
+    height: 350px;
+}
+
 .one-note {
     float:left;
-    width: 18%;
-    height: 250px;
-    border: 2px solid;
-    margin-left: 15px;
-    margin-top: 15px;
+    width: 22%;
+    height: 100%;
+    border: 1px solid #E4E4E4;
+    border-radius: 4px;
+    margin-left: 2%;
+    margin-top: 2%;
+    background: white;
+    color: #888;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 300;
+}
 
+.one-note:hover {
+    border: 1px solid #E89980;
+    cursor: pointer;
+}
+
+.one-note a {
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 300;
+    text-decoration: none;
+    color: #888;
+}
+
+.one-note a:hover {
+
+    color: #E89980;
 }
 
 .naslov {
     float:left;
     width: 100%;
     height: 40px;
-    border-bottom: 3px solid;
     font-size:25px;
     margin-top: 15px;
     text-align:center;
-    font-weight:bold;
 }
 
 .tekst {
     float:left;
     width: 100%;
     height: 160px;
-    border-bottom: 3px solid;
     font-size:21px;
     padding-top:15px;
     text-align:center;
-    font-weight:bold;
 }
 
 .datum{
     float:left;
     width: 100%;
     height: 15px;
-    border-bottom: 3px solid;
     font-size:12px;
     text-align:center;
-    font-weight:bold;
 }
 
-
-.one-row{
-    margin-left: 0px;
-    margin-top: 0px;
+.load-more {
+    height: 2%;
     width: 100%;
-    height: 265px;
+    //margin-left: 20%;
+    margin-top: 10%;
+    background: #FBFBFF;
+    text-align: center;
+    border-top: solid 1px #E4E4E4;
+    border-bottom: solid 1px #E4E4E4;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 300;
+    text-decoration: none;
+    color: #888;
+    padding-top: 0.5em;
+}
 
+.load-more:hover {
+    color: #E89980;
+    cursor: pointer;
 }
 
 .module_holder {

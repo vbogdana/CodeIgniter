@@ -26,7 +26,7 @@ class NewGroupController extends CI_Controller {
         $logged_in = $this->session->userdata('logged_in');
 
         if ($logged_in <> 1) {
-            redirect('boardController/firstlogin');
+            redirect('loginController/firstlogin');
         } else {
             
             $this->load->view('templates/page', array('menu' => 'board/toolbar', 'container' => 'groups/newGroup'));
