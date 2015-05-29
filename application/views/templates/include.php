@@ -1,4 +1,8 @@
-	<!-- CSS FAJLOVI -->
+<!--
+autor Bogdana
+-->
+
+        <!-- CSS FAJLOVI -->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url()."assets/css/css_board/popup-contact.css"; ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url()."assets/css/css_board/style.css"; ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url()."assets/css/css_board/newGroup.css"; ?>">

@@ -29,7 +29,7 @@ autor Bogdana
 
         <li>
             <div class="label">
-                Add a member <span class="required">*</span>
+                Add at least one member
             </div>
             <br />
             <input id="member" type="text" name="member" maxlength="30" value="<?php echo set_value('member'); ?>" onkeyup="membersSearch();" /> 

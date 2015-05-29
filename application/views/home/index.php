@@ -2,6 +2,8 @@
 <!--
 	Projekat za predmet Principi softverskog inzenjerstva,Elektrotehnicki fakultet u Beogradu, Maj 2015.
 	Tim Mracni vitezovi: Bogdana Veselinovic,Aleksa Milosevic,Luka Jovanovic,Dusan Spasojevic.
+
+        autor Dusan Spasojevic
 -->
 <html>
 
