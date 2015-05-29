@@ -1,4 +1,6 @@
-
+<!--
+    autor Bogdana
+-->
                             <!--	Toolbar	-->
                             <div class="Toolbar"> 
 				      
@@ -33,18 +35,20 @@
 				</div>
                                 
                                 <div class="ToolButton User" onClick="">
-                                        <p>   
-                                            <?php
-                                            $nickname = $this->session->userdata('nickname');
-                                            echo "$nickname";              
-                                            ?>  
-                                        </p>        
+                                        <div class="Text">
+                                            <a href="#">
+                                                <?php
+                                                $nickname = $this->session->userdata('nickname');
+                                                echo "$nickname";              
+                                                ?> 
+                                            <a/>
+                                        </div>       
 				</div>
                                 
                                 <div class="ToolButton LogOut" onClick="">
-                                        <p>   
-                                            <a href="<?php echo base_url()."index.php/LogoutController"; ?>">Sign out</a>
-                                        </p>        
+                                        <div class="Text">   
+                                            <a href="<?php echo base_url()."index.php/LogoutController"; ?>">sign out</a>
+                                        </div>       
 				</div>
                                  
                                 
@@ -64,18 +68,22 @@
 				<!-- End of Menu Buttons -->
 				
 				<!-- Search bar -->
-				<div class="Searchbar">
-					<div class="Flexsearch">
-							<form class="Flexsearch--form" action="#" method="post">
-								<div class="Flexsearch--input-wrapper">
-									<input class="Flexsearch--input" type="search" placeholder="Search..." onkeyup="showResult(this.value)">
-								</div>
-								<input class="Flexsearch--submit" type="submit" value="&#10140;"/>
-							</form>
-							<div id="livesearch"></div>
-					</div>
+                                <div class="Searchbar">
+                                    <div class="Flexsearch">
+                                        <form class="Flexsearch--form" action="#" method="post">
+                                            <div class="Flexsearch--input-wrapper">
+                                                <input id="group" class="Flexsearch--input" type="search" placeholder="Search..." onkeyup="groupsSearch()">
+                                            </div>
 
-				</div>
+                                            <input class="Flexsearch--submit" type="submit" value="&#10140;"/>
+
+                                        </form>
+
+                                    </div>
+                                    <div id="suggestions1">
+                                        <div id="autoSuggestionsList1">  </div>
+                                    </div>
+                                </div>
                                 <!-- End of Search bar -->
 
 			</div>

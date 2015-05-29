@@ -1,5 +1,7 @@
 <?php
 
+// autor Dusan Spasojevic
+
 class RegisterController extends CI_Controller {
     
   public function signup() {

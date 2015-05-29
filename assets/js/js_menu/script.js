@@ -34,7 +34,7 @@ function showMenu(menu) {
         document.getElementById(menu).style.height = "400%";	// izvlaci traku s notifikacijama
     } else {
         document.getElementById(menu - 2).style.transform = "rotate(135deg)";	// rotira dugme
-        document.getElementById(menu).style.top = "110%";	// izvlaci meni
+        document.getElementById(menu).style.top = "115%";	// izvlaci meni
     }
 }
 
@@ -72,7 +72,7 @@ function membersSearch() {
             success: function (data) {   // ako je funkcija kontrolera uspesna
                 // return success
                 $('#suggestions').show();
-                if (data.length > 0) {
+                if (data.length > 0 && data != ' ') {
                     $('#suggestions').show();
                     $('#autoSuggestionsList').addClass('auto_list');
                     $('#autoSuggestionsList').html(data);
@@ -230,4 +230,50 @@ function createGroup() {
     atLeastOneMember = false;
     window.location.href = 'boardController/';
         
+}
+
+/* MAIN SEARCH BAR */
+
+function groupsSearch() {
+    var input_data = $('#group').val();        // uzmi vrednost sa inputa
+    if (input_data.length === 0) {              // ako nema nista sakrij predloge
+        $('#suggestions1').hide();
+    } else {                                    // u suprotnom postavi parametar member
+        var post_data = {
+            'group': input_data,
+            '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
+        };
+
+        $.ajax({
+            type: "POST",
+            //url: "<?php echo base_url(); ?>index.php/NewGroupController/autocomplete/",
+            url: "http://localhost/CodeIgniter/index.php/boardController/autocomplete",
+            data: post_data,
+            success: function (data) {   // ako je funkcija kontrolera uspesna
+                // return success
+               // $('#suggestions1').show();
+                if (data.length > 0 && data != ' ') {
+                    $('#suggestions1').show();
+                    $('#autoSuggestionsList1').addClass('auto_list1');
+                    $('#autoSuggestionsList1').html(data);
+                    data = '';
+                }
+                else {
+                    $('#suggestions1').hide();
+                    /*
+                     $('#suggestions').show();
+                     $('#autoSuggestionsList').addClass('auto_list');
+                     $('#autoSuggestionsList').html('<li> No such users found </li>');
+                     */
+                }
+            }
+        });
+
+    }
+}
+
+function chooseGroup(group) {
+    $('#suggestions1').hide();
+    document.getElementById('group').value = group;
+
 }

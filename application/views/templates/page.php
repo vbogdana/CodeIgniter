@@ -1,4 +1,7 @@
 <?php
+
+/* autor Bogdana */
+
 $this->load->view('templates/header', array('username'=>'vbogdana'));
 $this->load->view($menu);
 $this->load->view($container);

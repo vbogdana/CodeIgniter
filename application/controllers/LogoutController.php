@@ -1,5 +1,6 @@
 <?php
 
+// autor Dusan Spasojevic
 
 class LogOutController extends CI_Controller {
 

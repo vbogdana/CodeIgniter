@@ -69,7 +69,16 @@ class Group_Model extends CI_Model {
         } else {
             $this->ismember->createEntry($creator, $idGroup, '1');
         }
-        
+
         return $idGroup;
     }
+
+    public function get_autocomplete($search) {
+        $idUser = $this->session->userdata('idUser');
+        $this->db->select('name');
+        $this->db->like('name', $search);
+        $this->db->where('id_Creator', $idUser);
+        return $this->db->get('group', 8);
+    }
+
 }

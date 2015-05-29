@@ -1,5 +1,7 @@
 <?php
 
+/* autor Dusan Spasojevic, Bogdana Veselinovic */
+
 class HomeController extends CI_Controller {
 	
 	public function index() {
