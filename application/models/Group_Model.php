@@ -75,7 +75,7 @@ class Group_Model extends CI_Model {
 
     public function get_autocomplete($search) {
         $idUser = $this->session->userdata('idUser');
-        $this->db->select('name');
+        $this->db->select('name, idGroup');
         $this->db->like('name', $search);
         $this->db->where('id_Creator', $idUser);
         return $this->db->get('group', 8);

@@ -13,9 +13,11 @@
                                 echo '<div class="BoardContainer" id="board">';
                                 $result = $rezultat;
                                 $iteration = 1;
-  
+                                $group = $grupa;
                                 echo '<div id="loadBoard">';
-                                    $this->load->view('board/container', array('iteracija' => $iteration, 'rezultat' => $result));
+                                    $this->load->view('board/container', array('iteracija' => $iteration, 
+                                                                               'rezultat' => $result,
+                                                                               'grupa' => $group));
                                 echo '</div>';  // kraj load Boarda
                           
                                 echo '</div>';  // kraj Board containera

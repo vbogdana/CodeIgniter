@@ -6,10 +6,11 @@
 			<?php
                                 
                                     $result = $rezultat;
+                                    $group = $grupa;
                                     $num = mysqli_num_rows($result);
                                     $iteration = $iteracija;
-                                    $height = ((((($iteration - 1) * 12) ) / 4) ) * 373 + ((int)(($num-1) / 4) + 1) * 373 + 23 + 40;
-                                    $last_created_On = 0;
+                                    $height = ((((($iteration - 1) * 12) ) / 4) ) * 373 + ((int)(($num) / 4) + 1) * 373 + 23 + 40;
+                                    $last_Edited_On = 0;
                                     $last_id = 0;
                                     
                                     echo '<style>'
@@ -78,7 +79,7 @@
                                     //echo '</div>';      // kraj LoadBoarda
                                     
                                     $iteration = $iteration + 1;
-                                    echo '<div class="load-more" id="load-more'.($iteration-1).'" onclick="loadMore('.$iteration.',\''.$last_Edited_On.'\','.$last_id.')">
+                                    echo '<div class="load-more" id="load-more'.($iteration-1).'" onclick="loadMore('.$iteration.',\''.$last_Edited_On.'\','.$last_id.',\''.$group.'\')">
                                         <div class=""> Load more notes </div>
                                       </div>';
                                

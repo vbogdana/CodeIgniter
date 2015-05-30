@@ -14,28 +14,14 @@ class BoardController extends CI_Controller {
         $this->load->model('IsMember_Model', 'ismember');
         $this->load->model('User_Model', 'user');
     }
-
-    public function index() {
-
-        $logged_in = $this->session->userdata('logged_in');
-
-        if ($logged_in<>1) {
-              redirect('loginController/firstlogin');
-        } else {
-            
-            $result = $this->note->getNotes("global");    
-            $this->load->view('templates/page', array('menu' => 'board/toolbar', 'container' => 'board/boardContainer', 'rezultat' => $result));   
-        }
-        
-    }
     
     public function loadMore() {
         $iteration = $_POST['iteration'];
         $last = $_POST['last'];
         $last_id = $_POST['last_id'];
+        $group = $_POST['group'];
         
-        //$result = $this->note->loadMore($group, $last, $last_id);
-        $result = $this->note->loadMore("global", $last, $last_id);
+        $result = $this->note->loadMore($group, $last, $last_id);
         
         if (mysqli_num_rows($result) == 0) {
             echo '<div class="load-more">
@@ -44,7 +30,9 @@ class BoardController extends CI_Controller {
             return;
         }
         
-        $this->load->view('board/container', array('iteracija' => $iteration, 'rezultat' => $result));
+        $this->load->view('board/container', array('iteracija' => $iteration, 
+                                                   'rezultat' => $result,
+                                                   'grupa' => $group));
     }
     
     public function board($group) {
@@ -53,10 +41,13 @@ class BoardController extends CI_Controller {
         if ($logged_in<>1) {
               redirect('loginController/firstlogin');
         } else {
-            if ($group == "global") {
-                $this->index();
-            }
-            echo $group;
+            
+            $result = $this->note->getNotes($group);       
+            $this->load->view('templates/page', array('menu' => 'board/toolbar',
+                                                      'container' => 'board/boardContainer', 
+                                                      'rezultat' => $result, 
+                                                      'grupa' => $group));
+            
         }
     }
     
@@ -70,7 +61,7 @@ class BoardController extends CI_Controller {
 
         foreach ($query->result() as $row):
             //if ($row->name != $this->session->userdata('currentGroup')) {
-                    echo '<li onclick="chooseGroup(\''.$row->name.'\')" >'. $row->name . '</li>';
+                    echo '<li onclick="chooseGroup(\''.$row->name.'\','.$row->idGroup.')" >'. $row->name . '</li>';
                     $echoed = true;
              //   }     
         endforeach;
