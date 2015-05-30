@@ -1,6 +1,7 @@
 
 
 .Optionsedit {
+    float: right;
     position: absolute;
     display: inline;
     margin-top:23px;

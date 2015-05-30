@@ -60,11 +60,12 @@ autor Dusan
         </div>
         
     </div>
-      
-    
-
         <?= form_close() ?>
-    
+   
+        <form action="upload-image.php"     method="post"   enctype="multipart/form-data">
+            <imput type="file" name="image">
+        </form>        
+   
     
     
     
