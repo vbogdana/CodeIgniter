@@ -11,8 +11,8 @@
 .Options {
     position: absolute;
     display: inline;
-    margin-top:2%;
-    margin-left: 2%;
+    margin-top:23px;
+    margin-left: 23px;
     width: 30%;
     background-color: #FBFBFF;
     padding: 3em 3em 1em 3em;
@@ -72,8 +72,8 @@
 
     position: absolute;
     top:0%;
-    margin-top: 2%;
-    margin-right: 2%;
+    margin-top: 23px;
+    margin-right: 23px;
     right:0%;
     width: 42%;
     height: 70%;
