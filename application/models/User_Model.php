@@ -50,7 +50,8 @@ class User_Model extends CI_Model {
                    'idUser'=>$row->idUser,
                    'nickname'=>$row->nickname,
                    'email'=>$row->email,
-                   'password'=>$row->password  
+                   'password'=>$row->password,
+                   'currentGroup'=>'-1'     // globalna ce biti oznacena sa -1
                );
             }
             $this->set_session($session_data);
@@ -86,7 +87,8 @@ class User_Model extends CI_Model {
                    'idUser'     =>$session_data['idUser'],
                    'nickname'   =>$session_data['nickname'],
                    'email'      =>$session_data['email'], 
-                   'password'   =>$session_data['password'], 
+                   'password'   =>$session_data['password'],
+                   'currentGroup'=>$session_data['currentGroup'],// globalna ce biti oznacena sa -1
                    'logged_in' => 1
                );
         

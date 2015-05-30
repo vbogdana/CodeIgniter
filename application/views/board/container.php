@@ -6,10 +6,11 @@
 			<?php
                                 
                                     $result = $rezultat;
+                                    $group = $grupa;
                                     $num = mysqli_num_rows($result);
                                     $iteration = $iteracija;
-                                    $height = ((((($iteration - 1) * 12) ) / 4) ) * 373 + ((int)(($num-1) / 4) + 1) * 373 + 23 + 40;
-                                    $last_created_On = 0;
+                                    $height = ((((($iteration - 1) * 12) ) / 4) ) * 373 + ((int)(($num) / 4) + 1) * 373 + 23 + 40;
+                                    $last_Edited_On = 0;
                                     $last_id = 0;
                                     
                                     echo '<style>'
@@ -42,13 +43,17 @@
                                             $naslov = $row['title'];
 
                                             echo '<div class="one-note">
-                                                    <div class="buttons">
-                                                        <div class="note_button" id="important">Important</div>
+                                                    <div class="buttons">';
+                                                    if ($group == "hidden") {
+                                                        echo '<div class="note_button" id="hide">Unhide</div>';
+                                                    } else {
+                                                      echo '<div class="note_button" id="important">Important</div>
                                                         <div class="note_button" id="lock">Lock</div>
                                                         <div class="note_button" id="hide">Hide</div>
-                                                        <div class="note_button" id="delete">Delete</div>
-                                                    </div>
-                                                    <div class="title">'; echo $naslov; echo '</div>
+                                                        <div class="note_button" id="delete">Delete</div>';
+                                                    }
+                                            echo '</div> ';             // kraj buttons-a                   
+                                            echo    '<div class="title">'; echo $naslov; echo '</div>
                                                     <div class="content">'; echo $text; echo '</div>
                                                     <div class="created_On">'; echo $datum; echo'</div>
                                                     <div class="global_Reminder">'; echo $datum; echo'</div>
@@ -78,7 +83,7 @@
                                     //echo '</div>';      // kraj LoadBoarda
                                     
                                     $iteration = $iteration + 1;
-                                    echo '<div class="load-more" id="load-more'.($iteration-1).'" onclick="loadMore('.$iteration.',\''.$last_Edited_On.'\','.$last_id.')">
+                                    echo '<div class="load-more" id="load-more'.($iteration-1).'" onclick="loadMore('.$iteration.',\''.$last_Edited_On.'\','.$last_id.',\''.$group.'\')">
                                         <div class=""> Load more notes </div>
                                       </div>';
                                

@@ -167,7 +167,7 @@ function checkExistGroup() {
                 if (data.length > 0) {
                     //$('#existsGroup').show();
                     $('#existsGroup').html(data);
-                    if (data === "Name of the group is taken.") {
+                    if (data === "Name of the group is taken." || data === "This name is reserved.") {
                         $('#existsGroup').css({"color": "#E89980"});
                         checkGroup = false;
                         document.getElementById('submit').disabled = true;
@@ -264,23 +264,22 @@ function groupsSearch() {
     }
 }
 
-function chooseGroup(group) {
+function chooseGroup(group, idGroup) {
     $('#suggestions1').hide();
-    document.getElementById('group').value = group;
     
-    /*
-     *  not finished
-     */
+    window.location.href = "http://localhost/CodeIgniter/index.php/boardController/board/" + idGroup;
+
 }
 
 
-function loadMore(iteration, last, last_id) {
+function loadMore(iteration, last, last_id, group) {
     $("#load-more"+(iteration-1)).hide();
 
     var post_data = {
         'iteration': iteration,
         'last': last,
         'last_id': last_id,
+        'group': group,
         '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
         };
 

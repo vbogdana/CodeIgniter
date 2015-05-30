@@ -80,6 +80,14 @@ body {
     left: 20px;
 }
 
+.ImportantButton {
+    left: 55%;
+}
+
+.GlobalButton {
+    left: calc(55% + 50px);
+}
+
 .HiddenMenu {
     position: absolute;
     height: 400%;
@@ -141,8 +149,7 @@ body {
     box-shadow:         0px 3px 5px 0px rgba(50, 50, 50, 0.75);
 }
 
-.NotifWrapper {
-    
+.NotifWrapper {  
     position: relative;
     display: block;
     width: 100%;
@@ -151,8 +158,35 @@ body {
 
 .User {
     height: 50px;
-    width:  200px;
-    right: calc(10% + 105px);
+    width: 20%;
+    right: 10%;
+}
+
+.UserImg {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    border-radius: 12%;
+    top: 20%;
+    right: 0%;
+    background: #888;
+    -webkit-transition: background 0.5s ease-out;
+}
+
+.UserImg:hover {
+    cursor: pointer;
+    background: #E89980;
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    0px 3px 5px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         0px 3px 5px 0px rgba(50, 50, 50, 0.75);
+}
+
+.UserImg img {
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    height: 70%;
+    width: 70%;
 }
 
 .LogOut {
@@ -165,29 +199,20 @@ body {
     height: 60%;
     position: absolute;
     top: 20%;
-    right: 0%;
-    width: 100px;
+    right: calc(10% + 30px);
+    width: auto;
     background: #FFFAF0;
     color: #a18d6c;
     font-family: "Source Sans Pro", sans-serif;
     font-size: 20px;
     text-align: center;
-    -webkit-transition: background 1s ease-out; 
+    -webkit-transition: background 1s ease-out;
 
-}
-
-.Text:hover {
-    background-color: #E89980; 
 }
 
 .Text a {
     color: #E89980;
-    text-decoration: none;
-    
-}
-
-.Text a:hover {
-    color: white;
+    text-decoration: none;    
 }
 
 /*	**		Searchbar		**	*/
@@ -198,6 +223,7 @@ body {
     position: absolute;
     top: 0%;
     left: 10%;
+    //left: 170px;
 }
 
 /*@import "compass/css3";*/

@@ -30,22 +30,6 @@ class NewGroupController extends CI_Controller {
         } else {
             
             $this->load->view('templates/page', array('menu' => 'board/toolbar', 'container' => 'groups/newGroup'));
-            /*
-            $this->form_validation->set_rules('groupname', 'Group name', 'required|max_length[30]');
-            $this->form_validation->set_rules('member', 'Add a member', 'required|max_length[30]');
-            $this->form_validation->set_error_delimiters('<br /> <span class="error">', '</span>');
-
-            if ($this->form_validation->run() == FALSE) {
-                // validation hasn't been passed
-                $this->load->view('templates/page', array('menu' => 'board/toolbar', 'container' => 'groups/newGroup'));
-            } else {
-                // passed validation proceed to post success logic
-                $groupname = $this->input->post('groupname');
-                $member = $this->input->post('member');
-                $this->createGroup($groupname, $member);
-            }
-            
-             */
         }
     }
 
@@ -72,6 +56,10 @@ class NewGroupController extends CI_Controller {
     
     public function checkGroupName() {
         $groupname = $this->input->post('groupname');
+        if ($groupname == "global" || $groupname == "important" || $groupname == "hidden") {
+            echo "This name is reserved.";
+            return;
+        }
         $idUser = $this->session->userdata('idUser');
         
         if ($this->group->existGroup($groupname, $idUser) == '-1') {

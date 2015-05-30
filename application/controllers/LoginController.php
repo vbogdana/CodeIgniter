@@ -15,7 +15,7 @@ class LoginController extends CI_Controller {
             if($this->form_validation->run()== false){
                 $this->load->view('home/signIn');
             }else{
-                redirect('BoardController');      
+                redirect('BoardController/board/global');      
             }
         }   
 
