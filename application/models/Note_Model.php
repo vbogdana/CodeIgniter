@@ -32,14 +32,22 @@ class Note_Model extends CI_Model {
                 . "ORDER BY last_Edited_On desc, idNote desc limit 11")
                 or die(mysql_error());
         } else if ($group == "hidden") {
-            
+            $result = mysqli_query($link, "SELECT * "
+                . "FROM note n "
+                . "WHERE exists (SELECT * FROM hidden_note hn WHERE n.idNote=hn.idNote AND hn.idUser='$idUser')"
+                . "ORDER BY last_Edited_On desc, idNote desc limit 11")
+                or die(mysql_error());
         } else if ($group == "important") {
-            
+            $result = mysqli_query($link, "SELECT * "
+                . "FROM note n "
+                . "WHERE exists (SELECT * FROM important iin WHERE n.idNote=iin.idNote AND iin.idUser='$idUser')"
+                . "ORDER BY last_Edited_On desc, idNote desc limit 11")
+                or die(mysql_error());
         } else {
             $result = mysqli_query($link, "SELECT * "
                 . "FROM note n WHERE exists (SELECT * FROM group_note gn WHERE gn.idNote = n.idNote and gn.id_Group='$group'"
                 . "AND not exists (SELECT * FROM hidden_note hn WHERE hn.idNote=n.idNote AND hn.idUser='$idUser'))"
-                . "ORDER BY last_Edited_On desc, idNote desc limit 1")
+                . "ORDER BY last_Edited_On desc, idNote desc limit 11")
                 or die(mysql_error());
         }
         
@@ -68,13 +76,29 @@ class Note_Model extends CI_Model {
                 . "ORDER BY last_Edited_On desc, idNote desc LIMIT 12")
                 or die(mysql_error());
         } else if ($group == "hidden") {
-            
+            $result = mysqli_query($link, "SELECT * "
+                . "FROM note n "
+                . "WHERE exists (SELECT * FROM hidden_note hn WHERE n.idNote=hn.idNote AND hn.idUser='$idUser')"
+                . "AND not exists (SELECT * "                                     // kontrolise datum kreiranja
+                . "FROM note e "
+                . "WHERE e.idNote = n.idNote AND (e.last_Edited_On > '$last' OR (e.last_Edited_On = '$last' AND e.idNote >= '$last_id')))"
+                . "ORDER BY last_Edited_On desc, idNote desc limit 11")
+                or die(mysql_error());
         } else if ($group == "important") {
+            $result = mysqli_query($link, "SELECT * "
+                . "FROM note n "
+                . "WHERE exists (SELECT * FROM important iin WHERE n.idNote=iin.idNote AND iin.idUser='$idUser') "
+                . "AND not exists (SELECT * "                                     // kontrolise datum kreiranja
+                . "FROM note e "
+                . "WHERE e.idNote = n.idNote AND (e.last_Edited_On > '$last' OR (e.last_Edited_On = '$last' AND e.idNote >= '$last_id')))"
+                . "ORDER BY last_Edited_On desc, idNote desc limit 11")
+                or die(mysql_error());
             
         } else {
+             // ne prikazuje prvo important
             $result = mysqli_query($link, "SELECT * "
                 . "FROM note n WHERE exists (SELECT * FROM group_note gn WHERE gn.idNote = n.idNote and gn.id_Group='$group'"
-                . "AND not exists (SELECT * FROM hidden_note hn WHERE hn.idNote=n.idNote AND hn.idUser='$idUser'))"     // end
+                . "AND not exists (SELECT * FROM hidden_note hn WHERE hn.idNote=n.idNote AND hn.idUser='$idUser')) "     // end
                 . "AND not exists (SELECT * "                                     // kontrolise datum kreiranja
                 . "FROM note e "
                 . "WHERE e.idNote = n.idNote AND (e.last_Edited_On > '$last' OR (e.last_Edited_On = '$last' AND e.idNote >= '$last_id')))"

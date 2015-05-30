@@ -267,9 +267,7 @@ function groupsSearch() {
 function chooseGroup(group, idGroup) {
     $('#suggestions1').hide();
     
-    //window.location.href = idGroup;
-    window.location.href = "http://localhost/CodeIgniter/index.php/boardController/board/" + group;
-    //document.getElementById('group').value = group;
+    window.location.href = "http://localhost/CodeIgniter/index.php/boardController/board/" + idGroup;
 
 }
 
