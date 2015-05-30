@@ -363,11 +363,11 @@ input:-moz-placeholder {
 
 .one-note {
     float:left;
-    width: 22%;
+    width: calc(90% / 4 - 2px);
     height: 100%;
     border: 1px solid #E4E4E4;
     border-radius: 4px;
-    margin-left: 23px;
+    margin-left: 2%;
     margin-top: 23px;
     background: white;
     color: #888;
