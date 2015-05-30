@@ -38,13 +38,21 @@
                                                 echo '<div class="one-row">';
                                             }
                                             $text=$row['text'];
-                                            $datum = $row['created_On'];
+                                            $datum = $row['last_Edited_On'];
                                             $naslov = $row['title'];
 
                                             echo '<div class="one-note">
-                                                    <div class="naslov">'; echo $naslov; echo '</div>
-                                                    <div class="tekst">'; echo $text; echo '</div>
-                                                    <div class="datum">'; echo $datum; echo'</div>
+                                                    <div class="buttons">
+                                                        <div class="note_button" id="important">Important</div>
+                                                        <div class="note_button" id="lock">Lock</div>
+                                                        <div class="note_button" id="hide">Hide</div>
+                                                        <div class="note_button" id="delete">Delete</div>
+                                                    </div>
+                                                    <div class="title">'; echo $naslov; echo '</div>
+                                                    <div class="content">'; echo $text; echo '</div>
+                                                    <div class="created_On">'; echo $datum; echo'</div>
+                                                    <div class="global_Reminder">'; echo $datum; echo'</div>
+                                                    <div class="personal_Reminder">'; echo $datum; echo'</div>
                                                   </div>';
                                                     
                                             $i=$i+1;
@@ -58,7 +66,7 @@
                                                     echo '</div>';  // kraj row-a
                                                     $i = 0;
                                                 } 
-                                        $last_created_On = $row["created_On"];
+                                        $last_Edited_On = $row["last_Edited_On"];
                                         $last_id = $row['idNote'];
                                     }
                                     if (($cnt % 12) != 0) {
@@ -70,7 +78,7 @@
                                     //echo '</div>';      // kraj LoadBoarda
                                     
                                     $iteration = $iteration + 1;
-                                    echo '<div class="load-more" id="load-more'.($iteration-1).'" onclick="loadMore('.$iteration.',\''.$last_created_On.'\','.$last_id.')">
+                                    echo '<div class="load-more" id="load-more'.($iteration-1).'" onclick="loadMore('.$iteration.',\''.$last_Edited_On.'\','.$last_id.')">
                                         <div class=""> Load more notes </div>
                                       </div>';
                                

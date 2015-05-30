@@ -10,12 +10,15 @@ and open the template in the editor.
 <div class="BoardContainer" style="height: 85%;">
     
 
+    
+<div class="groupsContainer">
+    
     <?php
     // Change the css classes to suit your needs    
     $attributes = array('class' => '', 'id' => '');
     echo form_open('NewGroupController', $attributes);
     ?>
-
+    
     <div class='Options'>
         <li>
             <div class="label">
@@ -37,21 +40,25 @@ and open the template in the editor.
                 <div id="autoSuggestionsList">  </div>
             </div>
         </li>
+        
+        <div class="Submit">
+        <p>
+            <input type="button" onclick="createGroup()" value="Create Group" id='submit' disabled />   
+        </p>
+        </div>
     </div>
 
-    <div class="Submit">
-    <p>
-        <br /> <br /> <br /> <br />
-        <input type="button" onclick="createGroup()" value="Create Group" id='submit' disabled />   
-    </p>
-    </div>
-
+    
+    
     <?php echo form_close(); ?>
     
     <div id="members">
         Added members
         <ol></ol>
     </div>
+
+    
+</div>
     
     
 </div>

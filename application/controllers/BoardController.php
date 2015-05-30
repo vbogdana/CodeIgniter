@@ -1,7 +1,7 @@
  <?php
  
  /*
-    autori Dusan Spasojevic, Bogdana Veselinovic
+    autor Bogdana Veselinovic
         */
 
 class BoardController extends CI_Controller {
@@ -17,21 +17,17 @@ class BoardController extends CI_Controller {
             mysqli_select_db($link, "mydb") or die(mysql_error());
               
             $idUser = $this->session->userdata('idUser');
-        
-                $result = mysqli_query($link, "SELECT * "
+            
+            $result = mysqli_query($link, "SELECT * "
                 . "FROM note n "
-                . "WHERE exists (select * "
-                . "from personal_note pn "
-                . "where pn.idNote = n.idNote AND pn.idUser = '$idUser') or exists (select * "
+                . "WHERE (n.idUser='$idUser' or exists (select * "
                 . "from group_note gn "
                 . "where gn.idNote = n.idNote and exists (select * "
                 . "from ismember im "
-                . "where im.id_Group = gn.id_Group AND im.id_User = 4 and not exists (select * "
-                . "from changed_note cn where cn.idNote = gn.idNote AND cn.idUser='$idUser'))) "
-                . "UNION SELECT n.idNote, cn.text, gn.last_Edited_On, n.title "
-                . "from Note n, changed_note cn, group_note gn "
-                . "where n.idNote = gn.idNote and n.idNote = cn.idNote and cn.idUser = '$idUser' "
-                . "ORDER BY created_On desc, idNote desc limit 11")
+                . "where im.id_Group = gn.id_Group AND im.id_User = '$idUser' and not exists (select * "
+                . "from hidden_note hn "
+                . "where hn.idNote = gn.idNote AND hn.idUser='$idUser')))) "
+                . "ORDER BY last_Edited_On desc, idNote desc limit 11")
                 or die(mysql_error());
                 
             $this->load->view('templates/page', array('menu' => 'board/toolbar', 'container' => 'board/boardContainer', 'rezultat' => $result));   
@@ -49,22 +45,17 @@ class BoardController extends CI_Controller {
         
         $result = mysqli_query($link, "SELECT * "
                 . "FROM note n "
-                . "WHERE (exists (SELECT * "                                    // begin izdvajanja svih belezaka korisnika
-                . "FROM personal_note pn "                                              // begin personalnih
-                . "WHERE pn.idNote = n.idNote AND pn.idUser = '$idUser') OR exists (SELECT * "  // begin grupnih
-                . "FROM group_note gn "
-                . "WHERE gn.idNote = n.idNote AND exists (SELECT * "
-                . "FROM ismember im "   // i dodati uslov da nije hideovana
-                . "WHERE im.id_Group = gn.id_Group AND im.id_User = '$idUser' AND not exists (SELECT * "
-                . "FROM changed_note cn "
-                . "WHERE cn.idNote = gn.idNote AND cn.idUser='$idUser')))) "    // end
+                . "WHERE (n.idUser='$idUser' or exists (select * "
+                . "from group_note gn "
+                . "where gn.idNote = n.idNote and exists (select * "
+                . "from ismember im "
+                . "where im.id_Group = gn.id_Group AND im.id_User = '$idUser' and not exists (select * "
+                . "from hidden_note hn "
+                . "where hn.idNote = gn.idNote AND hn.idUser='$idUser')))) "   // end
                 . "AND not exists (SELECT * "                                     // kontrolise datum kreiranja
                 . "FROM note e "
-                . "WHERE e.idNote = n.idNote AND (e.created_On > '$last' OR (e.created_On = '$last' AND e.idNote >= '$last_id')))"
-                //. "UNION SELECT n.idNote, cn.text, gn.last_Edited_On, n.title "
-                //. "from Note n, changed_note cn, group_note gn "
-                //. "where n.idNote = gn.idNote and n.idNote = cn.idNote and cn.idUser = '$idUser' "
-                . "ORDER BY created_On desc, idNote desc LIMIT 12")
+                . "WHERE e.idNote = n.idNote AND (e.last_Edited_On > '$last' OR (e.last_Edited_On = '$last' AND e.idNote >= '$last_id')))"
+                . "ORDER BY last_Edited_On desc, idNote desc LIMIT 12")
                 or die(mysql_error());
         
         if (mysqli_num_rows($result) == 0) {
@@ -73,6 +64,7 @@ class BoardController extends CI_Controller {
                   </div>';
             return;
         }
+        
         $this->load->view('board/container', array('iteracija' => $iteration, 'rezultat' => $result));
     }
     
