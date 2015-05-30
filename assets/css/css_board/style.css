@@ -381,11 +381,12 @@ input:-moz-placeholder {
     font-family: "Source Sans Pro", sans-serif;
     font-weight: 300;
 }
-
+/*
 .one-note:hover {
     border: 1px solid #E89980;
     cursor: pointer;
 }
+*/
 
 .one-note a {
     font-family: "Source Sans Pro", sans-serif;
@@ -395,27 +396,32 @@ input:-moz-placeholder {
 }
 
 .one-note a:hover {
-
     color: #E89980;
 }
 
 .buttons {
     float:left;
     width: 100%;
-    height: 7%;
+    height: 8%;
     background: bisque;
     border-bottom: 1px solid #E4E4E4;
 }
 
 .note_button {
     float: left;
-    width: 30%;
+    width: 25%;
+    text-align: center;
+}
+
+.note_button:hover {
+    cursor: pointer;
+    color: #E89980;
 }
 
 .title {
     float:left;
     width: 100%;
-    height: 12%;
+    height: 9%;
     font-size:25px;
     text-align:center;
     border-bottom: 1px solid #E4E4E4;
@@ -424,17 +430,40 @@ input:-moz-placeholder {
 .content {
     float:left;
     width: 100%;
-    height: 160px;
+    height: 57.5%;
     font-size:21px;
     padding-top:15px;
     text-align:center;
     border-bottom: 1px solid #E4E4E4;
 }
 
+.content:hover {
+    background: #E89980;
+    cursor: pointer;
+}
+
 .created_On {
     float:left;
     width: 100%;
-    height: 15px;
+    height: 5%;
+    font-size:12px;
+    text-align:center;
+    border-bottom: 1px solid #E4E4E4;
+}
+
+.global_Reminder {
+    float:left;
+    width: 100%;
+    height: 5%;
+    font-size:12px;
+    text-align:center;
+    border-bottom: 1px solid #E4E4E4;
+}
+
+.personal_Reminder {
+    float:left;
+    width: 100%;
+    height: 5%;
     font-size:12px;
     text-align:center;
     border-bottom: 1px solid #E4E4E4;

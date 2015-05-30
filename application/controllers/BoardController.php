@@ -1,7 +1,7 @@
  <?php
  
  /*
-    autori Dusan Spasojevic, Bogdana Veselinovic
+    autor Bogdana Veselinovic
         */
 
 class BoardController extends CI_Controller {

@@ -44,12 +44,15 @@
                                             echo '<div class="one-note">
                                                     <div class="buttons">
                                                         <div class="note_button" id="important">Important</div>
+                                                        <div class="note_button" id="lock">Lock</div>
                                                         <div class="note_button" id="hide">Hide</div>
                                                         <div class="note_button" id="delete">Delete</div>
                                                     </div>
                                                     <div class="title">'; echo $naslov; echo '</div>
                                                     <div class="content">'; echo $text; echo '</div>
                                                     <div class="created_On">'; echo $datum; echo'</div>
+                                                    <div class="global_Reminder">'; echo $datum; echo'</div>
+                                                    <div class="personal_Reminder">'; echo $datum; echo'</div>
                                                   </div>';
                                                     
                                             $i=$i+1;
