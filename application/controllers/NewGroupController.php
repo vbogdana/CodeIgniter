@@ -72,6 +72,10 @@ class NewGroupController extends CI_Controller {
     
     public function checkGroupName() {
         $groupname = $this->input->post('groupname');
+        if ($groupname == "global" || $groupname == "important" || $groupname == "hidden") {
+            echo "This name is reserved.";
+            return;
+        }
         $idUser = $this->session->userdata('idUser');
         
         if ($this->group->existGroup($groupname, $idUser) == '-1') {

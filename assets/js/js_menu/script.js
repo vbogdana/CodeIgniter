@@ -167,7 +167,7 @@ function checkExistGroup() {
                 if (data.length > 0) {
                     //$('#existsGroup').show();
                     $('#existsGroup').html(data);
-                    if (data === "Name of the group is taken.") {
+                    if (data === "Name of the group is taken." || data === "This name is reserved.") {
                         $('#existsGroup').css({"color": "#E89980"});
                         checkGroup = false;
                         document.getElementById('submit').disabled = true;
@@ -268,6 +268,7 @@ function chooseGroup(group) {
     $('#suggestions1').hide();
     document.getElementById('group').value = group;
     
+    window.location.href = group;
     /*
      *  not finished
      */
