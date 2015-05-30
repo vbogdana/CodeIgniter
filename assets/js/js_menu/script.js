@@ -192,15 +192,7 @@ function checkExistGroup() {
         });
     }
     
-    /*
-    if (atLeastOneMember === true && checkGroup === true) {
-        document.getElementById('submit').disabled = false;
-    }
-    else {
-        document.getElementById('submit').disabled = true;
-    }
-    */
-    //document.getElementById('member').value = checkGroup;
+
 }
 
 function createGroup() {
@@ -275,5 +267,36 @@ function groupsSearch() {
 function chooseGroup(group) {
     $('#suggestions1').hide();
     document.getElementById('group').value = group;
+    
+    /*
+     *  not finished
+     */
+}
 
+
+function loadMore(iteration, last, last_id) {
+    $("#load-more"+iteration).hide();
+    //$('board').css({"height": "#E89980"});
+    //document.getElementById('group').value = iteration;
+    var post_data = {
+        'iteration': iteration,
+        'last': last,
+        'last_id': last_id,
+        '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
+        };
+
+        $.ajax({
+            //type: "POST",
+            type: "POST",
+            //url: "<?php echo base_url(); ?>index.php/NewGroupController/addMember/",
+            url: "http://localhost/CodeIgniter/index.php/boardController/loadMore",
+            data: post_data,
+            dataType: 'html',
+            success: function (data) {
+                // return success    
+                //if (data.length > 0)  {
+                    $('#loadBoard').append(data);
+                //}
+            }
+        });
 }

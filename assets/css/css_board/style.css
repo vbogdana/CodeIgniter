@@ -145,7 +145,7 @@ body {
 .User {
     height: 50px;
     width:  200px;
-    right: calc(10% + 100px);
+    right: calc(10% + 105px);
 }
 
 .LogOut {
@@ -335,7 +335,8 @@ input:-moz-placeholder {
     top: 12%;
     left: 10%;
     width: 80%;
-    height: 190%;
+    //height: 190%;
+    //height: 300%;
     border-radius: 4px;
     background: #F7F7F7;
     border: solid 1px #E4E4E4;
@@ -366,8 +367,8 @@ input:-moz-placeholder {
     height: 100%;
     border: 1px solid #E4E4E4;
     border-radius: 4px;
-    margin-left: 2%;
-    margin-top: 2%;
+    margin-left: 23px;
+    margin-top: 23px;
     background: white;
     color: #888;
     font-family: "Source Sans Pro", sans-serif;
@@ -418,24 +419,27 @@ input:-moz-placeholder {
 }
 
 .load-more {
-    height: 2%;
+    height: 27px;
+    position: absolute;
+    bottom: 10px;
     width: 100%;
-    //margin-left: 20%;
-    margin-top: 10%;
     background: #FBFBFF;
     text-align: center;
     border-top: solid 1px #E4E4E4;
     border-bottom: solid 1px #E4E4E4;
     font-family: "Source Sans Pro", sans-serif;
-    font-weight: 300;
+    font-weight: 500;
     text-decoration: none;
     color: #888;
-    padding-top: 0.5em;
 }
 
 .load-more:hover {
     color: #E89980;
     cursor: pointer;
+}
+
+.load-more:active {
+    cursor: wait;
 }
 
 .module_holder {
