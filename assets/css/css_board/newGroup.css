@@ -8,18 +8,23 @@
     
 }
 
+.groupsContainer {
+    margin-left: 0px;
+    margin-top: 0px;
+    width: calc(100%);
+    height: calc(100%);
+}
+
 .Options {
-    position: absolute;
-    display: inline;
-    margin-top:23px;
+    
+    margin-top: 2%;
     margin-left: 2%;
-    width: calc(74% / 2);
+    width: calc(76% / 2);
     background-color: #FBFBFF;
-    padding: 3em 3em 1em 3em;
+    padding: 4% 4% 1% 4%;
     border: solid 1px #E4E4E4;
     border-radius: 4px;
-    height: 70%;
-    
+    height: calc(70%);
 }
 
 .Options > li {
@@ -36,9 +41,10 @@
     color: #E89980;
 }
 .Submit {
+    width: 20%;
     position:absolute;
-    bottom: 25%;
-    left: 15%;
+    bottom: 5%;
+    left: 20%;
 }
 
 #suggestions {
@@ -65,24 +71,22 @@
     border: 1px solid #E3E3E3;
     border-radius: 5px 5px 5px 5px;
     position: absolute;
-    width: 80%;
+    width: 42%;
 }
 
 #members {
-
     position: absolute;
     top:0%;
-    margin-top: 23px;
+    margin-top: 2%;
     margin-right: 2%;
     right:0%;
-    width: calc(74% / 2);
-    height: 70%;
+    width: calc(76% / 2);
+    height: calc(80%);
     background-color: #FBFBFF;
-    padding: 3em 3em 1em 3em;
+    padding: 4% 4% 1% 4%;
     border: solid 1px #E4E4E4;
     border-left: solid 2px #e89980;
-    border-radius: 4px;
-    
+    border-radius: 4px; 
 }
 
 #members > input[type="text"] {
