@@ -275,9 +275,8 @@ function chooseGroup(group) {
 
 
 function loadMore(iteration, last, last_id) {
-    $("#load-more"+iteration).hide();
-    //$('board').css({"height": "#E89980"});
-    //document.getElementById('group').value = iteration;
+    $("#load-more"+(iteration-1)).hide();
+
     var post_data = {
         'iteration': iteration,
         'last': last,
