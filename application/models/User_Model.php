@@ -49,7 +49,8 @@ class User_Model extends CI_Model {
                $session_data=array(
                    'idUser'=>$row->idUser,
                    'nickname'=>$row->nickname,
-                   'email'=>$row->email    
+                   'email'=>$row->email,
+                   'password'=>$row->password  
                );
             }
             $this->set_session($session_data);
@@ -85,6 +86,7 @@ class User_Model extends CI_Model {
                    'idUser'     =>$session_data['idUser'],
                    'nickname'   =>$session_data['nickname'],
                    'email'      =>$session_data['email'], 
+                   'password'   =>$session_data['password'], 
                    'logged_in' => 1
                );
         
