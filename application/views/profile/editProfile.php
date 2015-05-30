@@ -8,48 +8,37 @@ autor Dusan
 -->
 
 
-<script src="<?php echo base_url()."/assets/js/js-edit-profile/validation.js"; ?>"> </script>
 
-  <script type="text/javascript">
-    var createHtmlMessageDiv = function(scope){
-    var div = document.createElement('div');
-    div.innerHTML = scope.message;
-    return div;
-};
 
-var myLiveValidationCallback = function(){
-    this.insertMessage(createHtmlMessageDiv(this));
-    this.addFieldClass();
-};
-  </script>
+<div class="BoardContainer1">
+     <?php   $password = $this->session->userdata('password'); ?>
   
   
-  
+      <?= form_open(base_url() . "index.php/editProfileController") ?>
 
-<div class="BoardContainer">
-     <input type="text" id="f2" />
-		  <script type="text/javascript">
-		     var f2 = new LiveValidation('f2');
-		     f2.add(Validate.Format, { pattern: /live/i });
-		  </script>  
-
-    <?php
-    // Change the css classes to suit your needs    
-    $attributes = array('class' => '', 'id' => '');
-    echo form_open('NewGroupController', $attributes);
-    ?>
-
-    <div class='Options'>
+    <div class='Optionsedit'>
         <li>
             <div class="label">
                 Change your password:  
-                
             </div> 
             <br />
-            <input id="groupname" type="password" name="groupname" maxlength="20" value="<?php echo set_value('groupname'); ?>" onkeyup="checkExistGroup()" oninput="checkExistGroup()" placeholder="enter old password"/>
+                 <div class="section" id="examplePresence">
+                     <?= form_input(array("name" => "email","id" => "f1", "type" => "password", "value" => set_value("oldpassword"), "placeholder" => "enter old password")) ?>
+		   <script type="text/javascript">
+		     var f1 = new LiveValidation('f1',{ validMessage: "you enter right password !",  });
+                     f1.add( Validate.Format, 
+                     { pattern: /^<?php echo "$password";?>$/i, failureMessage: "You have not yet entered the correct password" } );
+		   </script>  
+		 </p>
+         </div>
+              
             <br>
-            <input id="groupname" type="password" name="groupname" maxlength="20" value="<?php echo set_value('groupname'); ?>" onkeyup="checkExistGroup()" oninput="checkExistGroup()"placeholder="enter new password"/>
-            <div id="existsGroup"> </div>
+                    <?= form_input(array("name" => "password","id" => "f3", "type" => "password", "value" => set_value("password"), "placeholder" => "enter new password")) ?>
+                     <script type="text/javascript">
+		    var f3 = new LiveValidation('f3',{ validMessage: "you enter correct password !",  });
+                    f3.add( Validate.Length, { minimum: 6, maximum: 16 } );
+		     </script> 
+                    
         </li> 
 
         <li>
@@ -57,21 +46,24 @@ var myLiveValidationCallback = function(){
                Change your mail: 
             </div>
             <br />
-            <input id="member" type="text" name="member" maxlength="30" value="<?php echo set_value('member'); ?>" onkeyup="membersSearch();" /> 
-            <div id="suggestions">
-                <div id="autoSuggestionsList">  </div>
-            </div>
+             <?= form_input(array("name" => "email","id" => "f2", "type" => "text", "value" => set_value("email"), "placeholder" => "enter new email")) ?>
+                <script type="text/javascript">
+		     var f2 = new LiveValidation('f2',{ validMessage: "your email is valid",  });
+                         f2.add( Validate.Email );</script>  
         </li>
+          <div class="Submitedit">
+         <p>
+    
+        <br />  <br /> <br />
+        <?= form_submit(array("name" => "submit","class" => "button", "value" => "Save Changes")) ?>  
+        </p>
+        </div>
+        
     </div>
+      
+    
 
-    <div class="Submit">
-    <p>
-        <br /> <br /> <br /> <br />
-        <input type="button" onclick="createGroup()" value="Save Changes" id='submit' disabled />   
-    </p>
-    </div>
-
-    <?php echo form_close(); ?>
+        <?= form_close() ?>
     
     
     

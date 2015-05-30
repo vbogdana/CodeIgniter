@@ -87,6 +87,7 @@ class BoardController extends CI_Controller {
             echo '';
         }
     }
-        }
-
-?>
+    
+   
+    
+ }        
