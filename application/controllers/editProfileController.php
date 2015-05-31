@@ -26,7 +26,7 @@ class editProfileController extends CI_Controller {
          }else{
          if(self::editUser($form['password'],$form['email'])==TRUE){
              echo "vase informacije su uspesno promenjene";  
-            header('Refresh: 2; URL=boardcontroller');
+            header('Refresh: 1; URL=editProfileController/editProfile');
             
           }    
         }
