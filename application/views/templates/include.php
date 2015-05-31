@@ -18,7 +18,6 @@ autor Bogdana
 	<script src="<?php echo base_url()."/assets/js/js_menu/script.js"; ?>"> </script>
 	<script type="text/javascript" src="<?php echo base_url()."assets/js/js-edit-profile/livevalidation.js";?>"></script>
         
-        <script type="text/javascript" src="<?php echo base_url()."assets/js/js-edit-profile/iconselect.js";?>"></script>
         <script type="text/javascript" src="<?php echo base_url()."assets/js/js-edit-profile/iscroll.js";?>"></script>
         
           <script type="text/javascript">

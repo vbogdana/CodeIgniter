@@ -96,7 +96,7 @@
                                                 echo '</div>'; // kraj row-a
                                                     echo '</div>'; // kraj loada
                                                 $iteration = $iteration + 1;
-                                                echo '<div class="load-more" id="load-more'.($iteration-1).'" onclick="loadMore('.$iteration.','.$group.'\')">
+                                                echo '<div class="load-more" id="load-more'.($iteration-1).'" onclick="loadMore('.$iteration.',\''.$group.'\')">
                                                         <div class=""> Load more notes </div>
                                                   </div>';
                                                 }
