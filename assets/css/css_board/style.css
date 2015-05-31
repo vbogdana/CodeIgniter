@@ -157,14 +157,14 @@ body {
 }
 
 .User {
-    height: 50px;
+    //height: 50px;
     width: 20%;
     right: 10%;
 }
 
 .UserImg {
     width: 30px;
-    height: 30px;
+    height: 60%;
     position: absolute;
     border-radius: 12%;
     top: 20%;
@@ -431,12 +431,21 @@ input:-moz-placeholder {
     height: 8%;
     background: bisque;
     border-bottom: 1px solid #E4E4E4;
+    font-size: 50%;
 }
 
 .note_button {
     float: left;
     width: 25%;
+    height: 100%;
     text-align: center;
+}
+
+.note_button img {
+    height: 2em;
+    width: 2em;
+    position: relative;
+    margin-top: 0.5em;
 }
 
 .note_button:hover {
@@ -447,20 +456,26 @@ input:-moz-placeholder {
 .title {
     float:left;
     width: 100%;
-    height: 9%;
-    font-size:25px;
+    font-size:17px;
+    height: calc(9%);
+    overflow:hidden;
+    padding-top: 2%;
+    padding-bottom: 1%;
     text-align:center;
+    text-overflow: ellipsis;
     border-bottom: 1px solid #E4E4E4;
 }
 
 .content {
     float:left;
-    width: 100%;
-    height: 57.5%;
-    font-size:21px;
-    padding-top:15px;
-    text-align:center;
+    width: calc(100% - 2em);
+    font-size:14px;
+    height: calc(57.5% - 2em);
+    overflow:hidden;
+    padding: 1em 1em 1em 1em;
+    text-align: left;
     border-bottom: 1px solid #E4E4E4;
+    text-overflow: ellipsis;
 }
 
 .content:hover {

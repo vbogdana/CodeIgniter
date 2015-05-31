@@ -7,10 +7,10 @@
  */
 class Group_Model extends CI_Model {
     
-    function __construct() {
+    function __construct() {        
+        parent::__construct();
         $this->load->database();
         $this->load->model('IsMember_Model', 'ismember');
-        parent::__construct();
     }
     
     public function getEntries() {

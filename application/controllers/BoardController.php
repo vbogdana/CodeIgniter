@@ -10,20 +10,18 @@ class BoardController extends CI_Controller {
 	{
         parent::__construct();
         $this->load->model('Note_Model', 'note');
+        $this->load->model('HiddenNote_Model', 'hidden_note');
+        $this->load->model('Important_Model', 'important');
         $this->load->model('Group_Model', 'group');
+        $this->load->model('GroupNote_Model', 'group_note');
         $this->load->model('IsMember_Model', 'ismember');
         $this->load->model('User_Model', 'user');
     }
     
     public function loadMore() {
         $iteration = $_POST['iteration'];
-        //$last = $_POST['last'];
-        //$last_id = $_POST['last_id'];
-        //$lastI = $_POST['last'];
-        //$lastI_id = $_POST['last_id'];
         $group = $_POST['group'];
         
-        //$result = $this->note->loadMore($group, $last, $lastI, $last_id, $lastI_id);
         $result = $this->note->loadMore($group);
         
         if (count($result) == 0) {
@@ -71,6 +69,65 @@ class BoardController extends CI_Controller {
         
         if (!$echoed) {
             echo '';
+        }
+    }
+    
+    public function hide() {
+        $idNote = $_POST['idNote'];
+        $operation = $_POST['operation'];
+        
+        $hidden = $this->hidden_note->checkHidden($idNote);
+        
+        if ($operation == "hide" && !($hidden)) {
+            $this->hidden_note->hide($idNote);
+            echo "hide";
+        } else if ($operation == "unhide" && $hidden) {
+            $this->hidden_note->unhide($idNote);
+            echo "unhide";
+        }
+       
+    }
+    
+    public function important() {
+        $idNote = $_POST['idNote'];
+        //$operation = $_POST['operation'];
+        
+        $important = $this->important->checkImportant($idNote);
+        
+        if (!($important)) {
+            $this->important->setImportant($idNote);
+            echo "set";
+        } else if ($important) {
+            $this->important->unsetImportant($idNote);
+            echo "unset";
+        }
+    }
+    
+    public function lock() {
+        // treba group note i note
+        $idNote = $_POST['idNote'];
+
+        if ($this->group_note->canLock($idNote)) {
+            $locked = $this->group_note->checkLocked($idNote);
+
+            if (!($locked)) {
+                $this->group_note->lock($idNote);
+                echo "lock";
+            } else if ($locked) {
+                $this->group_note->unlock($idNote);
+                echo "unlock";
+            }
+        }
+    }
+
+    public function delete() {
+        $idNote = $_POST['idNote'];
+
+        if ($this->note->canDelete($idNote)) {
+           $this->note->delete($idNote);
+           echo "delete";
+        } else {
+            echo "nodelete";
         }
     }
     

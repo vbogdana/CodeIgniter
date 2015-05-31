@@ -9,8 +9,8 @@
 class IsMember_Model extends CI_Model {
     //put your code here
     function __construct() {
-        $this->load->database();
         parent::__construct();
+        $this->load->database();  
     }
     
     public function getEntries() {

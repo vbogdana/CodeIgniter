@@ -8,9 +8,29 @@
 class Note_Model extends CI_Model {
     //put your code here
     function __construct() {
-        $this->load->database();
         parent::__construct();
-        //$this->load->model('Group_Model', 'group');
+        $this->load->database();
+    }
+    
+    public function canDelete($idNote) {
+        $idUser = $this->session->userdata('idUser');
+
+        $this->db->from('note');
+        $this->db->where('idUser', $idUser);
+        $this->db->where('idNote', $idNote);
+        
+        $query = $this->db->get();
+        
+        if ($query->num_rows() == 1) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+    
+    public function delete($idNote) {
+        $this->db->where('idNote', $idNote);
+        $this->db->delete('note');
     }
     
     public function getNotes($group) {
@@ -369,9 +389,8 @@ class Note_Model extends CI_Model {
                     . "from group_note gn "
                     . "where gn.idNote = n.idNote and exists (select * "
                     . "from ismember im "
-                    . "where im.id_Group = gn.id_Group AND im.id_User = '$idUser' and not exists (select * "
-                    . "from hidden_note hn "
-                    . "where hn.idNote = gn.idNote AND hn.idUser='$idUser')))) "
+                    . "where im.id_Group = gn.id_Group AND im.id_User = '$idUser'))) "
+                    . "AND not exists (SELECT * FROM hidden_note hn WHERE hn.idNote=n.idNote AND hn.idUser='$idUser')"
                     . "AND not exists (SELECT * FROM important im WHERE im.idNote=n.idNote AND im.idUser='$idUser') "
                     . "ORDER BY last_Edited_On desc, idNote desc limit $left")
                     or die(mysql_error());
@@ -419,9 +438,8 @@ class Note_Model extends CI_Model {
                     . "from group_note gn "
                     . "where gn.idNote = n.idNote and exists (select * "
                     . "from ismember im "
-                    . "where im.id_Group = gn.id_Group AND im.id_User = '$idUser' and not exists (select * "
-                    . "from hidden_note hn "
-                    . "where hn.idNote = gn.idNote AND hn.idUser='$idUser')))) "
+                    . "where im.id_Group = gn.id_Group AND im.id_User = '$idUser'))) "
+                    . "AND not exists (SELECT * FROM hidden_note hn WHERE hn.idNote=n.idNote AND hn.idUser='$idUser')"
                     . "AND not exists (SELECT * FROM important im WHERE im.idNote=n.idNote AND im.idUser='$idUser') "
                     . "AND not exists (SELECT * "                                     // kontrolise datum kreiranja
                     . "FROM note e "
