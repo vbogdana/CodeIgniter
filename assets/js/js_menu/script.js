@@ -424,28 +424,96 @@ function loadImages(idNote, group) {
 
 }
 
-var popupWindow = null;
-function popup(mypage, myname, w, h, pos, infocus) {
+/*
+ *      POP UP NEW NOTE
+ * 
+ */
 
-    if (pos == 'random')
-    {
-        LeftPosition = (screen.width) ? Math.floor(Math.random() * (screen.width - w)) : 100;
-        TopPosition = (screen.height) ? Math.floor(Math.random() * ((screen.height - h) - 75)) : 100;
+$(function() {
+    var dialog, form,
+ 
+      //emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
+      title = $( "#title" ),
+      content = $( "#content" ),
+      //password = $( "#password" ),
+      //allFields = $( [] ).add( name ).add( email ).add( password ),
+      allFields = $( [] ).add( title ).add( content ),
+      tips = $( ".validateTips" );
+ 
+    function updateTips( t ) {
+      tips
+        .text( t )
+        .addClass( "ui-state-highlight" );
+      setTimeout(function() {
+        tips.removeClass( "ui-state-highlight", 1500 );
+      }, 500 );
     }
-    else
-    {
-        LeftPosition = (screen.width) ? (screen.width - w) / 2 : 100;
-        TopPosition = (screen.height) ? (screen.height - h) / 2 : 100;
+ 
+    function checkLength( o, n, min, max ) {
+      if ( o.val().length > max || o.val().length < min ) {
+        o.addClass( "ui-state-error" );
+        updateTips( "Length of " + n + " must be between " +
+          min + " and " + max + "." );
+        return false;
+      } else {
+        return true;
+      }
     }
-    settings = 'width=' + w + ',height=' + h + ',top=' + TopPosition + ',left=' + LeftPosition + ',scrollbars=no,location=no,directories=no,status=no,menubar=no,toolbar=no,resizable=no';
-    popupWindow = window.open('', myname, settings);
-    if (infocus == 'front') {
-        popupWindow.focus();
-        popupWindow.location = mypage;
+ 
+    function checkRegexp( o, regexp, n ) {
+      if ( !( regexp.test( o.val() ) ) ) {
+        o.addClass( "ui-state-error" );
+        updateTips( n );
+        return false;
+      } else {
+        return true;
+      }
     }
-    if (infocus == 'back') {
-        popupWindow.blur();
-        popupWindow.location = mypage;
-        popupWindow.blur();
+ 
+    function createNote() {
+      var valid = true;
+      allFields.removeClass( "ui-state-error" );
+ 
+      valid = valid && checkLength( title, "title", 3, 45 );
+      valid = valid && checkLength( content, "content", 1, 500 );
+      //valid = valid && checkLength( password, "password", 5, 16 );
+ 
+      valid = valid && checkRegexp( title, /^[a-z]([0-9a-z_\s])+$/i, "Title may consist of a-z, 0-9, underscores, spaces and must begin with a letter." );
+      //valid = valid && checkRegexp( email, emailRegex, "eg. ui@jquery.com" );
+      //valid = valid && checkRegexp( password, /^([0-9a-zA-Z])+$/, "Password field only allow : a-z 0-9" );
+ 
+      if ( valid ) {
+        // create note
+        dialog.dialog( "close" );
+      }
+      return valid;
     }
-}
+ 
+// stvara popup
+    dialog = $( "#dialog-form" ).dialog({
+      autoOpen: false,
+      height: 600,
+      width: 700,
+      modal: true,
+      buttons: {
+        "Create a note": createNote,
+        Cancel: function() {
+          dialog.dialog( "close" );
+        }
+      },
+      close: function() {
+        form[ 0 ].reset();
+        allFields.removeClass( "ui-state-error" );
+      }
+    });
+ 
+    form = dialog.find( "form" ).on( "submit", function( event ) {
+      event.preventDefault();
+      //createNote();
+    });
+ 
+ // otvara popup
+    $( "#create-note" ).on( "click", function() {
+      dialog.dialog( "open" );
+    });
+  });

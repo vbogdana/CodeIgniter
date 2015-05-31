@@ -3,7 +3,6 @@ autor Bogdana
 -->
 
         <!-- CSS FAJLOVI -->
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url()."assets/css/css_board/popup-contact.css"; ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url()."assets/css/css_board/style.css"; ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url()."assets/css/css_board/newGroup.css"; ?>">
          <link rel="stylesheet" type="text/css" href="<?php echo base_url()."assets/css/css_board/editProfile.css"; ?>">
@@ -29,4 +28,12 @@ autor Bogdana
                 this.addFieldClass();
             }
           </script>
+          
+        
+      <!--<script src="//code.jquery.com/jquery-1.10.2.js"></script>-->
+      <!--<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>-->
+        
+        <link href="<?php echo base_url()."/assets/jquery/jquery-ui.css"; ?>" rel="stylesheet">
+        <script src="<?php echo base_url()."/assets/jquery/external/jquery/jquery.js"; ?>"> </script>
+        <script src="<?php echo base_url()."/assets/jquery/jquery-ui.js"; ?>"> </script>
   

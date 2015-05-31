@@ -789,3 +789,21 @@ input[type="radio"] + label:before {
     color: #999 !important;
     opacity: 1.0;
 }
+
+
+/*
+*
+*       CREATE NOTE POP UP
+*/
+
+fieldset { 
+    padding:0; 
+    border:0; 
+    margin-top:25px; 
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 300;
+    height: 80%;
+    position: absolute;
+    width: 50%;
+}
+

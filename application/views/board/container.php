@@ -26,8 +26,8 @@
                                                 <div class="one-row">';
                                         if ($iteration == 1) {
                                             echo '<div class="one-note">
-                                                        <div class="AddNote">
-                                                            <h1><a href="javascript:popup(\'http://localhost/CodeIgniter/index.php/boardcontroller/board/global\',\'\',\'640\',\'480\',\'center\',\'front\')"> add new note </a></h1>
+                                                        <div class="AddNote" id="create-note" >
+                                                            <h1><a href="#"> add new note </a></h1>
                                                         </div>
                                                 </div>';
                                             $i = 1;
@@ -116,7 +116,25 @@
                                     
                                     //echo '</div>';      // kraj LoadBoarda
                                     
-                                    
+echo '<div id="dialog-form" title="Create new user">
+  <p class="validateTips">Title and content of a note are required.</p>
+ 
+  <form>
+    <fieldset>
+      <label for="title">Title</label>
+      <input type="text" name="title" id="title" value="" maxlength="45" class="text ui-widget-content ui-corner-all">';
+      echo '<label for="content">Content</label>
+      <textarea id="content" name="content" maxvalue="500"></textarea>';
+      //<label for="content">Email</label>
+      //<input type="text" name="email" id="email" value="jane@smith.com" class="text ui-widget-content ui-corner-all">
+      //<label for="password">Password</label>
+      //<input type="password" name="password" id="password" value="xxxxxxx" class="text ui-widget-content ui-corner-all">
+ 
+      //<!-- Allow form submission with keyboard without duplicating the dialog button -->
+      echo '<input type="submit" id="note-submit" tabindex="-1" style="position:absolute; top:-1000px">
+    </fieldset>
+  </form>
+</div>';
                                
 			?>
 			

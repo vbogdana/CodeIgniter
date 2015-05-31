@@ -55,7 +55,7 @@
 		-o-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-		background-color: #E89980;
+		background-color: #888;
 		border-radius: 6px;
 		border: 0;
 		color: #ffffff;
@@ -78,7 +78,7 @@
 		input[type="reset"]:hover,
 		input[type="button"]:hover,
 		.button:hover {
-			background-color: #737373;
+			background-color: #E89980;
 		}
 
 	.Submitedit > input[type="submit"]:active,

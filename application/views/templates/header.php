@@ -10,7 +10,7 @@
 		<title>	Pinboard - <?php echo ($nickname = $this->session->userdata('nickname')) ?> </title>
 	</head>
 	
-	<body onload="javascript:fg_hideform('fg_formContainer','fg_backgroundpopup');">
+	<body onload="">
 		
 		<!-- Container -->
 		<div class="Container">
