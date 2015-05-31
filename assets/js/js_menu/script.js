@@ -272,13 +272,15 @@ function chooseGroup(group, idGroup) {
 }
 
 
-function loadMore(iteration, last, last_id, group) {
+function loadMore(iteration, last, lastI, last_id, lastI_id, group) {
     $("#load-more"+(iteration-1)).hide();
 
     var post_data = {
         'iteration': iteration,
         'last': last,
+        'lastI' : lastI,
         'last_id': last_id,
+        'lastI_id': lastI_id,
         'group': group,
         '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
         };
