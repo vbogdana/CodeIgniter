@@ -48,24 +48,59 @@ autor Dusan
             <br />
              <?= form_input(array("name" => "email","id" => "f2", "type" => "text", "value" => set_value("email"), "placeholder" => "enter new email")) ?>
                 <script type="text/javascript">
-		     var f2 = new LiveValidation('f2',{ validMessage: "your email is valid",  });
+		     var f2 = new LiveValidation('f2',{ validMessage: "your email is valid"  });
                          f2.add( Validate.Email );</script>  
         </li>
+        
+        <?php  if (isset($_POST['submit'])) {          echo 'vase informacije su uspesno promenjene!!!'; }
+        ?>
+        
           <div class="Submitedit">
          <p>
     
         <br />  <br /> <br />
-        <?= form_submit(array("name" => "submit","class" => "button", "value" => "Save Changes")) ?>  
+        <?= form_submit(array("name" => "submit","type" => "submit","class" => "button", "value" => "Save Changes")) ?>  
         </p>
         </div>
         
+        
     </div>
-      
-    
-
         <?= form_close() ?>
     
     
+    <div class="uploadpicture">
+        <div class="profilpicture">
+            <img class="profilpicture" src="<?php 
+              $picture=$this->session->userdata('image');
+              if($picture==""){
+            echo base_url()."/assets/images/photos/bbb.png"; 
+              }else{
+                  echo base_url()."/assets/images/profilepictures/$picture";
+              }
+            ?>" width="300px" height="300px"/>
+            <br>
+        </div>
+          <br>
+        <form action="<?php echo base_url() . "index.php/uploadImageController/upload_file"?>" method="POST" enctype="multipart/form-data">
+            <div class="typefile">
+              <input  type="file" name="product_pic" value="Choose your picture">
+            </div>
     
+    </div>
     
-</div>
+     <div class="picknote">
+         Choose color of your note: <div class="notes">  <div  id="my-icon-select"></div> </div>
+         
+     
+                  
+            </div>     
+    <div class="buttonposition"><input type="submit" value="save and exit" class="button"></div>
+          
+        </form>
+    
+
+   
+    </div>
+        
+
+    

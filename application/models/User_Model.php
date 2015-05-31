@@ -51,6 +51,8 @@ class User_Model extends CI_Model {
                     'nickname' => $row->nickname,
                     'email' => $row->email,
                     'password' => $row->password,
+                    //dodao za sliku
+                    'image'=>"",
                     // treba meni
                     'last' => '-1',
                     'lastI' => '-1',
@@ -59,6 +61,17 @@ class User_Model extends CI_Model {
                 );
             }
             $this->set_session($session_data);
+            
+            //PRILIKOM LOGOVANJA UZIMA POSLEDNJU SLIKU I STAVLJA U SESIJU TRBA OPTIMIZOVATI//
+            $this->db->from('image');
+            $this->db->where('title', $nickname);
+            $query = $this->db->get();
+            foreach ($query->result() as $row) { 
+                $pic=$row->product_pic;
+            $this->session->set_userdata('image', "$pic");  
+    
+            }
+            
 
             return true;
         } else {

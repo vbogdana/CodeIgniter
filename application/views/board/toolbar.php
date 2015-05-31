@@ -55,7 +55,14 @@
                                 <div class="ToolButton User" onClick="">
                                     <div class="UserImg">
                                         <a href="http://localhost/CodeIgniter/index.php/editProfileController/editProfile">
-                                            <img src="<?php echo base_url()."/assets/images/png/user.png"; ?>" />
+                                            <img src="<?php 
+                                                $picture=$this->session->userdata('image');
+                                                if($picture==""){
+                                              echo base_url()."/assets/images/png/user.png"; 
+                                                }else{
+                                                    echo base_url()."/assets/images/profilepictures/$picture";
+                                                }
+                                              ?>" />
                                         </a>
                                     </div>
                                     <div class="Text">
