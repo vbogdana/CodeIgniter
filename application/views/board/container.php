@@ -27,7 +27,7 @@
                                         if ($iteration == 1) {
                                             echo '<div class="one-note">
                                                         <div class="AddNote">
-                                                            <h1><a href="#"> add new note </a></h1>
+                                                            <h1><a href="javascript:popup(\'http://localhost/CodeIgniter/index.php/boardcontroller/board/global\',\'\',\'640\',\'480\',\'center\',\'front\')"> add new note </a></h1>
                                                         </div>
                                                 </div>';
                                             $i = 1;
@@ -85,7 +85,6 @@
                                                         echo '<div class="note_button" id="edit'.$row['idNote'].'">';
                                                         echo '</div>';
                                                         echo '<div class="creator" id="creator'.$row['idNote'].'">';
-                                                            //echo $row['idUser'];
                                                         echo '</div>';
                                                     echo'</div>
                                             </div>';    // kraj beleske
@@ -97,12 +96,8 @@
                                                 echo '</div>'; // kraj row-a
                                                     echo '</div>'; // kraj loada
                                                 $iteration = $iteration + 1;
-                                                $last_Edited_On = $this->session->userdata('last_Edited_On');
-                                                $lastI_Edited_On = $this->session->userdata('lastI_Edited_On');
-                                                $last = $this->session->userdata('last');
-                                                $lastI = $this->session->userdata('lastI');
-                                                echo '<div class="load-more" id="load-more'.($iteration-1).'" onclick="loadMore('.$iteration.',\''.$last_Edited_On.'\',\''.$lastI_Edited_On.'\',\''.$last.'\',\''.$lastI.'\',\''.$group.'\')">
-                                                    <div class=""> Load more notes </div>
+                                                echo '<div class="load-more" id="load-more'.($iteration-1).'" onclick="loadMore('.$iteration.','.$group.'\')">
+                                                        <div class=""> Load more notes </div>
                                                   </div>';
                                                 }
                                             else if($i == 4) {
