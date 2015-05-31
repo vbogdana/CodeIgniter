@@ -17,13 +17,16 @@ class BoardController extends CI_Controller {
     
     public function loadMore() {
         $iteration = $_POST['iteration'];
-        $last = $_POST['last'];
-        $last_id = $_POST['last_id'];
+        //$last = $_POST['last'];
+        //$last_id = $_POST['last_id'];
+        //$lastI = $_POST['last'];
+        //$lastI_id = $_POST['last_id'];
         $group = $_POST['group'];
         
-        $result = $this->note->loadMore($group, $last, $last_id);
+        //$result = $this->note->loadMore($group, $last, $lastI, $last_id, $lastI_id);
+        $result = $this->note->loadMore($group);
         
-        if (mysqli_num_rows($result) == 0) {
+        if (count($result) == 0) {
             echo '<div class="load-more">
                     <div class=""> No more notes </div>
                   </div>';

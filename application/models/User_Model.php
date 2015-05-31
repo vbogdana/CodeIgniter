@@ -51,7 +51,11 @@ class User_Model extends CI_Model {
                    'nickname'=>$row->nickname,
                    'email'=>$row->email,
                    'password'=>$row->password,
-                   'currentGroup'=>'-1'     // globalna ce biti oznacena sa -1
+                   // treba meni
+                   'last'=> '-1',
+                   'lastI'=> '-1',
+                   'last_Edited_On' => '-1',
+                   'lastI_Edited_On' => '-1'
                );
             }
             $this->set_session($session_data);
@@ -88,8 +92,12 @@ class User_Model extends CI_Model {
                    'nickname'   =>$session_data['nickname'],
                    'email'      =>$session_data['email'], 
                    'password'   =>$session_data['password'],
-                   'currentGroup'=>$session_data['currentGroup'],// globalna ce biti oznacena sa -1
-                   'logged_in' => 1
+                   'logged_in' => 1,
+                   // treba meni
+                   'last'=> $session_data['last'],
+                   'lastI'=> $session_data['lastI'],
+                   'last_Edited_On' => $session_data['last_Edited_On'],
+                   'lastI_Edited_On' => $session_data['lastI_Edited_On']
                );
         
         $this->load->library('session');
