@@ -41,7 +41,7 @@
                                 <div class="ToolButton ImportantButton">
 						<div class="ToolbarImg" id="1">
                                                     <a href="http://localhost/CodeIgniter/index.php/boardController/board/important">
-							<img src="<?php echo base_url()."/assets/images/png/important.png"; ?>"/>
+							<img src="<?php echo base_url()."/assets/images/png/star.png"; ?>"/>
                                                     </a>
 						</div>
 				</div>

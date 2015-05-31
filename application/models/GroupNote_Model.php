@@ -23,7 +23,6 @@ class GroupNote_Model extends CI_Model{
     public function canLock($idNote) {
         $idUser = $this->session->userdata('idUser');
         
-        //$this->db->select('idNote');
         $this->db->from('note');
         $this->db->where('idUser', $idUser);
         $this->db->where('idNote', $idNote);
@@ -31,7 +30,18 @@ class GroupNote_Model extends CI_Model{
         $query = $this->db->get();
         
         if ($query->num_rows() == 1) {
-            return TRUE;
+            foreach ($query->result() as $row) {
+                $this->db->from('group_note');
+                $this->db->where('idNote', $row->idNote);
+                
+                $query1 = $this->db->get();
+                
+                if ($query1->num_rows() == 1) {
+                    return TRUE;
+                } else {
+                    return FALSE;
+                }
+            }            
         } else {
             return FALSE;
         }

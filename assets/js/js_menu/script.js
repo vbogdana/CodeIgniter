@@ -12,8 +12,8 @@ var atLeastOneMember = false;
 
 
 function changeIcon(image) {
-    if (image.src === "http://localhost/CodeIgniter/assets/images/png/important.png") {
-       image.src = "http://localhost/CodeIgniter/assets/images/png/important_black.png"; 
+    if (image.src === "http://localhost/CodeIgniter/assets/images/png/star.png") {
+        image.src = "http://localhost/CodeIgniter/assets/images/png/star_black.png";
     } else if (image.src === "http://localhost/CodeIgniter/assets/images/png/lock.png") {
         image.src = "http://localhost/CodeIgniter/assets/images/png/lock_black.png";
     } else if (image.src === "http://localhost/CodeIgniter/assets/images/png/hide.png") {
@@ -27,9 +27,9 @@ function changeIcon(image) {
     } else if (image.src === "http://localhost/CodeIgniter/assets/images/png/lock_black.png") {
         image.src = "http://localhost/CodeIgniter/assets/images/png/lock.png";
     } else {
-        image.src = "http://localhost/CodeIgniter/assets/images/png/important.png";
+        image.src = "http://localhost/CodeIgniter/assets/images/png/star.png";
     }
- 
+
 }
 
 function  menuClick(menu) {
@@ -158,7 +158,7 @@ function chooseMember(member) {
 }
 
 function checkExistGroup() {
-    
+
     var input_data = $('#groupname').val();        // uzmi vrednost sa inputa
     if (input_data.length === 0) { // ako nema nista sakrij predloge
         checkGroup = false;
@@ -203,46 +203,46 @@ function checkExistGroup() {
                     }
                 }
                 else {
-                   // $('#existsGroup').show();
-                   $('#existsGroup').css({"color": "#E89980"});
+                    // $('#existsGroup').show();
+                    $('#existsGroup').css({"color": "#E89980"});
                     $('#existsGroup').html("Group name is required.");
                     checkGroup = false;
                     document.getElementById('submit').disabled = true;
                 }
-                }
+            }
         });
     }
-    
+
 
 }
 
 function createGroup() {
     var input_data = $('#groupname').val();
-    
+
     var post_data = {
         'groupname': input_data,
         'num': numOfMembers,
         'members': members,
         '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
     };
-    
+
     $.ajax({
-            type: "POST",
-            //url: "<?php echo base_url(); ?>index.php/NewGroupController/autocomplete/",
-            url: "http://localhost/CodeIgniter/index.php/NewGroupController/createGroup",
-            data: post_data,
-            success: function (data) {   // ako je funkcija kontrolera uspesna
-                // return success
-                //$("body").load(data);
-            }
-        });
-    
+        type: "POST",
+        //url: "<?php echo base_url(); ?>index.php/NewGroupController/autocomplete/",
+        url: "http://localhost/CodeIgniter/index.php/NewGroupController/createGroup",
+        data: post_data,
+        success: function (data) {   // ako je funkcija kontrolera uspesna
+            // return success
+            //$("body").load(data);
+        }
+    });
+
     numOfMembers = 0;
     members = [];
     checkGroup = false;
     atLeastOneMember = false;
     window.location.href = 'boardController/';
-        
+
 }
 
 /* MAIN SEARCH BAR */
@@ -264,7 +264,7 @@ function groupsSearch() {
             data: post_data,
             success: function (data) {   // ako je funkcija kontrolera uspesna
                 // return success
-               // $('#suggestions1').show();
+                // $('#suggestions1').show();
                 if (data.length > 0 && data != ' ') {
                     $('#suggestions1').show();
                     $('#autoSuggestionsList1').addClass('auto_list1');
@@ -287,60 +287,124 @@ function groupsSearch() {
 
 function chooseGroup(group, idGroup) {
     $('#suggestions1').hide();
-    
+
     window.location.href = "http://localhost/CodeIgniter/index.php/boardController/board/" + idGroup;
 
 }
 
 
 function loadMore(iteration, last, lastI, last_id, lastI_id, group) {
-    $("#load-more"+(iteration-1)).hide();
+    $("#load-more" + (iteration - 1)).hide();
 
     var post_data = {
         'iteration': iteration,
         'last': last,
-        'lastI' : lastI,
+        'lastI': lastI,
         'last_id': last_id,
         'lastI_id': lastI_id,
         'group': group,
         '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
-        };
+    };
 
-        $.ajax({
-            //type: "POST",
-            type: "POST",
-            //url: "<?php echo base_url(); ?>index.php/NewGroupController/addMember/",
-            url: "http://localhost/CodeIgniter/index.php/boardController/loadMore",
-            data: post_data,
-            dataType: 'html',
-            success: function (data) {
-                // return success    
-                //if (data.length > 0)  {
-                    $('#loadBoard').append(data);
-                //}
-            }
-        });
+    $.ajax({
+        //type: "POST",
+        type: "POST",
+        //url: "<?php echo base_url(); ?>index.php/NewGroupController/addMember/",
+        url: "http://localhost/CodeIgniter/index.php/boardController/loadMore",
+        data: post_data,
+        dataType: 'html',
+        success: function (data) {
+            // return success    
+            //if (data.length > 0)  {
+            $('#loadBoard').append(data);
+            //}
+        }
+    });
 }
 
 function change(idNote, operation, method) {
     //document.getElementById('group').value = method;
-    
+
     var post_data = {
         'idNote': idNote,
         'operation': operation,
         '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
     };
-    
-    
-    
+
     $.ajax({
-            //type: "POST",
+        //type: "POST",
+        type: "POST",
+        //url: "<?php echo base_url(); ?>index.php/NewGroupController/addMember/",
+        url: "http://localhost/CodeIgniter/index.php/boardController/" + method,
+        data: post_data,
+        success: function (data) {
+        }
+    });
+    window.location.reload();
+}
+
+function loadImages(idNote, group) {
+
+    //document.getElementById('group').value += idNote;
+    var importantId = "#important" + idNote;
+    var lockId = "#lock" + idNote;
+    var hideId = "#hide" + idNote;
+    var deleteId = "#delete" + idNote;
+
+    var post_data = {
+        'idNote': idNote,
+        '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
+    };
+
+    if (group != "hidden") {
+        $.ajax({
             type: "POST",
             //url: "<?php echo base_url(); ?>index.php/NewGroupController/addMember/",
-            url: "http://localhost/CodeIgniter/index.php/boardController/" + method,
+            url: "http://localhost/CodeIgniter/index.php/boardController/importantImg",
             data: post_data,
             success: function (data) {
+                if (data.length > 0) {
+                    $(importantId).append(data);
+                }
             }
         });
-    window.location.reload();    
+
+        $.ajax({
+            type: "POST",
+            //url: "<?php echo base_url(); ?>index.php/NewGroupController/addMember/",
+            url: "http://localhost/CodeIgniter/index.php/boardController/lockImg",
+            data: post_data,
+            success: function (data) {
+                if (data.length > 0) {
+                    $(lockId).append(data);
+                }
+            }
+        });
+    }
+
+    $.ajax({
+        type: "POST",
+        //url: "<?php echo base_url(); ?>index.php/NewGroupController/addMember/",
+        url: "http://localhost/CodeIgniter/index.php/boardController/hideImg",
+        data: post_data,
+        success: function (data) {
+            if (data.length > 0) {
+                $(hideId).append(data);
+            }
+        }
+    });
+
+    $.ajax({
+        type: "POST",
+        //url: "<?php echo base_url(); ?>index.php/NewGroupController/addMember/",
+        url: "http://localhost/CodeIgniter/index.php/boardController/deleteImg",
+        data: post_data,
+        success: function (data) {
+            if (data.length > 0) {
+                $(deleteId).append(data);
+            }
+        }
+    });
+
+
 }

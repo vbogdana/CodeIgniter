@@ -7,7 +7,7 @@
                                 
                                     $result = $rezultat;
                                     $group = $grupa;
-                                    
+                                    $notes = array(); $n = 0;
                                     $num = count($result);
                                     $iteration = $iteracija;
                                     $height = ((((($iteration - 1) * 12) ) / 4) ) * 375 + 23 + 40;
@@ -43,6 +43,7 @@
                                             if (($cnt % 4) == 0 && $cnt > 1) {
                                                 echo '<div class="one-row">';
                                             }
+                                            $notes[$n] = $row['idNote'];
                                             $text=$row['text'];
                                             $datum = $row['last_Edited_On'];
                                             $naslov = $row['title'];
@@ -50,25 +51,29 @@
                                             echo '<div class="one-note">
                                                     <div class="buttons">';
                                                     if ($group == "hidden") {
-                                                        echo '<div class="note_button" id="hide">
-                                                            <img id="hide_'.$iteration.'_'.$cnt.'" src="'. base_url()."assets/images/png/hide.png".'" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="change(\''.$row['idNote'].'\', \'unhide\',\'hide\')" />
-                                                        </div>
-                                                        <div class="note_button" id="delete">
-                                                            <img id="del_'.$iteration.'_'.$cnt.'" src="'. base_url()."assets/images/png/delete.png".'" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="change(\''.$row['idNote'].'\', \'delete\',\'delete\')"/>                                                        
-                                                        </div>';
+                                                        echo '<div class="note_button" id="hide'.$row['idNote'].'">';
+                                                            //<img id="hide_'.$iteration.'_'.$cnt.'" src="'. base_url()."assets/images/png/hide.png".'" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="change(\''.$row['idNote'].'\', \'unhide\',\'hide\')" />
+                                                        echo '</div>';
+                                                        echo '<div class="note_button" id="delete'.$row['idNote'].'">';
+                                                            //<img id="del_'.$iteration.'_'.$cnt.'" src="'. base_url()."assets/images/png/delete.png".'" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="change(\''.$row['idNote'].'\', \'delete\',\'delete\')"/>                                                        
+                                                        echo '</div>';
+                                                        
+                                                        echo '<script type="text/javascript"> loadImages(\''.$row['idNote'].'\',\''.$group.'\') </script>';
                                                     } else {
-                                                      echo '<div class="note_button" id="important">
-                                                                <img id="imp_'.$iteration.'_'.$cnt.'" src="'. base_url()."assets/images/png/important.png".'" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="change(\''.$row['idNote'].'\', \'set\',\'important\')" />
-                                                            </div>
-                                                        <div class="note_button" id="lock">
-                                                            <img id="lock_'.$iteration.'_'.$cnt.'" src="'. base_url()."assets/images/png/lock.png".'" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="change(\''.$row['idNote'].'\', \'lock\',\'lock\')" />
-                                                        </div>
-                                                        <div class="note_button" id="hide">
-                                                            <img id="hide_'.$iteration.'_'.$cnt.'" src="'. base_url()."assets/images/png/hide.png".'" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="change(\''.$row['idNote'].'\', \'hide\',\'hide\')" />
-                                                        </div>
-                                                        <div class="note_button" id="delete">
-                                                            <img id="del_'.$iteration.'_'.$cnt.'" src="'. base_url()."assets/images/png/delete.png".'" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="change(\''.$row['idNote'].'\', \'delete\',\'delete\')"/>                                                        
-                                                        </div>';
+                                                      echo '<div class="note_button" id="important'.$row['idNote'].'">';
+                                                                //<img id="imp_'.$iteration.'_'.$cnt.'" src="'. base_url()."assets/images/png/star.png".'" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="change(\''.$row['idNote'].'\', \'set\',\'important\')" />
+                                                      echo  '</div>';
+                                                       echo '<div class="note_button" id="lock'.$row['idNote'].'">';
+                                                            //<img id="lock_'.$iteration.'_'.$cnt.'" src="'. base_url()."assets/images/png/lock.png".'" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="change(\''.$row['idNote'].'\', \'lock\',\'lock\')" />
+                                                       echo '</div>';
+                                                       echo '<div class="note_button" id="hide'.$row['idNote'].'">';
+                                                            //<img id="hide_'.$iteration.'_'.$cnt.'" src="'. base_url()."assets/images/png/hide.png".'" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="change(\''.$row['idNote'].'\', \'hide\',\'hide\')" />
+                                                        echo '</div>';
+                                                        echo '<div class="note_button" id="delete'.$row['idNote'].'">';
+                                                            //<img id="del_'.$iteration.'_'.$cnt.'" src="'. base_url()."assets/images/png/delete.png".'" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="change(\''.$row['idNote'].'\', \'delete\',\'delete\')"/>                                                        
+                                                        echo '</div>';
+                                                       
+                                                       echo '<script type="text/javascript"> loadImages(\''.$row['idNote'].'\',\''.$group.'\') </script>';
                                                     }
                                             echo '</div> ';             // kraj buttons-a                   
                                             echo    '<div class="title">'; echo $naslov; echo '</div>

@@ -38,6 +38,22 @@ class HiddenNote_Model extends CI_Model {
         }
     }
     
+    public function canHide($idNote) {
+        $idUser = $this->session->userdata('idUser');
+        
+        $this->db->from('note');
+        $this->db->where('idUser', $idUser);
+        $this->db->where('idNote', $idNote);
+        
+        $query = $this->db->get();
+        
+        if ($query->num_rows() == 1) {
+            return FALSE;          
+        } else {
+            return TRUE;
+        }
+    }
+    
     public function hide($idNote) {
         $idUser = $this->session->userdata('idUser');
         
