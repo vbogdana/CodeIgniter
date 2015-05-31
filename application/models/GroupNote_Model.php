@@ -26,10 +26,12 @@ class GroupNote_Model extends CI_Model{
         $this->db->from('note');
         $this->db->where('idUser', $idUser);
         $this->db->where('idNote', $idNote);
-        
+        // da li je uopste on kreator beleske
         $query = $this->db->get();
         
         if ($query->num_rows() == 1) {
+            // jeste kreator beleske, proveri da li je u pitanju grupna beleska
+            // samo grupne mogu da se zakljucaju
             foreach ($query->result() as $row) {
                 $this->db->from('group_note');
                 $this->db->where('idNote', $row->idNote);
@@ -41,7 +43,8 @@ class GroupNote_Model extends CI_Model{
                 } else {
                     return FALSE;
                 }
-            }            
+            }
+            return TRUE;
         } else {
             return FALSE;
         }

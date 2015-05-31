@@ -105,11 +105,6 @@ function membersSearch() {
                 }
                 else {
                     $('#suggestions').hide();
-                    /*
-                     $('#suggestions').show();
-                     $('#autoSuggestionsList').addClass('auto_list');
-                     $('#autoSuggestionsList').html('<li> No such users found </li>');
-                     */
                 }
             }
         });
@@ -138,14 +133,12 @@ function chooseMember(member) {
         success: function (data) {
             // return success    
             if (data.length > 0) {
-                //$('#members').show();
-                //$('#members').addClass('auto_list');
-                //$('#members').html(data);
                 $('#members').append(data);
             }
         }
     });
-
+    
+    // mozda treba u success da se prebaci
     numOfMembers = numOfMembers + 1;
     document.getElementById("member").value = '';
     if (numOfMembers === 1) {
@@ -236,16 +229,15 @@ function createGroup() {
         url: "http://localhost/CodeIgniter/index.php/NewGroupController/createGroup",
         data: post_data,
         success: function (data) {   // ako je funkcija kontrolera uspesna
-            // return success
-            //$("body").load(data);
+            numOfMembers = 0;
+            members = [];
+            checkGroup = false;
+            atLeastOneMember = false;
+            window.location.href = '../boardController/board/' + data;
         }
     });
 
-    numOfMembers = 0;
-    members = [];
-    checkGroup = false;
-    atLeastOneMember = false;
-    window.location.href = 'boardController/';
+    
 
 }
 
@@ -277,11 +269,6 @@ function groupsSearch() {
                 }
                 else {
                     $('#suggestions1').hide();
-                    /*
-                     $('#suggestions').show();
-                     $('#autoSuggestionsList').addClass('auto_list');
-                     $('#autoSuggestionsList').html('<li> No such users found </li>');
-                     */
                 }
             }
         });
@@ -342,9 +329,10 @@ function change(idNote, operation, method) {
         url: "http://localhost/CodeIgniter/index.php/boardController/" + method,
         data: post_data,
         success: function (data) {
+            window.location.reload();
         }
     });
-    window.location.reload();
+   
 }
 
 function loadImages(idNote, group) {
@@ -355,6 +343,7 @@ function loadImages(idNote, group) {
     var hideId = "#hide" + idNote;
     var deleteId = "#delete" + idNote;
     var editId = "#edit" + idNote;
+    var creatorId = "#creator" + idNote;
 
     var post_data = {
         'idNote': idNote,
@@ -382,6 +371,7 @@ function loadImages(idNote, group) {
             success: function (data) {
                 if (data.length > 0) {
                     $(lockId).append(data);
+                    $('#group').value += data;
                 }
             }
         });
@@ -419,6 +409,18 @@ function loadImages(idNote, group) {
         success: function (data) {
             if (data.length > 0) {
                 $(deleteId).append(data);
+            }
+        }
+    });
+    
+    $.ajax({
+        type: "POST",
+        //url: "<?php echo base_url(); ?>index.php/NewGroupController/addMember/",
+        url: "http://localhost/CodeIgniter/index.php/boardController/creatorInfo",
+        data: post_data,
+        success: function (data) {
+            if (data.length > 0) {
+                $(creatorId).append(data);
             }
         }
     });

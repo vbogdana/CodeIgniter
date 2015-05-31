@@ -12,6 +12,32 @@ class Note_Model extends CI_Model {
         $this->load->database();
     }
     
+    public function getCreatorInfo($idNote) {
+        
+        $this->db->select('idUser');
+        $this->db->from('note');
+        $this->db->where('idNote', $idNote);
+        
+        $query = $this->db->get();
+
+        if ($query->num_rows() == 1) {
+            
+            foreach ($query->result() as $row) {
+                $this->db->select('nickname');
+                $this->db->from('user');
+                $this->db->where('idUser', $row->idUser);
+                
+                $query1 = $this->db->get();
+                
+                if ($query1->num_rows() == 1) {
+                    foreach ($query1->result() as $row1) {
+                        return $row1->nickname;     
+                    }
+                }
+            }
+        }
+    }
+    
     public function canDelete($idNote) {
         $idUser = $this->session->userdata('idUser');
 

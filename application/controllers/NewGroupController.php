@@ -48,8 +48,9 @@ class NewGroupController extends CI_Controller {
             $this->ismember->createEntry($id_member, $id_group, '0');
             }
             
-            $data  = $this->load->view('templates/page', array('menu' => 'board/toolbar', 'container' => 'board/container'), TRUE);
-            $this->output->set_output($data); 
+            //$data  = $this->load->view('templates/page', array('menu' => 'board/toolbar', 'container' => 'board/container'), TRUE);
+            //$this->output->set_output($data); 
+            echo $id_group;
         }
 
     }

@@ -146,17 +146,22 @@ class BoardController extends CI_Controller {
     
     public function lockImg() {
         $idNote = $_POST['idNote'];
+        $idUser = $this->session->userdata('idUser');
         
+        $locked = $this->group_note->checkLocked($idNote);
         if ($this->group_note->canLock($idNote)) {
-            $locked = $this->group_note->checkLocked($idNote);
-
+            // ako uopste moze da zakljuca
             if (!($locked)) {
                 echo '<img src="'. base_url()."assets/images/png/lock.png".'" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="change(\''.$idNote.'\', \'lock\',\'lock\')" />'; 
             } else if ($locked) {
                 echo '<img src="'. base_url()."assets/images/png/lock_black.png".'" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="change(\''.$idNote.'\', \'lock\',\'lock\')" />';                 
             }
         } else {
-            echo '<img src="'. base_url()."assets/images/png/lock.png".'" style="opacity: 0.4" />';            
+            if (!$locked) {
+                echo '<img src="'. base_url()."assets/images/png/lock_black.png".'" style="opacity: 0.3" />';            
+            } else {
+                echo '<img src="'. base_url()."assets/images/png/lock_black.png".'" />'; 
+            }
         }
     }
     
@@ -172,7 +177,7 @@ class BoardController extends CI_Controller {
                 echo '<img src="'. base_url()."assets/images/png/hide_black.png".'" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="change(\''.$idNote.'\', \'unhide\',\'hide\')" />';
             }
         } else {
-            echo '<img src="'. base_url()."assets/images/png/hide.png".'" style="opacity: 0.4" />';   
+            echo '<img src="'. base_url()."assets/images/png/hide_black.png".'" style="opacity: 0.3" />';   
         }
     }
     
@@ -182,7 +187,7 @@ class BoardController extends CI_Controller {
         if ($this->note->canDelete($idNote)) {
             echo '<img src="'. base_url()."assets/images/png/delete.png".'" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="change(\''.$idNote.'\', \'delete\',\'delete\')" />';
         } else {
-            echo '<img src="' . base_url() . "assets/images/png/delete.png" . '" style="opacity: 0.4" />';
+            echo '<img src="' . base_url() . "assets/images/png/delete_black.png" . '" style="opacity: 0.3" />';
         }
     }
 
@@ -194,8 +199,19 @@ class BoardController extends CI_Controller {
         if (!($locked)) {
             echo '<img src="' . base_url() . "assets/images/png/edit_black.png" . '" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="change(\'' . $idNote . '\', \'edit\',\'edit\')" />';
         } else if ($locked) {
-            echo '<img src="' . base_url() . "assets/images/png/edit.png" . '" style="opacity: 0.4" />';
-        }
+            echo '<img src="' . base_url() . "assets/images/png/edit_black.png" . '" style="opacity: 0.3" />';
+        }   
+        
+    }
+    
+    public function creatorInfo() {
+        $idNote = $_POST['idNote'];
+        
+        $creator = $this->note->getCreatorInfo($idNote);
+        
+        echo '<div class="creator_nickname">'.$creator.'</div>';
+              //<div class="creator_img"></div>';
+        //echo '<div class="creator_nickname">'.$creator.'</div>';
     }
 
 }
