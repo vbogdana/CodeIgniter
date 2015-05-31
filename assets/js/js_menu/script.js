@@ -11,6 +11,27 @@ var checkGroup = false;
 var atLeastOneMember = false;
 
 
+function changeIcon(image) {
+    if (image.src === "http://localhost/CodeIgniter/assets/images/png/important.png") {
+       image.src = "http://localhost/CodeIgniter/assets/images/png/important_black.png"; 
+    } else if (image.src === "http://localhost/CodeIgniter/assets/images/png/lock.png") {
+        image.src = "http://localhost/CodeIgniter/assets/images/png/lock_black.png";
+    } else if (image.src === "http://localhost/CodeIgniter/assets/images/png/hide.png") {
+        image.src = "http://localhost/CodeIgniter/assets/images/png/hide_black.png";
+    } else if (image.src === "http://localhost/CodeIgniter/assets/images/png/delete.png") {
+        image.src = "http://localhost/CodeIgniter/assets/images/png/delete_black.png";
+    } else if (image.src === "http://localhost/CodeIgniter/assets/images/png/delete_black.png") {
+        image.src = "http://localhost/CodeIgniter/assets/images/png/delete.png";
+    } else if (image.src === "http://localhost/CodeIgniter/assets/images/png/hide_black.png") {
+        image.src = "http://localhost/CodeIgniter/assets/images/png/hide.png";
+    } else if (image.src === "http://localhost/CodeIgniter/assets/images/png/lock_black.png") {
+        image.src = "http://localhost/CodeIgniter/assets/images/png/lock.png";
+    } else {
+        image.src = "http://localhost/CodeIgniter/assets/images/png/important.png";
+    }
+ 
+}
+
 function  menuClick(menu) {
     if ((showMenu3 && menu == "3") || (showMenu4 && menu == "4")) {
         showMenu(menu);
@@ -299,4 +320,27 @@ function loadMore(iteration, last, lastI, last_id, lastI_id, group) {
                 //}
             }
         });
+}
+
+function change(idNote, operation, method) {
+    //document.getElementById('group').value = method;
+    
+    var post_data = {
+        'idNote': idNote,
+        'operation': operation,
+        '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
+    };
+    
+    
+    
+    $.ajax({
+            //type: "POST",
+            type: "POST",
+            //url: "<?php echo base_url(); ?>index.php/NewGroupController/addMember/",
+            url: "http://localhost/CodeIgniter/index.php/boardController/" + method,
+            data: post_data,
+            success: function (data) {
+            }
+        });
+    window.location.reload();    
 }

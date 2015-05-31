@@ -10,11 +10,11 @@
                                     
                                     $num = count($result);
                                     $iteration = $iteracija;
-                                    $height = ((((($iteration - 1) * 12) ) / 4) ) * 373 + 23 + 40;
+                                    $height = ((((($iteration - 1) * 12) ) / 4) ) * 375 + 23 + 40;
                                     if (($num == 4 || $num == 8)&& $iteration == 1) {
-                                        $height += ((int)(($num) / 4) + 1) * 373 ;
+                                        $height += ((int)(($num) / 4) + 1) * 375 ;
                                     } else {
-                                        $height += ((int)(($num - 1) / 4) + 1) * 373 ;
+                                        $height += ((int)(($num - 1) / 4) + 1) * 375 ;
                                     }
                                     
                                     
@@ -50,12 +50,25 @@
                                             echo '<div class="one-note">
                                                     <div class="buttons">';
                                                     if ($group == "hidden") {
-                                                        echo '<div class="note_button" id="hide">Unhide</div>';
+                                                        echo '<div class="note_button" id="hide">
+                                                            <img id="hide_'.$iteration.'_'.$cnt.'" src="'. base_url()."assets/images/png/hide.png".'" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="change(\''.$row['idNote'].'\', \'unhide\',\'hide\')" />
+                                                        </div>
+                                                        <div class="note_button" id="delete">
+                                                            <img id="del_'.$iteration.'_'.$cnt.'" src="'. base_url()."assets/images/png/delete.png".'" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="change(\''.$row['idNote'].'\', \'delete\',\'delete\')"/>                                                        
+                                                        </div>';
                                                     } else {
-                                                      echo '<div class="note_button" id="important">Important</div>
-                                                        <div class="note_button" id="lock">Lock</div>
-                                                        <div class="note_button" id="hide">Hide</div>
-                                                        <div class="note_button" id="delete">Delete</div>';
+                                                      echo '<div class="note_button" id="important">
+                                                                <img id="imp_'.$iteration.'_'.$cnt.'" src="'. base_url()."assets/images/png/important.png".'" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="change(\''.$row['idNote'].'\', \'set\',\'important\')" />
+                                                            </div>
+                                                        <div class="note_button" id="lock">
+                                                            <img id="lock_'.$iteration.'_'.$cnt.'" src="'. base_url()."assets/images/png/lock.png".'" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="change(\''.$row['idNote'].'\', \'lock\',\'lock\')" />
+                                                        </div>
+                                                        <div class="note_button" id="hide">
+                                                            <img id="hide_'.$iteration.'_'.$cnt.'" src="'. base_url()."assets/images/png/hide.png".'" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="change(\''.$row['idNote'].'\', \'hide\',\'hide\')" />
+                                                        </div>
+                                                        <div class="note_button" id="delete">
+                                                            <img id="del_'.$iteration.'_'.$cnt.'" src="'. base_url()."assets/images/png/delete.png".'" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="change(\''.$row['idNote'].'\', \'delete\',\'delete\')"/>                                                        
+                                                        </div>';
                                                     }
                                             echo '</div> ';             // kraj buttons-a                   
                                             echo    '<div class="title">'; echo $naslov; echo '</div>
