@@ -1,0 +1,94 @@
+
+/* 
+    Created on : May 26, 2015, 11:26:49 PM
+    Author     : Bogdana
+*/
+
+.label {
+    
+}
+
+.groupsContainer {
+    margin-left: 0px;
+    margin-top: 0px;
+    width: calc(100%);
+    height: calc(100%);
+}
+
+.Options {
+    
+    margin-top: 2%;
+    margin-left: 2%;
+    width: calc(76% / 2);
+    background-color: #FBFBFF;
+    padding: 4% 4% 1% 4%;
+    border: solid 1px #E4E4E4;
+    border-radius: 4px;
+    height: calc(70%);
+}
+
+.Options > li {
+    list-style: none;
+    margin: 0 0 4em -1em;
+}
+
+#existsGroup {
+    height: 10%;
+    width: 80%;
+    margin-top: 1em;
+    visibility: visible;
+    position: absolute;
+    color: #E89980;
+}
+.Submit {
+    width: 20%;
+    position:absolute;
+    bottom: 15%;
+    left: 20%;
+}
+
+#suggestions {
+
+}
+
+#autoSuggestionsList > li {
+    background: none repeat scroll 0 0 #F3F3F3;
+    border-bottom: 1px solid #E3E3E3;
+    list-style: none outside none;
+    padding: 3px 15px 3px 15px;
+    text-align: left;
+}
+#autoSuggestionsList > li:hover {
+    cursor: pointer;
+    background: none repeat scroll 0 0 #e89980; /*   #e5e5e5 */
+}
+
+#autoSuggestionsList > li a { 
+    color: #800000; 
+}
+
+.auto_list {
+    border: 1px solid #E3E3E3;
+    border-radius: 5px 5px 5px 5px;
+    position: absolute;
+    width: 42%;
+}
+
+#members {
+    position: absolute;
+    top:0%;
+    margin-top: 2%;
+    margin-right: 2%;
+    right:0%;
+    width: calc(76% / 2);
+    height: calc(80%);
+    background-color: #FBFBFF;
+    padding: 4% 4% 1% 4%;
+    border: solid 1px #E4E4E4;
+    border-left: solid 2px #e89980;
+    border-radius: 4px; 
+}
+
+#members > input[type="text"] {
+    width: 60%;
+}     
