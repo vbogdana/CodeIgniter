@@ -78,10 +78,14 @@
                                             echo '</div> ';             // kraj buttons-a                   
                                             echo    '<div class="title">'; echo $naslov; echo '</div>
                                                     <div class="content">'; echo $text; echo '</div>
-                                                    <div class="created_On">'; echo $datum; echo'</div>
-                                                    <div class="global_Reminder">'; echo $datum; echo'</div>
-                                                    <div class="personal_Reminder">'; echo $datum; echo'</div>
-                                                  </div>';
+                                                    <div class="edited_On">Edited '; echo $datum; echo'</div>
+                                                    <div class="global_Reminder">Created '; echo $row['created_On']; echo'</div>
+                                                    <div class="personal_Reminder">'; echo '</div>'; 
+                                                    echo '<div class="created_By">';
+                                                        echo '<div class="note_button" id="edit'.$row['idNote'].'">';
+                                                        echo '</div>';
+                                                    echo'</div>
+                                            </div>';    // kraj beleske
                                                     
                                             $i=$i+1;
                                             $cnt = $cnt + 1;

@@ -18,10 +18,14 @@ function changeIcon(image) {
         image.src = "http://localhost/CodeIgniter/assets/images/png/lock_black.png";
     } else if (image.src === "http://localhost/CodeIgniter/assets/images/png/hide.png") {
         image.src = "http://localhost/CodeIgniter/assets/images/png/hide_black.png";
+    } else if (image.src === "http://localhost/CodeIgniter/assets/images/png/edit.png") {
+        image.src = "http://localhost/CodeIgniter/assets/images/png/edit_black.png";
     } else if (image.src === "http://localhost/CodeIgniter/assets/images/png/delete.png") {
         image.src = "http://localhost/CodeIgniter/assets/images/png/delete_black.png";
     } else if (image.src === "http://localhost/CodeIgniter/assets/images/png/delete_black.png") {
         image.src = "http://localhost/CodeIgniter/assets/images/png/delete.png";
+    } else if (image.src === "http://localhost/CodeIgniter/assets/images/png/edit_black.png") {
+        image.src = "http://localhost/CodeIgniter/assets/images/png/edit.png";
     } else if (image.src === "http://localhost/CodeIgniter/assets/images/png/hide_black.png") {
         image.src = "http://localhost/CodeIgniter/assets/images/png/hide.png";
     } else if (image.src === "http://localhost/CodeIgniter/assets/images/png/lock_black.png") {
@@ -350,6 +354,7 @@ function loadImages(idNote, group) {
     var lockId = "#lock" + idNote;
     var hideId = "#hide" + idNote;
     var deleteId = "#delete" + idNote;
+    var editId = "#edit" + idNote;
 
     var post_data = {
         'idNote': idNote,
@@ -377,6 +382,18 @@ function loadImages(idNote, group) {
             success: function (data) {
                 if (data.length > 0) {
                     $(lockId).append(data);
+                }
+            }
+        });
+        
+        $.ajax({
+            type: "POST",
+            //url: "<?php echo base_url(); ?>index.php/NewGroupController/addMember/",
+            url: "http://localhost/CodeIgniter/index.php/boardController/editImg",
+            data: post_data,
+            success: function (data) {
+                if (data.length > 0) {
+                    $(editId).append(data);
                 }
             }
         });
