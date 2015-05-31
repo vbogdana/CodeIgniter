@@ -77,15 +77,6 @@ class Note_Model extends CI_Model {
             // ok
             $data = $this->getAllImportant($idUser, $link); 
         } else {
-            // ne prikazuje prvo important
-            /*
-            $result = mysqli_query($link, "SELECT * "
-                . "FROM note n WHERE exists (SELECT * FROM group_note gn WHERE gn.idNote = n.idNote and gn.id_Group='$group' "
-                . "AND not exists (SELECT * FROM hidden_note hn WHERE hn.idNote=n.idNote AND hn.idUser='$idUser'))"
-                . "ORDER BY last_Edited_On desc, idNote desc limit 11")
-                or die(mysql_error());
-             * 
-             */
             // ok
             $data = $this->getFromGroup($idUser, $group, $link);
         }
@@ -116,18 +107,6 @@ class Note_Model extends CI_Model {
             // ok
             $data = $this->loadAllImportant($idUser, $lastI, $lastI_id, $link);
         } else {
-             // ne prikazuje prvo important
-            /*
-            $result = mysqli_query($link, "SELECT * "
-                . "FROM note n WHERE exists (SELECT * FROM group_note gn WHERE gn.idNote = n.idNote and gn.id_Group='$group'"
-                . "AND not exists (SELECT * FROM hidden_note hn WHERE hn.idNote=n.idNote AND hn.idUser='$idUser')) "     // end
-                . "AND not exists (SELECT * "                                     // kontrolise datum kreiranja
-                . "FROM note e "
-                . "WHERE e.idNote = n.idNote AND (e.last_Edited_On > '$last' OR (e.last_Edited_On = '$last' AND e.idNote >= '$last_id')))"
-                . "ORDER BY last_Edited_On desc, idNote desc LIMIT 12")
-                or die(mysql_error());
-             * 
-             */
             // ok
             $data = $this->loadFromGroup($idUser, $group, $last, $lastI, $last_id, $lastI_id, $link);
         }
