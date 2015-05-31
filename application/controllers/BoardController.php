@@ -17,13 +17,8 @@ class BoardController extends CI_Controller {
     
     public function loadMore() {
         $iteration = $_POST['iteration'];
-        //$last = $_POST['last'];
-        //$last_id = $_POST['last_id'];
-        //$lastI = $_POST['last'];
-        //$lastI_id = $_POST['last_id'];
         $group = $_POST['group'];
         
-        //$result = $this->note->loadMore($group, $last, $lastI, $last_id, $lastI_id);
         $result = $this->note->loadMore($group);
         
         if (count($result) == 0) {

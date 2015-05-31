@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2015 at 05:55 PM
+-- Generation Time: May 31, 2015 at 02:50 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -19,20 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `mydb`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `favourite`
---
-
-CREATE TABLE IF NOT EXISTS `favourite` (
-  `idUser` int(11) NOT NULL,
-  `idNote` int(11) NOT NULL,
-  PRIMARY KEY (`idUser`,`idNote`),
-  KEY `fkUser_idx` (`idUser`),
-  KEY `fkNote_idx` (`idNote`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE DATABASE IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `mydb`;
 
 -- --------------------------------------------------------
 
@@ -92,7 +80,14 @@ CREATE TABLE IF NOT EXISTS `group_note` (
 --
 
 INSERT INTO `group_note` (`idNote`, `last_Editor`, `is_Locked`, `id_Group`) VALUES
-(3, 2, '0', 14);
+(1, 4, '0', 14),
+(3, 2, '0', 14),
+(5, 4, '0', 14),
+(7, 2, '0', 14),
+(10, 2, '0', 12),
+(15, 2, '1', 14),
+(16, 4, '1', 14),
+(17, 2, '1', 14);
 
 -- --------------------------------------------------------
 
@@ -113,7 +108,31 @@ CREATE TABLE IF NOT EXISTS `hidden_note` (
 --
 
 INSERT INTO `hidden_note` (`idNote`, `idUser`) VALUES
-(3, 2);
+(5, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `important`
+--
+
+CREATE TABLE IF NOT EXISTS `important` (
+  `idUser` int(11) NOT NULL,
+  `idNote` int(11) NOT NULL,
+  PRIMARY KEY (`idUser`,`idNote`),
+  KEY `fkUser_idx` (`idUser`),
+  KEY `fkNote_idx` (`idNote`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `important`
+--
+
+INSERT INTO `important` (`idUser`, `idNote`) VALUES
+(4, 3),
+(4, 6),
+(4, 15),
+(4, 16);
 
 -- --------------------------------------------------------
 
@@ -202,8 +221,21 @@ CREATE TABLE IF NOT EXISTS `note` (
 INSERT INTO `note` (`idNote`, `text`, `created_On`, `last_Edited_On`, `title`, `idUser`) VALUES
 (1, 'Neki tamo textjksfnkjdsfkja', '2015-05-30 03:00:00', '2015-05-30 17:32:17', 'Prvi', 4),
 (2, 'ksfjdskfjkdsnvkjdsnvjk', '2015-05-30 10:00:00', '2015-05-30 17:32:17', 'Drugi', 4),
-(3, 'Ovo je beleska iz grupe u kojoj je vbogdana', '2015-05-30 11:00:00', '2015-05-30 17:32:17', 'Grupna', 2),
-(4, 'nije bogdanina beleska vec dulova', '2015-05-28 00:00:00', '2015-05-30 17:32:17', 'Dulova', 2);
+(3, 'Ovo je important beleska iz grupe u kojoj je vbogdana', '2015-05-30 11:00:00', '2015-05-30 17:32:17', 'Grupna Important', 2),
+(4, 'nije bogdanina beleska vec dulova', '2015-05-28 00:00:00', '2015-05-30 17:32:17', 'Dulova', 2),
+(5, 'Hidden beleska koju je dule napravio grupna', '2015-05-21 08:00:00', '2015-05-22 15:00:00', 'Hidden Dule grupna', 2),
+(6, 'Important personalna', '2015-05-26 05:00:00', '2015-05-27 10:29:00', 'Important Bogdana personalna', 4),
+(7, 'Grupna dule napravio', '2015-05-13 00:00:00', '2015-05-30 23:02:06', 'Grupna not important', 2),
+(8, 'personalna kasnije izmenjena', '2015-05-20 10:00:00', '2015-05-30 14:00:00', 'Personalna', 4),
+(9, 'fsdjkjfkjasnkjnfkjdf', '2015-05-28 13:25:00', '2015-05-28 19:00:28', 'Personalna', 4),
+(10, 'jfkdbslbvlkjsdnblsjfklb', '2015-05-25 00:00:00', '2015-05-30 23:14:37', 'Grupna id10', 4),
+(11, 'lkfvkldsfgm;slkdf', '2015-05-21 00:00:00', '2015-05-22 00:00:00', 'id11', 4),
+(12, 'krgmvklfdgks;gsklm', '2015-05-18 00:00:00', '2015-05-25 00:00:00', 'id12', 4),
+(13, 'ldskmflkadfkladvm', '2015-05-04 00:00:00', '2015-05-04 00:00:00', 'id13', 4),
+(14, 'lkdfvmkadfl', '2015-05-04 00:00:00', '2015-05-04 00:00:00', 'id14', 4),
+(15, 'kfdsnvkkdzfnvkldfs creator Dule', '2015-05-21 00:00:00', '2015-05-25 00:00:00', 'Nova id15 grupna', 2),
+(16, 'kreator vbogdana', '2015-05-12 00:00:00', '2015-05-31 14:00:00', 'nova id16', 4),
+(17, 'najranija creator Dule', '2015-05-02 00:00:00', '2015-05-03 00:00:00', 'id17', 2);
 
 -- --------------------------------------------------------
 
@@ -228,7 +260,7 @@ CREATE TABLE IF NOT EXISTS `reminder` (
 
 CREATE TABLE IF NOT EXISTS `user` (
   `idUser` int(11) NOT NULL AUTO_INCREMENT,
-  `nickname` varchar(45) NOT NULL,
+  `nickname` varchar(20) NOT NULL,
   `email` varchar(45) NOT NULL,
   `link_Photo` varchar(45) DEFAULT NULL,
   `is_Admin` tinyint(1) NOT NULL,
@@ -264,13 +296,6 @@ INSERT INTO `user` (`idUser`, `nickname`, `email`, `link_Photo`, `is_Admin`, `no
 --
 
 --
--- Constraints for table `favourite`
---
-ALTER TABLE `favourite`
-  ADD CONSTRAINT `fkNote_Fav` FOREIGN KEY (`idNote`) REFERENCES `note` (`idNote`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fkUser_Fav` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Constraints for table `group`
 --
 ALTER TABLE `group`
@@ -290,6 +315,13 @@ ALTER TABLE `group_note`
 ALTER TABLE `hidden_note`
   ADD CONSTRAINT `fkNote_CN` FOREIGN KEY (`idNote`) REFERENCES `group_note` (`idNote`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fkUser_CN` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `important`
+--
+ALTER TABLE `important`
+  ADD CONSTRAINT `fkNote_Fav` FOREIGN KEY (`idNote`) REFERENCES `note` (`idNote`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fkUser_Fav` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `ismember`
