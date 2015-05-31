@@ -434,6 +434,15 @@ input:-moz-placeholder {
     font-size: 50%;
 }
 
+.created_By {
+    float:left;
+    width: 100%;
+    height: 8%;
+    background: bisque;
+    border-bottom: 1px solid #E4E4E4;
+    font-size: 50%;
+}
+
 .note_button {
     float: left;
     width: 25%;
@@ -470,9 +479,9 @@ input:-moz-placeholder {
     float:left;
     width: calc(100% - 2em);
     font-size:14px;
-    height: calc(57.5% - 2em);
+    height: calc(57.5% - 4%);
     overflow:hidden;
-    padding: 1em 1em 1em 1em;
+    padding: 0.5% 0.5% 0.5% 0.5%;
     text-align: left;
     border-bottom: 1px solid #E4E4E4;
     text-overflow: ellipsis;
@@ -483,10 +492,10 @@ input:-moz-placeholder {
     cursor: pointer;
 }
 
-.created_On {
+.edited_On {
     float:left;
     width: 100%;
-    height: 5%;
+    height: 6%;
     font-size:12px;
     text-align:center;
     border-bottom: 1px solid #E4E4E4;
@@ -495,7 +504,7 @@ input:-moz-placeholder {
 .global_Reminder {
     float:left;
     width: 100%;
-    height: 5%;
+    height: 6%;
     font-size:12px;
     text-align:center;
     border-bottom: 1px solid #E4E4E4;
@@ -504,7 +513,7 @@ input:-moz-placeholder {
 .personal_Reminder {
     float:left;
     width: 100%;
-    height: 5%;
+    height: 6%;
     font-size:12px;
     text-align:center;
     border-bottom: 1px solid #E4E4E4;

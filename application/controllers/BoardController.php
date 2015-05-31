@@ -124,6 +124,13 @@ class BoardController extends CI_Controller {
             echo "nodelete";
         }
     }
+    
+    public function edit() {
+        $idNote = $_POST['idNote'];
+        
+        //otvori view za editovanje
+        echo "edit note";
+    }
 
     public function importantImg() {
         $idNote = $_POST['idNote'];
@@ -175,7 +182,19 @@ class BoardController extends CI_Controller {
         if ($this->note->canDelete($idNote)) {
             echo '<img src="'. base_url()."assets/images/png/delete.png".'" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="change(\''.$idNote.'\', \'delete\',\'delete\')" />';
         } else {
-            echo '<img src="'. base_url()."assets/images/png/delete.png".'" style="opacity: 0.4" />';
+            echo '<img src="' . base_url() . "assets/images/png/delete.png" . '" style="opacity: 0.4" />';
+        }
+    }
+
+    public function editImg() {
+        $idNote = $_POST['idNote'];
+
+        $locked = $this->group_note->checkLocked($idNote);
+
+        if (!($locked)) {
+            echo '<img src="' . base_url() . "assets/images/png/edit_black.png" . '" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="change(\'' . $idNote . '\', \'edit\',\'edit\')" />';
+        } else if ($locked) {
+            echo '<img src="' . base_url() . "assets/images/png/edit.png" . '" style="opacity: 0.4" />';
         }
     }
 
