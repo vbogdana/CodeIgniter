@@ -60,11 +60,10 @@ autor Dusan
         </div>
         
     </div>
-      
-    
-
         <?= form_close() ?>
+        
     
+    sdasdasd
     
     
     
