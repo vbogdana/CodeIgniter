@@ -203,15 +203,38 @@ class BoardController extends CI_Controller {
         }   
         
     }
-    
+
     public function creatorInfo() {
         $idNote = $_POST['idNote'];
-        
+
         $creator = $this->note->getCreatorInfo($idNote);
-        
-        echo '<div class="creator_nickname">'.$creator.'</div>';
-              //<div class="creator_img"></div>';
+
+        echo '<div class="creator_nickname">' . $creator . '</div>';
+        //<div class="creator_img"></div>';
         //echo '<div class="creator_nickname">'.$creator.'</div>';
+    }
+
+    public function createNote() {
+        $group = $_POST['g'];
+        $gC = $_POST['gC'];
+        $pC = $_POST['pC'];
+        $gR = $_POST['gR'];
+        $pR = $_POST['pR'];
+        $title = $_POST['t'];
+        $content = $_POST['c'];
+        
+        $idUser = $this->session->userdata('idUser');
+        
+        $idNote = $this->note->createEntry($idUser, $group, $title, $content);
+        if ($gC == true) {
+            //$this->reminder->createGroup();
+        }
+        if ($pC == true) {
+            //$this->reminder->createPersonal();
+        }
+        
+        echo $idNote;
+        
     }
 
 }

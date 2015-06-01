@@ -27,7 +27,7 @@
                                         if ($iteration == 1) {
                                             echo '<div class="one-note">
                                                         <div class="AddNote" id="create-note" >
-                                                            <h1><a href="#"> add new note </a></h1>
+                                                            <h1> add new note </h1>
                                                         </div>
                                                 </div>';
                                             $i = 1;
@@ -52,25 +52,19 @@
                                                     <div class="buttons">';
                                                     if ($group == "hidden") {
                                                         echo '<div class="note_button" id="hide'.$row['idNote'].'">';
-                                                            //<img id="hide_'.$iteration.'_'.$cnt.'" src="'. base_url()."assets/images/png/hide.png".'" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="change(\''.$row['idNote'].'\', \'unhide\',\'hide\')" />
                                                         echo '</div>';
                                                         echo '<div class="note_button" id="delete'.$row['idNote'].'">';
-                                                            //<img id="del_'.$iteration.'_'.$cnt.'" src="'. base_url()."assets/images/png/delete.png".'" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="change(\''.$row['idNote'].'\', \'delete\',\'delete\')"/>                                                        
                                                         echo '</div>';
                                                         
                                                         echo '<script type="text/javascript"> loadImages(\''.$row['idNote'].'\',\''.$group.'\') </script>';
                                                     } else {
                                                       echo '<div class="note_button" id="important'.$row['idNote'].'">';
-                                                                //<img id="imp_'.$iteration.'_'.$cnt.'" src="'. base_url()."assets/images/png/star.png".'" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="change(\''.$row['idNote'].'\', \'set\',\'important\')" />
                                                       echo  '</div>';
                                                        echo '<div class="note_button" id="lock'.$row['idNote'].'">';
-                                                            //<img id="lock_'.$iteration.'_'.$cnt.'" src="'. base_url()."assets/images/png/lock.png".'" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="change(\''.$row['idNote'].'\', \'lock\',\'lock\')" />
                                                        echo '</div>';
                                                        echo '<div class="note_button" id="hide'.$row['idNote'].'">';
-                                                            //<img id="hide_'.$iteration.'_'.$cnt.'" src="'. base_url()."assets/images/png/hide.png".'" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="change(\''.$row['idNote'].'\', \'hide\',\'hide\')" />
                                                         echo '</div>';
                                                         echo '<div class="note_button" id="delete'.$row['idNote'].'">';
-                                                            //<img id="del_'.$iteration.'_'.$cnt.'" src="'. base_url()."assets/images/png/delete.png".'" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="change(\''.$row['idNote'].'\', \'delete\',\'delete\')"/>                                                        
                                                         echo '</div>';
                                                        
                                                        echo '<script type="text/javascript"> loadImages(\''.$row['idNote'].'\',\''.$group.'\') </script>';
@@ -116,25 +110,6 @@
                                     
                                     //echo '</div>';      // kraj LoadBoarda
                                     
-echo '<div id="dialog-form" title="Create new user">
-  <p class="validateTips">Title and content of a note are required.</p>
- 
-  <form>
-    <fieldset>
-      <label for="title">Title</label>
-      <input type="text" name="title" id="title" value="" maxlength="45" class="text ui-widget-content ui-corner-all">';
-      echo '<label for="content">Content</label>
-      <textarea id="content" name="content" maxvalue="500"></textarea>';
-      //<label for="content">Email</label>
-      //<input type="text" name="email" id="email" value="jane@smith.com" class="text ui-widget-content ui-corner-all">
-      //<label for="password">Password</label>
-      //<input type="password" name="password" id="password" value="xxxxxxx" class="text ui-widget-content ui-corner-all">
- 
-      //<!-- Allow form submission with keyboard without duplicating the dialog button -->
-      echo '<input type="submit" id="note-submit" tabindex="-1" style="position:absolute; top:-1000px">
-    </fieldset>
-  </form>
-</div>';
                                
 			?>
 			
