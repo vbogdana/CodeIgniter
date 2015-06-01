@@ -6,7 +6,7 @@ autor Bogdana
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url()."assets/css/css_board/style.css"; ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url()."assets/css/css_board/newGroup.css"; ?>">
          <link rel="stylesheet" type="text/css" href="<?php echo base_url()."assets/css/css_board/editProfile.css"; ?>">
-         
+         <link rel="stylesheet" type="text/css" href="<?php echo base_url()."assets/css/css_board/adminpanel.css"; ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url()."assets/css/css_board/iconselect.css"; ?>" >
         
 	<link rel="stylesheet" type="text/css"  href="<?php echo base_url()."assets/css/css_board/standard.css";?>" />
