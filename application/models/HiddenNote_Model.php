@@ -48,7 +48,15 @@ class HiddenNote_Model extends CI_Model {
         $query = $this->db->get();
         
         if ($query->num_rows() == 1) {
-            return FALSE;          
+            $this->db->from('group_note');
+            $this->db->where('idNote', $idNote);
+            $query1 = $this->db->get();
+            
+            if ($query1->num_rows() == 1) {
+                return TRUE;
+            } else {
+                return FALSE;
+            }          
         } else {
             return TRUE;
         }

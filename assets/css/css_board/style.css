@@ -807,3 +807,11 @@ fieldset {
     width: 50%;
 }
 
+#dialog-form {
+    //visibility: hidden;
+}
+
+.overflow {
+      height: 200px;
+}
+

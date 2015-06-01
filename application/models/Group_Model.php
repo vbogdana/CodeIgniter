@@ -42,16 +42,6 @@ class Group_Model extends CI_Model {
     public function createEntry($name) {
         $creator =  $this->session->userdata('idUser');
         
-        /*
-        $exist = $this->existGroup($name, $creator);
-        if ($exist != '-1') {
-            // vec postoji
-            echo "GRUPA VEC POSTOJI \n";
-            return '-1';
-        }
-         * 
-         */
-        
         $this->load->helper('date');
 
         $group = array(
@@ -59,7 +49,8 @@ class Group_Model extends CI_Model {
             'id_Creator' => $creator ,
             'created_On' => date('Y-m-d H:i:s')
         );
-
+        
+        // probaj sa $idGroup = $this->db->insert_id('group', $group);
         $this->db->insert('group', $group);
         $idGroup = $this->existGroup($name, $creator);
         

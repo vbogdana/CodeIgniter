@@ -12,6 +12,36 @@ class Note_Model extends CI_Model {
         $this->load->database();
     }
     
+    public function createEntry($idUser, $group, $title, $content) {
+        $date = date('Y-m-d H:i:s');
+        
+        $data = array(
+            'idUser' => $idUser,
+            'title' => $title,
+            'text' => $content,
+            'created_On' => $date,
+            'last_Edited_On' => $date
+        );
+        
+        $this->db->insert('note', $data);
+        $idNote = $this->db->insert_id();
+
+        if (($group != 'global') && ($group != 'important') && ($group != 'hidden')) {
+            $array = array(
+                'idNote' => $idNote,
+                'last_Editor' => $idUser,
+                'is_Locked' => '0',
+                'id_Group' => $group
+            );
+        
+        $this->db->insert('group_note', $array);
+        //return $this->db->last_query();
+            
+        }
+        
+        return $idNote;
+    }
+    
     public function getCreatorInfo($idNote) {
         
         $this->db->select('idUser');
