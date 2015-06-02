@@ -405,6 +405,7 @@ input:-moz-placeholder {
     border-radius: 4px;
     margin-left: 2%;
     margin-top: 23px;
+    
     background: white;
     color: #888;
     font-family: "Source Sans Pro", sans-serif;
@@ -542,7 +543,7 @@ input:-moz-placeholder {
     font-style: italic;
 }
 
-.rmute {
+.rbutton {
     float: left;
     position: relative;
     top: 0%;
@@ -551,7 +552,7 @@ input:-moz-placeholder {
     height: 100%;
 }
 
-.rmute img {
+.rbutton img {
     margin-top: 0.3em;
     height: 1.4em;
     width: 1.4em;
