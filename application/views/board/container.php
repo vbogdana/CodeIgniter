@@ -79,17 +79,16 @@
                                                     <div class="edited_On">last edited on '; echo $datum; echo'</div>
                                                     <div class="global_Reminder">
                                                         <div class="rtext" id="rtext'.$row['idNote'].'">'; 
-                                                    if ($grupni != '0')  { 
-                                                        echo $grupni; 
+                                                            echo $grupni;
+                                                    if ($grupni != 'no group reminder')  { 
+                                                         
                                                         echo '</div><div class="rmute">';
                                                         echo '<img src="'.base_url()."assets/images/png/mute_black.png".'" style="opacity: 0.6" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="mute(\''.$row['idNote'].'\')">';
                                                     }
-                                                    else { echo 'no group reminder'; }
                                                     echo'</div></div>
                                                     <div class="personal_Reminder">
                                                         <div class="rtext">'; 
-                                                    if ($personalni != '0') { echo $personalni; }
-                                                    else { echo 'no personal reminder'; }
+                                                            echo $personalni;
                                                     echo '</div></div>'; 
                                                     echo '<div class="created_By">';
                                                         echo '<div class="note_button" id="edit'.$row['idNote'].'">';

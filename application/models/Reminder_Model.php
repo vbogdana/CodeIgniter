@@ -65,12 +65,11 @@ class Reminder_Model extends CI_Model {
     }
     
     public function checkGroup($idUser, $note) {
-        $this->db->select('datetime');
+        $this->db->select('datetime, mute');
         $this->db->from('reminder');
         $this->db->where('idNote', $note['idNote']);
         $this->db->where('idUser', $idUser);
         $this->db->where('personal', '0');
-        $this->db->where('mute', '0');
         $group = $this->db->get();
         
         return $group;
@@ -88,16 +87,21 @@ class Reminder_Model extends CI_Model {
                     $reminders[$i]['personal'] = $p->datetime;
                 }
             } else {
-                $reminders[$i]['personal'] = 0;
+                $reminders[$i]['personal'] = 'no personal reminder';
             }
 
             $group = $this->checkGroup($idUser, $note);
             if ($group->num_rows() == 1) {
                 foreach ($group->result() as $g) {
-                    $reminders[$i]['group'] = $g->datetime;
+                    if ($g->mute == '0') {
+                       $reminders[$i]['group'] = $g->datetime; 
+                    } else  {
+                        $reminders[$i]['group'] = 'group reminder muted';
+                    }
+                    
                 }
             } else {
-                $reminders[$i]['group'] = 0;
+                $reminders[$i]['group'] = 'no group reminder';
             }
 
             $i++;

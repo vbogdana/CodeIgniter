@@ -46,7 +46,7 @@ $isAdmin = $this->session->userdata('admin');
                            if ($isAdmin == '1') {
                                echo '<div class="ToolButton AdminButton">
 						<div class="ToolbarImg" id="6">
-                                                    <a href="http://localhost/CodeIgniter/index.php/adminPanelController/adminPanel">
+                                                    <a href="http://localhost/CodeIgniter/index.php/adminPanelController/">
 							<img src="'.base_url().'/assets/images/png/settings.png" />
                                                     </a>
 						</div>
