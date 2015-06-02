@@ -265,7 +265,7 @@ class Note_Model extends CI_Model {
         $i = 0;
 
         $result = mysqli_query($link, "SELECT * "
-                . "FROM note n, reminder r "
+                . "FROM note n "
                 . "WHERE exists (SELECT * FROM important iin WHERE n.idNote=iin.idNote AND iin.idUser='$idUser') "
                 . "ORDER BY n.last_Edited_On desc, n.idNote desc limit 11 ")
                 or die(mysql_error());

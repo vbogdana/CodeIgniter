@@ -40,37 +40,4 @@ autor Bogdana
         <script src="<?php echo base_url()."/assets/jquery/external/jquery/jquery.js"; ?>"> </script>
         <script src="<?php echo base_url()."/assets/jquery/jquery-ui.js"; ?>"> </script>
   
-                    <script>
-        /* PROBLEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEM */ 
-        var iconSelect;
-
-        window.onload = function(){
-
-            iconSelect = new IconSelect("my-icon-select", 
-                {'selectedIconWidth':48,
-                'selectedIconHeight':48,
-                'selectedBoxPadding':5,
-                'iconsWidth':48,
-                'iconsHeight':48,
-                'boxIconSpace':3,
-                'vectoralIconNumber':8,
-                'horizontalIconNumber':1});
-
-            var icons = [];
-            icons.push({'iconFilePath':'<?php echo base_url()."/assets/images/photos/note-red.png"; ?>', 'iconValue':'1'});
-            icons.push({'iconFilePath':'<?php echo base_url()."/assets/images/photos/note-green.png"; ?>', 'iconValue':'2'});
-            icons.push({'iconFilePath':'<?php echo base_url()."/assets/images/photos/note-pink.png"; ?>', 'iconValue':'3'});
-            icons.push({'iconFilePath':'<?php echo base_url()."/assets/images/photos/note-blue.png"; ?>', 'iconValue':'4'});
-            icons.push({'iconFilePath':'<?php echo base_url()."/assets/images/photos/note-orange.png"; ?>', 'iconValue':'5'});
-            icons.push({'iconFilePath':'<?php echo base_url()."/assets/images/photos/note-violet.png"; ?>', 'iconValue':'6'});
-            icons.push({'iconFilePath':'<?php echo base_url()."/assets/images/photos/note-purple.png"; ?>', 'iconValue':'7'});
-            icons.push({'iconFilePath':'<?php echo base_url()."/assets/images/photos/note-grey.png"; ?>', 'iconValue':'8'});
-            icons.push({'iconFilePath':'<?php echo base_url()."/assets/images/photos/note-yellow.png"; ?>', 'iconValue':'9'});
-                
-               
-               
-            iconSelect.refresh(icons);
-
-        };
-            
-        </script>
+                    

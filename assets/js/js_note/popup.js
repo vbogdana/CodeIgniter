@@ -104,7 +104,8 @@ $(function() {
                         //document.getElementById('content').value = data;
                         setTimeout(function () {    
                             dialog.dialog("close");
-                            window.location.reload();
+                            //window.location.reload();
+                            window.location.href = "http://localhost/CodeIgniter/index.php/boardController/board/" + g;
                         }, 1000);
                         
                     }
