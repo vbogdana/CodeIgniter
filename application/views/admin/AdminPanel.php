@@ -6,90 +6,127 @@ and open the template in the editor.
 
 autor Dusan 
 -->
+<script language="javascript">
+function checkMe() {
+    if (confirm("Are you sure you want to delete this user? ")) {
+      //  alert("Clicked Ok");
+        return true;
+    } else {
+     //   alert("Clicked Cancel");
+        return false;
+    }
+}
+</script>
 
+<script language="javascript">
+function checkMe1() {
+    if (confirm("Are you sure you want to delete this group? ")) {
+      //  alert("Clicked Ok");
+        return true;
+    } else {
+     //   alert("Clicked Cancel");
+        return false;
+    }
+}
+</script>
 
 
 
 <div class="BoardAdminPanel">
-    <?php $password = $this->session->userdata('password'); ?>
+    <?php $password = $this->session->userdata('password'); 
+          $flag=$this->session->userdata('admin');
+           if($flag==0) redirect('boardController/board/global');
+    ?>
 
-
+    <center><h2>Delete Users or Groups</h2></center>
+    
  
 
     <div class='Optionsusers'>
+        <div class="userrow">
+        <ul>
+            <li class="li0">&nbsp;&nbsp; </li>
+            <li class="li1"><h3>Id </h3></li>
+            <li class="li2"><h3>Username</h3></li>
+            <li class="li3"><h3>E-mail</h3></li>
+            <li class="li4"><center><h3>Admin</h3></center></li>
+        <li class="li5"><h3>Password</h3></li>
+       
+        </ul>
+            
+                    
+        </div>
         
-         <?php  $this->load->model('AdminPanel_Model','adminPanel');
-                $this->adminPanel->getAllUsers();
-            ?>
-
+         </br>             </br>
+        <?php 
+                   $broj=count($niz);
+            
+            
+                   for($i=0;$i<$broj;$i++) {
+                   $idUser    =$niz[$i]['idUser'];
+                   $nickname  =$niz[$i]['nickname'];
+                   $email     =$niz[$i]['email']; 
+                   $is_Admin  =$niz[$i]['admin'];
+                   $password  =$niz[$i]['password'];
+                   
+                   $flag=$this->session->userdata('nickname');
+                   if($flag==$nickname)  continue;
+                   
+                   
+                   if($is_Admin==0){ $is_Admin="NO";
+                   }else {
+                       $is_Admin="YES";
+                   }
+                   
+                    echo '<div class="userrow">'. 
+                           " <ul>"
+                                .'<li class="li0">'.'<a onClick="return checkMe()" href=adminPanelController/delete/'."$idUser>".'<img  src="'. base_url()."/assets/images/png/delete_black.png".'"'. 'width="20" height="20">'."</a></li>"
+                                .'<li class="li1">'."$idUser</li>"
+                                .'<li class="li2">'."$nickname</li>"
+                                .'<li class="li3">'."$email</li>"
+                                .'<li class="li4">'."<center>$is_Admin</center></li>"
+                                .'<li class="li5">'."$password</li>
+                             </ul>
+                            </div>
+                            ";
+                    }
+        
+        ?>
     </div>
        
     
     
-     <div class='Optionsusers'>
+     <div class='Optionsgroups'>
         
-           <?= form_open(base_url() . "index.php/editProfileController") ?>
-        <li>
-            <div class="label">
-                Change your password:  
-            </div> 
-            <br />
-            <div class="section" id="examplePresence">
-                <?= form_input(array("name" => "email", "id" => "f1", "type" => "password", "value" => set_value("oldpassword"), "placeholder" => "enter old password")) ?>
-                <script type="text/javascript">
-                  var f1 = new LiveValidation('f1',{ validMessage: "you enter right password !",  });
-                  f1.add( Validate.Format, 
-                  { pattern: /^<?php echo "$password"; ?>$/i, failureMessage: "You have not yet entered the correct password"});
-                </script>  
-                </p>
-            </div>
+          <div class="userrow">
+        <ul>
+            <li class="li0">&nbsp;&nbsp; </li>
+            <li class="li6"><center><h3>Group Name</h3></center></li>
+            
 
-            <br>
-            <?= form_input(array("name" => "password", "id" => "f3", "type" => "password", "value" => set_value("password"), "placeholder" => "enter new password")) ?>
-            <script type="text/javascript">
-                var f3 = new LiveValidation('f3', {validMessage: "you enter correct password !", });
-                f3.add(Validate.Length, {minimum: 6, maximum: 16});
-            </script> 
-
-        </li> 
-
-        <li>
-            <div class="label">
-                Change your mail: 
-            </div>
-            <br />
-
-<!--
-            <?= form_input(array("name" => "email", "id" => "f2", "type" => "text", "value" => set_value("email"), "placeholder" => "enter new email")) ?>
-            <script type="text/javascript">
-                var f2 = new LiveValidation('f2', {validMessage: "your email is valid", });
-                f2.add(Validate.Email);</script>  
-        </li>
-        <div class="Submitedit">
-            <p>
-                <?= form_submit(array("name" => "submit", "class" => "button", "value" => "Save Changes")) ?>  
-            </p>
+        </ul>
         </div>
--->
-             <?= form_input(array("name" => "email","id" => "f2", "type" => "text", "value" => set_value("email"), "placeholder" => "enter new email")) ?>
-                <script type="text/javascript">
-		     var f2 = new LiveValidation('f2',{ validMessage: "your email is valid"  });
-                         f2.add( Validate.Email );</script>  
-        </li>
+        <?php 
+                    
+                   $n=count($groups);
+            
+                   
+                   for($i=0;$i<$n;$i++) {                   
+                   $NameGroup  =$groups[$i]['NameGroup'];
+                   $idGroup    =$groups[$i]['IdGroup'];
+                   
+                 
+                   
+                    echo '<div class="userrow">'. 
+                           " <ul>"
+                                .'<li class="li0">'.'<a onClick="return checkMe1()" href=adminPanelController/deleteG/'."$idGroup>".'<img  src="'. base_url()."/assets/images/png/delete_black.png".'"'. 'width="20" height="20">'."</a></li>"
+                                .'<li class="li6">'."<center>$NameGroup</center></li>
+                             </ul>
+                            </div>
+                            ";
+                    }
         
-        <?php  if (isset($_POST['submit'])) {          echo 'vase informacije su uspesno promenjene!!!'; }
         ?>
-        
-          <div class="Submitedit">
-         <p>
-    
-        <br />  <br /> <br />
-        <?= form_submit(array("name" => "submit","type" => "submit","class" => "button", "value" => "Save Changes")) ?>  
-        </p>
-        </div>
-        
-         <?= form_close() ?>
-
     </div>
         
 </div>
