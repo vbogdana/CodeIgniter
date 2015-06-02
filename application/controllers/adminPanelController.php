@@ -8,16 +8,32 @@ class adminPanelController extends CI_Controller{
     }
     
      public function index(){
-           // $allUsers = array(); 
+            
             $this->load->model('AdminPanel_Model','adminPanel');
             $allUsers=$this->adminPanel->getAllUsers();
-            
-           print_r(array_values($allUsers));
-            
-          // $this->load->view('templates/page', array('menu' => 'board/toolbar', 'container' => 'admin/adminpanel'));
+            $allGroups=$this->adminPanel->getAllGroups();
+            $this->load->view('templates/page', array('menu' => 'board/toolbar', 'container' => 'admin/adminpanel','niz' => $allUsers,'groups' => $allGroups));
           
           
      }
     
+      public function delete($idUser) {  
+          
+          $this->load->model('AdminPanel_model','AdminPanel');
+          $this->AdminPanel->deleteUser($idUser);
+          redirect('adminPanelController');
+          
+      }
+      
+      public function deleteG($idGroup) {  
+          
+          $this->load->model('AdminPanel_model','AdminPanel');
+          $this->AdminPanel->deleteGroup($idGroup);
+          redirect('adminPanelController');
+          
+      }
+      
+      
+      
     
 }
