@@ -104,4 +104,17 @@ class GroupNote_Model extends CI_Model{
         $this->db->update('note', $array1);
          
     }
+    
+    public function isGroupNote($idNote) {
+        $this->db->from('group_note');
+        $this->db->where('idNote', $idNote);
+        $query = $this->db->get();
+        
+        if ($query->num_rows() == 1) {
+            return 'group';
+        }
+        else {
+            return 'personal';
+        }
+    }
 }

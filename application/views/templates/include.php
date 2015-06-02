@@ -17,7 +17,10 @@ autor Bogdana
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 	<script src="<?php echo base_url()."/assets/js/js_menu/script.js"; ?>"> </script>
         <script src="<?php echo base_url()."/assets/js/js_note/note_buttons.js"; ?>"> </script>
+        <!-- popups -->
         <script src="<?php echo base_url()."/assets/js/js_note/popup.js"; ?>"> </script>
+        <script src="<?php echo base_url()."/assets/js/js_note/editpopup.js"; ?>"> </script>
+        <!-- end popups -->
 	<script type="text/javascript" src="<?php echo base_url()."assets/js/js-edit-profile/livevalidation.js";?>"></script>
         
         <script type="text/javascript" src="<?php echo base_url()."assets/js/js-edit-profile/iscroll.js";?>"></script>

@@ -24,8 +24,9 @@
                                                                                'grupa' => $group,
                                                                                'podsetnici' => $reminders));
                                
-                                
+                                echo '';
                                     $this->load->view('board/newNotePopup', array('group'=>$group));
+                                    $this->load->view('board/editNotePopup', array('group'=>$group));
                                 
                                 echo '</div>';  // kraj load Boarda
                           
