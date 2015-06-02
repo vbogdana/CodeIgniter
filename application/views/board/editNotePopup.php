@@ -31,11 +31,11 @@ echo '<div id="format-edit" class="ui-buttonset">';
             <select name="hourGroup-edit" id="hourGroup-edit">';
     for ($i = 0; $i < 24; $i++) {
         if ($i < 10) {
-            echo '<option>0' . $i . '</option>';
+            echo '<option value="'.$i.'">0'.$i.'</option>';
         } else if ($i == 12) {
-            echo '<option selected>' . $i . '</option>';
+            echo '<option value="'.$i.'" selected>'.$i.'</option>';
         } else {
-            echo '<option>' . $i . '</option>';
+            echo '<option value="'.$i.'">'.$i.'</option>';
         }
     }
     echo '</select>';
@@ -44,11 +44,11 @@ echo '<div id="format-edit" class="ui-buttonset">';
           <select name="minuteGroup-edit" id="minuteGroup-edit">';
     for ($i = 0; $i < 60; $i++) {
         if ($i == 0) {
-            echo '<option selected>' . $i . $i . '</option>';
+            echo '<option value="'.$i.'" selected>' . $i . $i . '</option>';
         } else if ($i < 10) {
-            echo '<option>0' . $i . '</option>';
+            echo '<option value="'.$i.'">0' . $i . '</option>';
         } else {
-            echo '<option>' . $i . '</option>';
+            echo '<option value="'.$i.'">' . $i . '</option>';
         }
     }
     echo '</select>';
@@ -73,11 +73,11 @@ echo '<label for="hourPersonal-edit">hours</label>
 
 for ($i = 0; $i < 24; $i++) {
     if ($i < 10) {
-        echo '<option>0' . $i . '</option>';
+        echo '<option value="'.$i.'">0' . $i . '</option>';
     } else if ($i == 12) {
-        echo '<option selected>' . $i . '</option>';
+        echo '<option value="'.$i.'" selected>' . $i . '</option>';
     } else {
-        echo '<option>' . $i . '</option>';
+        echo '<option value="'.$i.'">' . $i . '</option>';
     }
 }
 echo '</select>';
@@ -86,11 +86,11 @@ echo '<label for="minutePersonal-edit">minutes</label>
       <select name="minutePersonal-edit" id="minutePersonal-edit">';
 for ($i = 0; $i < 60; $i++) {
     if ($i == 0) {
-        echo '<option selected>' . $i . $i . '</option>';
+        echo '<option value="'.$i.'" selected>' . $i . $i . '</option>';
     } else if ($i < 10) {
-        echo '<option>0' . $i . '</option>';
+        echo '<option value="'.$i.'">0' . $i . '</option>';
     } else {
-        echo '<option>' . $i . '</option>';
+        echo '<option value="'.$i.'">' . $i . '</option>';
     }
 }
 echo '</select>';

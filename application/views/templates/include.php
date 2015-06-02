@@ -1,5 +1,5 @@
 <!--
-autor Bogdana
+autor Bogdana, Dusan Spasojevic
 -->
 
         <!-- CSS FAJLOVI -->
