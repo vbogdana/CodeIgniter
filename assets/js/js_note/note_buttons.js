@@ -5,7 +5,7 @@
  * @author Bogdana
  */
 
-
+var muted = "0.6";
 function changeIcon(image) {
     if (image.src === "http://localhost/CodeIgniter/assets/images/png/star.png") {
         image.src = "http://localhost/CodeIgniter/assets/images/png/star_black.png";
@@ -25,6 +25,13 @@ function changeIcon(image) {
         image.src = "http://localhost/CodeIgniter/assets/images/png/hide.png";
     } else if (image.src === "http://localhost/CodeIgniter/assets/images/png/lock_black.png") {
         image.src = "http://localhost/CodeIgniter/assets/images/png/lock.png";
+    } else if (image.src === "http://localhost/CodeIgniter/assets/images/png/mute_black.png") {
+        if (muted == "1") {
+            muted = "0.6";
+        } else {
+            muted = "1";
+        }
+        image.style.opacity = muted;
     } else {
         image.src = "http://localhost/CodeIgniter/assets/images/png/star.png";
     }
@@ -124,4 +131,31 @@ function loadImages(idNote, group) {
     });
 
 
+}
+
+function mute(idNote) {
+    var rtext = "#rtext" + idNote;
+    
+    var post_data = {
+        'idNote': idNote,
+        '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
+    };
+    
+    $.ajax({
+        type: "POST",
+        //url: "<?php echo base_url(); ?>index.php/NewGroupController/addMember/",
+        url: "http://localhost/CodeIgniter/index.php/boardController/mute",
+        data: post_data,
+        success: function (data) {
+            if (data.length > 0) {
+                if (data != 0) {
+                  $(rtext).html(data);
+                  // get group reminder
+                } else {
+                  $(rtext).html("group reminder muted");
+                }
+            }
+        }
+    });
+    
 }

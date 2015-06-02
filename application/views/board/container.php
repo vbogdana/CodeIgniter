@@ -75,16 +75,22 @@
                                                     }
                                             echo '</div> ';             // kraj buttons-a                   
                                             echo    '<div class="title">'; echo $naslov; echo '</div>
-                                                    <div class="content">'; echo $text; echo '</div>
+                                                    <div class="content"><div class="ctext">'; echo $text; echo '</div></div>
                                                     <div class="edited_On">last edited on '; echo $datum; echo'</div>
-                                                    <div class="global_Reminder">'; 
-                                                    if ($grupni != '0')  { echo "group reminder on ".$grupni; }
+                                                    <div class="global_Reminder">
+                                                        <div class="rtext" id="rtext'.$row['idNote'].'">'; 
+                                                    if ($grupni != '0')  { 
+                                                        echo $grupni; 
+                                                        echo '</div><div class="rmute">';
+                                                        echo '<img src="'.base_url()."assets/images/png/mute_black.png".'" style="opacity: 0.6" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="mute(\''.$row['idNote'].'\')">';
+                                                    }
                                                     else { echo 'no group reminder'; }
-                                                    echo'</div>
-                                                    <div class="personal_Reminder">'; 
-                                                    if ($personalni != '0') { echo "personal reminder on ".$personalni; }
+                                                    echo'</div></div>
+                                                    <div class="personal_Reminder">
+                                                        <div class="rtext">'; 
+                                                    if ($personalni != '0') { echo $personalni; }
                                                     else { echo 'no personal reminder'; }
-                                                    echo '</div>'; 
+                                                    echo '</div></div>'; 
                                                     echo '<div class="created_By">';
                                                         echo '<div class="note_button" id="edit'.$row['idNote'].'">';
                                                         echo '</div>';
