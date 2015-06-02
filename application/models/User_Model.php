@@ -50,6 +50,8 @@ class User_Model extends CI_Model {
                     'idUser' => $row->idUser,
                     'nickname' => $row->nickname,
                     'email' => $row->email,
+                      //dodao za admina
+                    'admin' => $row->is_Admin,
                     'password' => $row->password,
                     //dodao za sliku
                     'image'=>"",
@@ -86,7 +88,7 @@ class User_Model extends CI_Model {
             'email' => $email,
             'note_color' => '1',
             'link_photo' => '',
-            'is_Admin' => '',
+            'is_Admin' => '0',
         );
 
         if ($this->db->insert('user', $user) == TRUE) {
@@ -102,6 +104,7 @@ class User_Model extends CI_Model {
             'idUser' => $session_data['idUser'],
             'nickname' => $session_data['nickname'],
             'email' => $session_data['email'],
+            'admin' => $session_data['admin'],
             'password' => $session_data['password'],
             'logged_in' => 1,
             // treba meni
