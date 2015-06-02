@@ -80,15 +80,18 @@
                                                     <div class="global_Reminder" id="group_Reminder'.$row['idNote'].'">
                                                         <div class="rtext" id="rtext'.$row['idNote'].'">'; 
                                                             echo $grupni;
-                                                    if ($grupni != 'no group reminder')  { 
-                                                         
-                                                        echo '</div><div class="rmute">';
+                                                    if ($grupni != 'no group reminder')  {
+                                                        echo '</div><div class="rbutton">';
                                                         echo '<img src="'.base_url()."assets/images/png/mute_black.png".'" style="opacity: 0.6" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="mute(\''.$row['idNote'].'\')">';
                                                     }
                                                     echo'</div></div>
                                                     <div class="personal_Reminder" >
                                                         <div class="rtext" id="personal_Reminder'.$row['idNote'].'">'; 
                                                             echo $personalni;
+                                                    if ($personalni == 'no personal reminder')  {
+                                                        echo '</div><div class="rbutton">';
+                                                        echo '<img src="'.base_url()."assets/images/png/plus_black.png".'" style="opacity: 0.6" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="addPersonal(\''.$row['idNote'].'\')">';
+                                                    }
                                                     echo '</div></div>'; 
                                                     echo '<div class="created_By" id="created_By'.$row['idNote'].'">';
                                                         echo '<div class="note_button edit" id="edit'.$row['idNote'].'">';

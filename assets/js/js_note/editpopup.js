@@ -11,7 +11,7 @@
  * 
  */
 
-var dialog_edit, idNote, isGroup, groupReminder, personalReminder;
+var dialog_edit, idNote, g, isGroup, groupReminder, personalReminder;
 
 
 $(function() {
@@ -174,8 +174,8 @@ function showReminderEdit(check, d) {
     }
 }
 
-function editOnClick(note) {
-    
+function editOnClick(note, group) {
+    g = group;
     idNote = note;
     document.getElementById('hourGroup-edit').selectedIndex = 12;
     document.getElementById('minuteGroup-edit').selectedIndex = 0;

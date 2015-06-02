@@ -5,7 +5,7 @@
  * @author Bogdana
  */
 
-var muted = "0.6";
+var muted = "0.6", per = "0.6";
 function changeIcon(image) {
     if (image.src === "http://localhost/CodeIgniter/assets/images/png/star.png") {
         image.src = "http://localhost/CodeIgniter/assets/images/png/star_black.png";
@@ -32,6 +32,13 @@ function changeIcon(image) {
             muted = "1";
         }
         image.style.opacity = muted;
+    } else if (image.src === "http://localhost/CodeIgniter/assets/images/png/plus_black.png") {
+        if (per == "1") {
+            per = "0.6";
+        } else {
+            per = "1";
+        }
+        image.style.opacity = per;
     } else {
         image.src = "http://localhost/CodeIgniter/assets/images/png/star.png";
     }
@@ -52,6 +59,7 @@ function loadImages(idNote, group) {
 
     var post_data = {
         'idNote': idNote,
+        'group' : group,
         '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
     };
 

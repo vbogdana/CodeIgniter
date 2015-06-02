@@ -211,12 +211,13 @@ class BoardController extends CI_Controller {
 
     public function editImg() {
         $idNote = $_POST['idNote'];
+        $group = $_POST['group'];
 
         $locked = $this->group_note->checkLocked($idNote);
 
         if (!($locked)) {
             //echo '<img src="' . base_url() . "assets/images/png/edit_black.png" . '" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" />';
-            echo '<img src="' . base_url() . "assets/images/png/edit_black.png" . '" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="editOnClick(\''.$idNote.'\')" />';
+            echo '<img src="' . base_url() . "assets/images/png/edit_black.png" . '" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="editOnClick(\''.$idNote.'\',\''.$group.'\')" />';
         } else if ($locked) {
             echo '<img src="' . base_url() . "assets/images/png/edit_black.png" . '" style="opacity: 0.3" />';
         }   
