@@ -100,10 +100,10 @@ $(function() {
                 data: post_data,
                 success: function (data) {
                     if (data.length > 0) {
-                        document.getElementById('location-edit').value = "izmenjena" + data;
+                        //document.getElementById('location-edit').value = "izmenjena" + data;
                         setTimeout(function () {    
-                            //dialog_edit.dialog("close");
-                            //window.location.href = "http://localhost/CodeIgniter/index.php/boardController/board/" + g;
+                            dialog_edit.dialog("close");
+                            window.location.href = "http://localhost/CodeIgniter/index.php/boardController/board/" + g;
                         }, 1000);
                         
                     }
@@ -138,7 +138,7 @@ $(function() {
     $("#format-edit").buttonset();
 
 // NE ZAVISI VISE OD GRUPE VEC OD BELESKE
-    document.getElementById('location-edit').value = idNote;
+    //document.getElementById('location-edit').value = idNote;
     group.datepicker({dateFormat: 'yy-mm-dd'});
     group.datepicker({defaultDate: '2015-06-01'});
     group.datepicker("option", "firstDay", 1);
@@ -175,7 +175,7 @@ function showReminderEdit(check, d) {
 function editOnClick(note) {
     // if note group then show, else don't
     idNote = note;
-    document.getElementById('location-edit').value = note;
+    //document.getElementById('location-edit').value = note;
     var post_data = {
         'idNote': note,
         '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'

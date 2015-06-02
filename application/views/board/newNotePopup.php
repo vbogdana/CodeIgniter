@@ -8,7 +8,7 @@
 
 /* pop up dialog form */
 echo '<div id="dialog-form" title="Create a new note">';
-echo '<p class="validateTips">Title and content of a note are required.</p>
+echo '<p class="validateTips">Title of a note is required.</p>
  
                                         <form>
                                           <fieldset>
@@ -32,7 +32,7 @@ if ($group != 'global' && $group != 'important' && $group != 'hidden') {
           <select name="hourGroup" id="hourGroup">';
     for ($i = 0; $i < 24; $i++) {
         if ($i < 10) {
-            echo '<option selected>0' . $i . '</option>';
+            echo '<option>0' . $i . '</option>';
         } else if ($i == 12) {
             echo '<option selected>' . $i . '</option>';
         } else {
@@ -72,7 +72,7 @@ echo '<label for="hourPersonal">hours</label>
 
 for ($i = 0; $i < 24; $i++) {
     if ($i < 10) {
-        echo '<option selected>0' . $i . '</option>';
+        echo '<option>0' . $i . '</option>';
     } else if ($i == 12) {
         echo '<option selected>' . $i . '</option>';
     } else {

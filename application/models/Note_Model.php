@@ -42,8 +42,24 @@ class Note_Model extends CI_Model {
         return $idNote;
     }
     
-    public function updateNote($idUser, $isGroup, $title, $content) {
+    public function updateNote($idUser, $idNote, $isGroup, $title, $content) {
+        $array = array (
+            'title' => $title,
+            'text' => $content,
+            'last_Edited_On' => date('Y-m-d H:i:s')
+        );
         
+        $this->db->where('idNote', $idNote);
+        $this->db->update('note', $array);
+        
+        if ($isGroup == 'true') {
+            $array1 = array(
+                'last_Editor' => $idUser
+            );
+            
+           $this->db->where('idNote', $idNote);
+           $this->db->update('group_note', $array1); 
+        }
     }
     
     public function getCreatorInfo($idNote) {
