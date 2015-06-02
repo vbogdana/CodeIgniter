@@ -14,7 +14,7 @@ class adminPanelController extends CI_Controller{
             
            print_r(array_values($allUsers));
             
-          // $this->load->view('templates/page', array('menu' => 'board/toolbar', 'container' => 'admin/adminpanel'));
+          //$this->load->view('templates/page', array('menu' => 'board/toolbar', 'container' => 'admin/adminpanel'));
           
           
      }
