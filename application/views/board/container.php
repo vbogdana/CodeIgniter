@@ -74,10 +74,10 @@
                                                        echo '<script type="text/javascript"> loadImages(\''.$row['idNote'].'\',\''.$group.'\') </script>';
                                                     }
                                             echo '</div> ';             // kraj buttons-a                   
-                                            echo    '<div class="title">'; echo $naslov; echo '</div>
-                                                    <div class="content"><div class="ctext">'; echo $text; echo '</div></div>
-                                                    <div class="edited_On">last edited on '; echo $datum; echo'</div>
-                                                    <div class="global_Reminder">
+                                            echo    '<div class="title" id="title'.$row['idNote'].'" >'; echo $naslov; echo '</div>
+                                                    <div class="content" id="content'.$row['idNote'].'"><div class="ctext">'; echo $text; echo '</div></div>
+                                                    <div class="edited_On" id="edited_On'.$row['idNote'].'">last edited on '; echo $datum; echo'</div>
+                                                    <div class="global_Reminder" id="global_Reminder'.$row['idNote'].'">
                                                         <div class="rtext" id="rtext'.$row['idNote'].'">'; 
                                                             echo $grupni;
                                                     if ($grupni != 'no group reminder')  { 
@@ -86,12 +86,12 @@
                                                         echo '<img src="'.base_url()."assets/images/png/mute_black.png".'" style="opacity: 0.6" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="mute(\''.$row['idNote'].'\')">';
                                                     }
                                                     echo'</div></div>
-                                                    <div class="personal_Reminder">
+                                                    <div class="personal_Reminder" id="personal_Reminder'.$row['idNote'].'">
                                                         <div class="rtext">'; 
                                                             echo $personalni;
                                                     echo '</div></div>'; 
-                                                    echo '<div class="created_By">';
-                                                        echo '<div class="note_button" id="edit'.$row['idNote'].'">';
+                                                    echo '<div class="created_By" id="created_By'.$row['idNote'].'">';
+                                                        echo '<div class="note_button edit" id="edit'.$row['idNote'].'">';
                                                         echo '</div>';
                                                         echo '<div class="creator" id="creator'.$row['idNote'].'">';
                                                         echo '</div>';

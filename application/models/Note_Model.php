@@ -42,6 +42,10 @@ class Note_Model extends CI_Model {
         return $idNote;
     }
     
+    public function updateNote($idUser, $isGroup, $title, $content) {
+        
+    }
+    
     public function getCreatorInfo($idNote) {
         $user = array();
         

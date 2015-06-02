@@ -12,7 +12,7 @@
  */
 
 $(function() {
-    var dialog, form,
+    var dialog, dialog_edit, form,
       //emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
       title = $( "#title" ),
       content = $( "#content" ),
@@ -56,7 +56,7 @@ $(function() {
         allFields.removeClass("ui-state-error");
 
         valid = valid && checkLength(title, "title", 3, 45);
-        valid = valid && checkLength(content, "content", 1, 500);
+        //valid = valid && checkLength(content, "content", 1, 500);
         //valid = valid && checkLength( password, "password", 5, 16 );
 
         valid = valid && checkRegexp(title, /^[a-z]([0-9a-z_\s])+$/i, "Title may consist of a-z, 0-9, underscores, spaces and must begin with a letter.");
@@ -70,7 +70,7 @@ $(function() {
                 if (document.getElementById('check1').checked == true) {
                     gC = true;
                     gD = group.datepicker({dateFormat: 'yy-mm-dd'}).val();
-                    gR = gD + " " + $("#hourGroup").find(":selected").text() + ":" + $("#minutePersonal").find(":selected").text() + ":00";
+                    gR = gD + " " + $("#hourGroup").find(":selected").text() + ":" + $("#minuteGroup").find(":selected").text() + ":00";
                 }
             }
             if (document.getElementById('check2').checked == true) {
@@ -158,43 +158,27 @@ $(function() {
     form = dialog.find( "form" ).on( "submit", function( event ) {
       event.preventDefault();
       dialog.dialog( "close" );
-      //createNote();
     });
     
     // on click na add note
     $("#create-note").on("click", function () {
-        //$("#dialog-form").css({"visibility": "visible"});
         dialog.dialog("open"); 
     });
     
 });
 
 function showReminder(check, d) {
-    //document.getElementById('content').value = "reminderGroup";
     var add = '';
-    
-    if (d == 1)
-        add = 'Group';
-    else
-        add = 'Personal';
-    var date = $("#date"+add),
-        hour = $("#hour"+add),
-        minute = $("#minute"+add),
-        shour = $("span#hour"+add+"-button"),
-        sminute = $("span#minute"+add+"-button");
-
-    if (check.checked == true) {
-        date.css({"visibility":"visible"}, {"display":"block"});
-        //hour.css({"visibility":"visible"}, {"display":"block"});
-        //minute.css({"visibility":"visible"}, {"display":"block"});
-        shour.css({"visibility":"visible"}, {"display":"block"});
-        sminute.css({"visibility":"visible"}, {"display":"block"});
+    if (d == 1) {
+        if (check.checked == true) 
+            $("#GROUP").css({"visibility":"visible", "display": "block"});
+        else
+            $("#GROUP").css({"visibility":"hidden", "display": "none"});
     } else {
-        date.css({"visibility":"hidden"}, {"display":"none"});
-        //hour.css({"visibility":"hidden"}, {"display":"none"});
-        //minute.css({"visibility":"hidden"}, {"display":"none"});
-        shour.css({"visibility":"hidden"}, {"display":"none"});
-        sminute.css({"visibility":"hidden"}, {"display":"none"});
+        if (check.checked == true) 
+            $("#PERSONAL").css({"visibility":"visible", "display": "block"});
+        else
+            $("#PERSONAL").css({"visibility":"hidden", "display": "none"});
     }
     
 }

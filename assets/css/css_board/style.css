@@ -458,6 +458,10 @@ input:-moz-placeholder {
     margin-top: 0.5em;
 }
 
+.edit {
+    
+}
+
 .note_button:hover {
     cursor: pointer;
     color: #E89980;
@@ -856,5 +860,30 @@ fieldset {
 
 .overflow {
       height: 200px;
+}
+
+#PERSONAL {
+    visibility: hidden;
+    display: none;
+}
+
+#GROUP {
+    visibility: hidden;
+    display: none;
+}
+
+#PERSONAL-EDIT {
+    visibility: hidden;
+    display: none;
+}
+
+#GROUP-EDIT {
+    visibility: hidden;
+    display: none;
+}
+
+.groupBlock {
+    visibility: hidden;
+    display: none;
 }
 

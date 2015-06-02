@@ -215,7 +215,8 @@ class BoardController extends CI_Controller {
         $locked = $this->group_note->checkLocked($idNote);
 
         if (!($locked)) {
-            echo '<img src="' . base_url() . "assets/images/png/edit_black.png" . '" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="change(\'' . $idNote . '\', \'edit\',\'edit\')" />';
+            //echo '<img src="' . base_url() . "assets/images/png/edit_black.png" . '" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" />';
+            echo '<img src="' . base_url() . "assets/images/png/edit_black.png" . '" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="editOnClick(\''.$idNote.'\')" />';
         } else if ($locked) {
             echo '<img src="' . base_url() . "assets/images/png/edit_black.png" . '" style="opacity: 0.3" />';
         }   
@@ -257,6 +258,38 @@ class BoardController extends CI_Controller {
         }     
         echo $idNote;
         
+    }
+    
+    public function editNote() {
+        $isGroup = $_POST['isGroup'];
+        $idNote = $_POST['idNote'];
+        $gC = $_POST['gC'];
+        $pC = $_POST['pC'];
+        $gR = $_POST['gR'];
+        $pR = $_POST['pR'];
+        $title = $_POST['t'];
+        $content = $_POST['c'];
+        
+        $idUser = $this->session->userdata('idUser');
+        
+        $this->note->updateNote($idUser, $isGroup, $title, $content);
+        
+        /*
+        $this->reminder->updatePersonal($idUser, $idNote, $pC, $pR);
+
+        if ($isGroup == 'true') {
+            $this->reminder->updateGroup($group, $idNote, $gC, $gR);
+        }
+         *
+         */    
+        echo $idNote;
+    }
+    
+    public function checkGroupNote() {
+        $idNote = $_POST['idNote'];
+        
+        $result = $this->group_note->isGroupNote($idNote);     
+        echo $result;
     }
 
 }
