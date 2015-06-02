@@ -43,6 +43,7 @@ class Note_Model extends CI_Model {
     }
     
     public function getCreatorInfo($idNote) {
+        $user = array();
         
         $this->db->select('idUser');
         $this->db->from('note');
@@ -61,7 +62,22 @@ class Note_Model extends CI_Model {
                 
                 if ($query1->num_rows() == 1) {
                     foreach ($query1->result() as $row1) {
-                        return $row1->nickname;     
+                        $user['nickname'] = $row1->nickname;
+                        
+                        $this->db->select('product_pic');
+                        $this->db->from('image');
+                        $this->db->where('title', $row1->nickname);   
+                        $query2 = $this->db->get();
+                        
+                        if ($query2->num_rows() == 1) {
+                            foreach ($query2->result() as $row2) { 
+                                $user['picture'] = base_url()."/assets/images/profilepictures/".$row2->product_pic; 
+                            }
+                        } else {
+                                $user['picture'] = base_url()."/assets/images/png/user.png";
+                        }
+    
+                        return $user;
                     }
                 }
             }
@@ -250,8 +266,8 @@ class Note_Model extends CI_Model {
 
         $result = mysqli_query($link, "SELECT * "
                 . "FROM note n "
-                . "WHERE exists (SELECT * FROM important iin WHERE n.idNote=iin.idNote AND iin.idUser='$idUser')"
-                . "ORDER BY last_Edited_On desc, idNote desc limit 11")
+                . "WHERE exists (SELECT * FROM important iin WHERE n.idNote=iin.idNote AND iin.idUser='$idUser') "
+                . "ORDER BY n.last_Edited_On desc, n.idNote desc limit 11 ")
                 or die(mysql_error());
 
         while ($row = $result->fetch_assoc()) {

@@ -15,6 +15,7 @@ class BoardController extends CI_Controller {
         $this->load->model('GroupNote_Model', 'group_note');
         $this->load->model('IsMember_Model', 'ismember');
         $this->load->model('User_Model', 'user');
+        $this->load->model('Reminder_Model', 'reminder');
     }
 
     public function loadMore() {
@@ -29,10 +30,12 @@ class BoardController extends CI_Controller {
                   </div>';
             return;
         }
-
+ 
+        $reminders = $this->reminder->getReminders($result);
         $this->load->view('board/container', array('iteracija' => $iteration,
             'rezultat' => $result,
-            'grupa' => $group));
+            'grupa' => $group,
+            'podsetnici' => $reminders));
     }
 
     public function board($group) {
@@ -42,11 +45,17 @@ class BoardController extends CI_Controller {
             redirect('loginController/firstlogin');
         } else {
 
-            $result = $this->note->getNotes($group);
+            $result = $this->note->getNotes($group);          
+            $reminders = $this->reminder->getReminders($result);
+            
             $this->load->view('templates/page', array('menu' => 'board/toolbar',
                 'container' => 'board/boardContainer',
                 'rezultat' => $result,
-                'grupa' => $group));
+                'grupa' => $group,
+                'podsetnici' => $reminders));
+            
+            
+            
         }
     }
 
@@ -209,8 +218,10 @@ class BoardController extends CI_Controller {
 
         $creator = $this->note->getCreatorInfo($idNote);
 
-        echo '<div class="creator_nickname">' . $creator . '</div>';
-        //<div class="creator_img"></div>';
+        echo '<div class="creator_nickname">' . $creator['nickname'] . '</div>
+              <div class="creator_img">
+                <img src="'.$creator['picture'].'" />
+              </div>';
         //echo '<div class="creator_nickname">'.$creator.'</div>';
     }
 
@@ -226,13 +237,15 @@ class BoardController extends CI_Controller {
         $idUser = $this->session->userdata('idUser');
         
         $idNote = $this->note->createEntry($idUser, $group, $title, $content);
-        if ($gC == true) {
-            //$this->reminder->createGroup();
+        if ($pC == 'true') {
+            $this->reminder->createPersonal($idUser, $idNote, $pR);
         }
-        if ($pC == true) {
-            //$this->reminder->createPersonal();
-        }
-        
+
+        if (($group != 'global') && ($group != 'important') && ($group != 'hidden')) {
+            if ($gC == 'true') {
+                $members = $this->reminder->createGroup($group, $idNote, $gR);
+            }
+        }     
         echo $idNote;
         
     }

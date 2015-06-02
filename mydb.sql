@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2015 at 02:50 AM
+-- Generation Time: Jun 02, 2015 at 04:28 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `group` (
   PRIMARY KEY (`idGroup`),
   UNIQUE KEY `idGroup_UNIQUE` (`idGroup`),
   KEY `id_Creator_idx` (`id_Creator`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=50 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=53 ;
 
 --
 -- Dumping data for table `group`
@@ -56,7 +56,9 @@ INSERT INTO `group` (`idGroup`, `name`, `id_Creator`, `created_On`) VALUES
 (46, 'bogdanina', 4, '2015-05-29 05:56:00'),
 (47, 'aleksina', 4, '2015-05-29 05:56:41'),
 (48, 'dulovi', 4, '2015-05-29 06:00:21'),
-(49, 'grupa', 59, '2015-05-29 07:02:19');
+(49, 'grupa', 59, '2015-05-29 07:02:19'),
+(51, 'Grupa Bogdana', 4, '2015-05-31 18:51:25'),
+(52, 'Bogdanina grupa', 4, '2015-05-31 18:52:36');
 
 -- --------------------------------------------------------
 
@@ -81,13 +83,15 @@ CREATE TABLE IF NOT EXISTS `group_note` (
 
 INSERT INTO `group_note` (`idNote`, `last_Editor`, `is_Locked`, `id_Group`) VALUES
 (1, 4, '0', 14),
-(3, 2, '0', 14),
+(3, 2, '1', 14),
 (5, 4, '0', 14),
 (7, 2, '0', 14),
-(10, 2, '0', 12),
 (15, 2, '1', 14),
-(16, 4, '1', 14),
-(17, 2, '1', 14);
+(17, 2, '1', 14),
+(36, 4, '0', 14),
+(38, 4, '0', 13),
+(75, 4, '0', 14),
+(84, 4, '0', 14);
 
 -- --------------------------------------------------------
 
@@ -113,6 +117,30 @@ INSERT INTO `hidden_note` (`idNote`, `idUser`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `image`
+--
+
+CREATE TABLE IF NOT EXISTS `image` (
+  `image` int(11) NOT NULL AUTO_INCREMENT,
+  `product_pic` varchar(500) NOT NULL,
+  `title` varchar(50) NOT NULL,
+  PRIMARY KEY (`image`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=78 ;
+
+--
+-- Dumping data for table `image`
+--
+
+INSERT INTO `image` (`image`, `product_pic`, `title`) VALUES
+(8, 'a63bdd8711a092ccf4b2abd2e00bbed8.jpg', 'dulenba'),
+(9, '1198605485f1b2d8f45c9676c98e1fe1.jpg', 'dulenba'),
+(28, 'db7c3fa8af57f5a50986f8e56649f216.jpg', 'dulo'),
+(75, '5ffba5991955f1e2e19d1282d2d3e48e.jpg', 'dulence'),
+(76, 'ff67fb6e6f9523a7a03460142b746ae4.jpg', 'vbogdana');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `important`
 --
 
@@ -130,9 +158,9 @@ CREATE TABLE IF NOT EXISTS `important` (
 
 INSERT INTO `important` (`idUser`, `idNote`) VALUES
 (4, 3),
-(4, 6),
-(4, 15),
-(4, 16);
+(4, 9),
+(4, 13),
+(4, 14);
 
 -- --------------------------------------------------------
 
@@ -195,7 +223,15 @@ INSERT INTO `ismember` (`id_User`, `id_Group`, `joined_On`, `is_Admin`) VALUES
 (1, 49, '2015-05-29 07:02:19', 0),
 (4, 49, '2015-05-29 07:02:19', 0),
 (5, 49, '2015-05-29 07:02:19', 0),
-(59, 49, '2015-05-29 07:02:19', 1);
+(59, 49, '2015-05-29 07:02:19', 1),
+(1, 51, '2015-05-31 18:51:26', 0),
+(2, 51, '2015-05-31 18:51:26', 0),
+(4, 51, '2015-05-31 18:51:25', 1),
+(5, 51, '2015-05-31 18:51:26', 0),
+(1, 52, '2015-05-31 18:52:37', 0),
+(2, 52, '2015-05-31 18:52:37', 0),
+(4, 52, '2015-05-31 18:52:36', 1),
+(5, 52, '2015-05-31 18:52:37', 0);
 
 -- --------------------------------------------------------
 
@@ -207,35 +243,39 @@ CREATE TABLE IF NOT EXISTS `note` (
   `idNote` int(11) NOT NULL AUTO_INCREMENT,
   `text` varchar(500) NOT NULL,
   `created_On` datetime NOT NULL,
-  `last_Edited_On` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `last_Edited_On` datetime NOT NULL,
   `title` varchar(45) DEFAULT NULL,
   `idUser` int(11) NOT NULL,
   PRIMARY KEY (`idNote`),
   UNIQUE KEY `idNote_UNIQUE` (`idNote`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=85 ;
 
 --
 -- Dumping data for table `note`
 --
 
 INSERT INTO `note` (`idNote`, `text`, `created_On`, `last_Edited_On`, `title`, `idUser`) VALUES
-(1, 'Neki tamo textjksfnkjdsfkja', '2015-05-30 03:00:00', '2015-05-30 17:32:17', 'Prvi', 4),
-(2, 'ksfjdskfjkdsnvkjdsnvjk', '2015-05-30 10:00:00', '2015-05-30 17:32:17', 'Drugi', 4),
+(1, 'Neki tamo textjksfnkjdsfkja', '2015-05-30 03:00:00', '2015-05-31 08:16:01', 'Prvi', 4),
 (3, 'Ovo je important beleska iz grupe u kojoj je vbogdana', '2015-05-30 11:00:00', '2015-05-30 17:32:17', 'Grupna Important', 2),
 (4, 'nije bogdanina beleska vec dulova', '2015-05-28 00:00:00', '2015-05-30 17:32:17', 'Dulova', 2),
 (5, 'Hidden beleska koju je dule napravio grupna', '2015-05-21 08:00:00', '2015-05-22 15:00:00', 'Hidden Dule grupna', 2),
-(6, 'Important personalna', '2015-05-26 05:00:00', '2015-05-27 10:29:00', 'Important Bogdana personalna', 4),
 (7, 'Grupna dule napravio', '2015-05-13 00:00:00', '2015-05-30 23:02:06', 'Grupna not important', 2),
-(8, 'personalna kasnije izmenjena', '2015-05-20 10:00:00', '2015-05-30 14:00:00', 'Personalna', 4),
+(8, 'personalna kasnije izmenjena', '2015-05-20 10:00:00', '2015-05-31 05:53:21', 'Personalna', 4),
 (9, 'fsdjkjfkjasnkjnfkjdf', '2015-05-28 13:25:00', '2015-05-28 19:00:28', 'Personalna', 4),
-(10, 'jfkdbslbvlkjsdnblsjfklb', '2015-05-25 00:00:00', '2015-05-30 23:14:37', 'Grupna id10', 4),
 (11, 'lkfvkldsfgm;slkdf', '2015-05-21 00:00:00', '2015-05-22 00:00:00', 'id11', 4),
 (12, 'krgmvklfdgks;gsklm', '2015-05-18 00:00:00', '2015-05-25 00:00:00', 'id12', 4),
 (13, 'ldskmflkadfkladvm', '2015-05-04 00:00:00', '2015-05-04 00:00:00', 'id13', 4),
 (14, 'lkdfvmkadfl', '2015-05-04 00:00:00', '2015-05-04 00:00:00', 'id14', 4),
 (15, 'kfdsnvkkdzfnvkldfs creator Dule', '2015-05-21 00:00:00', '2015-05-25 00:00:00', 'Nova id15 grupna', 2),
-(16, 'kreator vbogdana', '2015-05-12 00:00:00', '2015-05-31 14:00:00', 'nova id16', 4),
-(17, 'najranija creator Dule', '2015-05-02 00:00:00', '2015-05-03 00:00:00', 'id17', 2);
+(17, 'najranija creator Dule', '2015-05-02 00:00:00', '2015-05-03 00:00:00', 'id17', 2),
+(18, 'Test 3', '2015-06-01 05:52:32', '2015-06-01 05:52:32', 'Novaa', 4),
+(19, 'ajde ddkjnskjdkvad', '2015-06-01 05:56:31', '2015-06-01 05:56:31', 'IDemooooo', 4),
+(35, 'ajmo', '2015-06-01 06:34:01', '2015-06-01 06:34:01', 'Personalna nova', 4),
+(36, 'idemo', '2015-06-01 06:34:48', '2015-06-01 06:34:48', 'Grupna nova', 4),
+(37, 'probandsvnkjsdlkkds', '2015-06-01 07:09:22', '2015-06-01 07:09:22', 'personalna nova 2 proba', 4),
+(38, 'fkm vkds vkdsf k', '2015-06-01 07:10:32', '2015-06-01 07:12:47', 'nova grupna grupa 10 proba', 4),
+(75, 'aaaaaaa', '2015-06-02 01:29:00', '2015-06-02 01:29:00', 'aaaaa', 4),
+(84, 'oba remindera grupa id 14', '2015-06-02 03:53:49', '2015-06-02 03:53:49', 'nova id 83', 4);
 
 -- --------------------------------------------------------
 
@@ -247,10 +287,23 @@ CREATE TABLE IF NOT EXISTS `reminder` (
   `idUser` int(11) NOT NULL,
   `idNote` int(11) NOT NULL,
   `datetime` datetime DEFAULT NULL,
-  PRIMARY KEY (`idUser`,`idNote`),
+  `personal` tinyint(4) NOT NULL,
+  `mute` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`idUser`,`idNote`,`personal`),
   KEY `fkNote_idx` (`idNote`),
   KEY `fkUser_idx` (`idUser`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `reminder`
+--
+
+INSERT INTO `reminder` (`idUser`, `idNote`, `datetime`, `personal`, `mute`) VALUES
+(1, 84, '2015-06-02 12:00:00', 0, 0),
+(2, 84, '2015-06-02 12:00:00', 0, 0),
+(4, 84, '2015-06-02 12:00:00', 0, 0),
+(4, 84, '2015-06-02 12:00:00', 1, 0),
+(5, 84, '2015-06-02 12:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -264,7 +317,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` varchar(45) NOT NULL,
   `link_Photo` varchar(45) DEFAULT NULL,
   `is_Admin` tinyint(1) NOT NULL,
-  `note_Color` int(11) DEFAULT NULL,
+  `note_Color` varchar(6) DEFAULT 'FFFFFF',
   `password` varchar(45) NOT NULL,
   PRIMARY KEY (`idUser`),
   UNIQUE KEY `idUser_UNIQUE` (`idUser`)
@@ -275,21 +328,21 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`idUser`, `nickname`, `email`, `link_Photo`, `is_Admin`, `note_Color`, `password`) VALUES
-(1, 'aleksa93', 'aleksa@mail.com', '', 0, 1, '1234'),
-(2, 'dule', 'dule@mail.com', '', 0, 1, '1234'),
-(4, 'vbogdana', 'bveselinovic555@gmail.com', '', 0, 1, 'sifrab'),
-(5, 'dulenba', 'dulenba@gmail.com', NULL, 0, 2, 'sifrad'),
-(6, 'dulo', 'dulo@gjdfk.com', NULL, 0, 5, 'dulo'),
-(15, 'dulooo', 'dulooo@fkjs.com', NULL, 0, 5, 'dulooo'),
-(18, 'duleee', 'duleee@gjdfk.com', NULL, 0, 5, 'duleee'),
-(35, 'dulence', 'dulence@fkjs.com', NULL, 0, 5, 'dulence'),
-(43, 'duleee1', 'duleee1@gjdfk.com', NULL, 0, 5, 'duleee1'),
-(44, 'duleee2', 'duleee2@gjdfk.com', NULL, 0, 5, 'duleee2'),
-(50, 'duleee3', 'duleee3@gjdfk.com', NULL, 0, 5, 'duleee3'),
-(51, 'duleee5', 'duleee5@gjdfk.com', NULL, 0, 5, 'duleee5'),
-(55, 'duleee7', 'duleee7@gjdfk.com', NULL, 0, 5, 'duleee7'),
-(58, 'duleee8', 'duleee8@gjdfk.com', NULL, 0, 5, 'duleee8'),
-(59, 'username', 'username@email.com', '', 0, 1, 'password');
+(1, 'aleksa93', 'aleksa@mail.com', '', 0, '1', '1234'),
+(2, 'dule', 'dule@mail.com', '', 0, '1', '1234'),
+(4, 'vbogdana', 'bveselinovic555@gmail.com', '', 0, '1', 'sifrab'),
+(5, 'dulenba', 'dulenba@gmail.com', NULL, 0, '2', 'sifrad'),
+(6, 'dulo', 'dulo@gjdfk.com', NULL, 0, '5', 'dulo'),
+(15, 'dulooo', 'dulooo@fkjs.com', NULL, 0, '5', 'dulooo'),
+(18, 'duleee', 'duleee@gjdfk.com', NULL, 0, '5', 'duleee'),
+(35, 'dulence', 'dulence@fkjs.com', NULL, 0, '5', 'dulence'),
+(43, 'duleee1', 'duleee1@gjdfk.com', NULL, 0, '5', 'duleee1'),
+(44, 'duleee2', 'duleee2@gjdfk.com', NULL, 0, '5', 'duleee2'),
+(50, 'duleee3', 'duleee3@gjdfk.com', NULL, 0, '5', 'duleee3'),
+(51, 'duleee5', 'duleee5@gjdfk.com', NULL, 0, '5', 'duleee5'),
+(55, 'duleee7', 'duleee7@gjdfk.com', NULL, 0, '5', 'duleee7'),
+(58, 'duleee8', 'duleee8@gjdfk.com', NULL, 0, '5', 'duleee8'),
+(59, 'username', 'username@email.com', '', 0, '1', 'password');
 
 --
 -- Constraints for dumped tables
@@ -334,8 +387,8 @@ ALTER TABLE `ismember`
 -- Constraints for table `reminder`
 --
 ALTER TABLE `reminder`
-  ADD CONSTRAINT `fkNote_RM` FOREIGN KEY (`idNote`) REFERENCES `note` (`idNote`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fkUser_RM` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fkNote_RM` FOREIGN KEY (`idNote`) REFERENCES `note` (`idNote`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fkUser_RM` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

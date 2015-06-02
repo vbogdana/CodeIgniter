@@ -2,7 +2,6 @@
     autori Bogdana Veselinovic, Dusan Spasojevic
 */
 
-@import url(font-awesome.min.css);
 @import url("http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,300italic,400italic");
 
 body {
@@ -549,9 +548,16 @@ input:-moz-placeholder {
 .creator_img {
     float: left;
     width: 25%;
-    margin-top: 0.5em;
+    margin-top: 1%;
     color: orange;
     height: 100%;
+    
+}
+
+.creator_img img {
+    width: 50%;
+    height: 80%;
+    border-radius: 4px;
 }
 
 .load-more {
