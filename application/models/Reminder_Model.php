@@ -105,4 +105,42 @@ class Reminder_Model extends CI_Model {
 
         return $reminders;
     }
+    
+    public function mute($idNote) {
+        $idUser = $this->session->userdata('idUser');
+
+        $this->db->select('mute, datetime');
+        $this->db->from('reminder');
+        $this->db->where('idNote', $idNote);
+        $this->db->where('idUser', $idUser);
+        $this->db->where('personal', '0');
+        $reminder = $this->db->get();
+        
+
+        if ($reminder->num_rows() == 1) {
+            foreach ($reminder->result() as $r) {
+                if ($r->mute == '1') {
+                    $array = array(
+                        'mute'=> '0'
+                    );
+                } else {
+                    $array = array(
+                        'mute'=>'1'
+                    );
+                }
+                
+                $wasmuted = $r->mute;
+
+                $this->db->where('idNote', $idNote);
+                $this->db->where('idUser', $idUser);
+                $this->db->where('personal', '0');
+                $this->db->update('reminder', $array);
+                if ($wasmuted == '1') {
+                    return $r->datetime;
+                } else {
+                    return $wasmuted;
+                }
+            }
+        }
+    }
 }

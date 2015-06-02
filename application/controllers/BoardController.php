@@ -122,6 +122,15 @@ class BoardController extends CI_Controller {
             echo "unlock";
         }
     }
+    
+    public function mute() {
+        $idNote = $_POST['idNote'];
+        // da li moze kreator da ga muteuju ili samo izbrise?
+        
+        $result = $this->reminder->mute($idNote);
+        
+        echo $result;
+    }
 
     public function delete() {
         $idNote = $_POST['idNote'];
