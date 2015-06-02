@@ -2,6 +2,7 @@
     autor Bogdana
 -->
 <?php
+$isAdmin = $this->session->userdata('admin');
                            echo '<!--	Toolbar	-->
                             <div class="Toolbar"> 
 				      
@@ -38,16 +39,28 @@
                                                     </a>
 						</div>
 					</div>
-				</div>
-                                <div class="ToolButton ImportantButton">
-						<div class="ToolbarImg" id="1">
+				</div>';
+                           
+                           /* admin button */
+                           
+                           if ($isAdmin == '1') {
+                               echo '<div class="ToolButton AdminButton">
+						<div class="ToolbarImg" id="6">
+                                                    <a href="http://localhost/CodeIgniter/index.php/adminPanelController/adminPanel">
+							<img src="'.base_url().'/assets/images/png/settings.png" />
+                                                    </a>
+						</div>
+				</div>';
+                           }
+                                echo '<div class="ToolButton ImportantButton">
+						<div class="ToolbarImg" id="4">
                                                     <a href="http://localhost/CodeIgniter/index.php/boardController/board/important">
 							<img src="'.base_url().'/assets/images/png/star.png" />
                                                     </a>
 						</div>
 				</div>
                                 <div class="ToolButton GlobalButton">
-						<div class="ToolbarImg" id="1">
+						<div class="ToolbarImg" id="5">
                                                     <a href="http://localhost/CodeIgniter/index.php/boardController/board/global">
 							<img src="'.base_url().'/assets/images/png/global.png" />
                                                     </a>
