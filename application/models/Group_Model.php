@@ -71,5 +71,100 @@ class Group_Model extends CI_Model {
         $this->db->where('id_Creator', $idUser);
         return $this->db->get('group', 8);
     }
+    
+    
+    public function allGroupsUser($IdUser){
+        
+         $this->db->from('group');
+         $this->db->where('id_Creator', $IdUser);
+         $query = $this->db->get();
+         
+         $data = array();
+         $i = 0;
+         
+         foreach ($query->result() as $row) {
 
+            $user_data = array(
+                'IdGroup' => $row->idGroup,
+                'NameGroup' => $row->name,
+                'IdCreator' => $row->id_Creator,
+            );
+
+
+            $data[$i] = $user_data;
+            $i++;
+        }
+        
+        return $data;
+    }
+    
+     public function deleteGroup($idGroup){
+       
+        $this->db->where('idGroup', $idGroup);
+        $this->db->delete('group');
+
+        return $this->db->affected_rows(); //vraca 0 kada se brise iz baze
+        
+    }
+
+    public function isMemberGroup($IdUser){
+        
+         $this->db->from('ismember');
+         $this->db->where('id_User', $IdUser);
+         
+         $query = $this->db->get();
+         
+         $data = array();
+         $i = 0;
+         
+         foreach ($query->result() as $row) {
+
+            $user_data = $row->id_Group;
+ 
+            $data[$i] = $user_data;
+            $i++;
+        }
+        
+        return $data;
+        
+        
+    }
+    
+    public function takeGroupName($isMember){
+        
+         $data = array();
+         $j = 0;
+        
+        $n=count($isMember);
+        for($i=0;$i<$n;$i++) {
+             $this->db->from('group');
+             $this->db->where('idGroup', $isMember[$i]);
+            
+              $query = $this->db->get();
+              
+              foreach ($query->result() as $row) {
+
+                 $user_data = $row->name;
+ 
+                 $data[$j] = $user_data;
+                 $j++;
+               }
+        
+             
+        }
+        
+        return $data;
+        
+    }
+    
+    public function leaveGroup($idGroup,$IdUser){
+        
+         $this->db->where('id_User', $IdUser);
+         $this->db->where('id_Group', $idGroup);
+         $this->db->delete('ismember');
+
+        return $this->db->affected_rows(); //vraca 0 kada se brise iz baze
+        
+    }
+    
 }
