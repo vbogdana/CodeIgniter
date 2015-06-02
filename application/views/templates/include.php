@@ -16,6 +16,8 @@ autor Bogdana
 	<!-- SKRIPT FAJLOVI -->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 	<script src="<?php echo base_url()."/assets/js/js_menu/script.js"; ?>"> </script>
+        <script src="<?php echo base_url()."/assets/js/js_note/note_buttons.js"; ?>"> </script>
+        <script src="<?php echo base_url()."/assets/js/js_note/popup.js"; ?>"> </script>
 	<script type="text/javascript" src="<?php echo base_url()."assets/js/js-edit-profile/livevalidation.js";?>"></script>
         
         <script type="text/javascript" src="<?php echo base_url()."assets/js/js-edit-profile/iscroll.js";?>"></script>
@@ -34,15 +36,12 @@ autor Bogdana
           </script>
           
         
-      <!--<script src="//code.jquery.com/jquery-1.10.2.js"></script>-->
-      <!--<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>-->
-        
         <link href="<?php echo base_url()."/assets/jquery/jquery-ui.css"; ?>" rel="stylesheet">
         <script src="<?php echo base_url()."/assets/jquery/external/jquery/jquery.js"; ?>"> </script>
         <script src="<?php echo base_url()."/assets/jquery/jquery-ui.js"; ?>"> </script>
   
                     <script>
-            
+        /* PROBLEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEM */ 
         var iconSelect;
 
         window.onload = function(){

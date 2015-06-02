@@ -19,6 +19,7 @@
                                                                                'rezultat' => $result,
                                                                                'grupa' => $group));
                                
+                                /* pop up dialog form */
                                 echo '<div id="dialog-form" title="Create a new note">';
                                 echo '<p class="validateTips">Title and content of a note are required.</p>
  

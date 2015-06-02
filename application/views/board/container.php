@@ -27,7 +27,7 @@
                                         if ($iteration == 1) {
                                             echo '<div class="one-note">
                                                         <div class="AddNote" id="create-note" >
-                                                            <h1> add new note </h1>
+                                                            <h1><a> add new note </a> </h1>
                                                         </div>
                                                 </div>';
                                             $i = 1;

@@ -17,6 +17,21 @@ class IsMember_Model extends CI_Model {
         return $this->db->get('ismember')->result();
     }
     
+    function getMembers($group) {
+        $members = array();
+        
+        $this->db->select('id_User');
+        $this->db->from('ismember');
+        $this->db->where('id_Group', $group);
+        
+        $query = $this->db->get();
+        
+        if ($query->num_rows() > 0) {
+            return $query;
+        }
+        return FALSE;
+    }
+    
     public function isAdmin($id_User, $id_Group) {
         //$this->db->select();
         $this->db->from('ismember');
