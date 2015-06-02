@@ -17,10 +17,12 @@
                                 $result = $rezultat;
                                 $iteration = 1;
                                 $group = $grupa;
+                                $reminders = $podsetnici;
                                 echo '<div id="loadBoard">';
                                     $this->load->view('board/container', array('iteracija' => $iteration, 
                                                                                'rezultat' => $result,
-                                                                               'grupa' => $group));
+                                                                               'grupa' => $group,
+                                                                               'podsetnici' => $reminders));
                                
                                 
                                     $this->load->view('board/newNotePopup', array('group'=>$group));

@@ -6,6 +6,7 @@
 			<?php
                                 
                                     $result = $rezultat;
+                                    $reminders = $podsetnici;
                                     $group = $grupa;
                                     $notes = array(); $n = 0;
                                     $num = count($result);
@@ -37,16 +38,19 @@
                                             $i = 0;
                                             $cnt = 0;
                                         }
+                                        $r = 0;
                                     foreach ($result as $row)
                                     //while ($row = mysqli_fetch_assoc($result))
                                     {
                                             if (($cnt % 4) == 0 && $cnt > 1) {
                                                 echo '<div class="one-row">';
                                             }
-                                            $notes[$n] = $row['idNote'];
+                                            //$notes[$n] = $row['idNote'];
                                             $text=$row['text'];
                                             $datum = $row['last_Edited_On'];
                                             $naslov = $row['title'];
+                                            $grupni = $reminders[$r]['group'];
+                                            $personalni = $reminders[$r++]['personal'];
 
                                             echo '<div class="one-note">
                                                     <div class="buttons">';
@@ -73,8 +77,14 @@
                                             echo    '<div class="title">'; echo $naslov; echo '</div>
                                                     <div class="content">'; echo $text; echo '</div>
                                                     <div class="edited_On">last edited on '; echo $datum; echo'</div>
-                                                    <div class="global_Reminder">'; echo'</div>
-                                                    <div class="personal_Reminder">'; echo '</div>'; 
+                                                    <div class="global_Reminder">'; 
+                                                    if ($grupni != '0')  { echo "group reminder on ".$grupni; }
+                                                    else { echo 'no group reminder'; }
+                                                    echo'</div>
+                                                    <div class="personal_Reminder">'; 
+                                                    if ($personalni != '0') { echo "personal reminder on ".$personalni; }
+                                                    else { echo 'no personal reminder'; }
+                                                    echo '</div>'; 
                                                     echo '<div class="created_By">';
                                                         echo '<div class="note_button" id="edit'.$row['idNote'].'">';
                                                         echo '</div>';

@@ -30,10 +30,12 @@ class BoardController extends CI_Controller {
                   </div>';
             return;
         }
-
+ 
+        $reminders = $this->reminder->getReminders($result);
         $this->load->view('board/container', array('iteracija' => $iteration,
             'rezultat' => $result,
-            'grupa' => $group));
+            'grupa' => $group,
+            'podsetnici' => $reminders));
     }
 
     public function board($group) {
@@ -43,11 +45,17 @@ class BoardController extends CI_Controller {
             redirect('loginController/firstlogin');
         } else {
 
-            $result = $this->note->getNotes($group);
+            $result = $this->note->getNotes($group);          
+            $reminders = $this->reminder->getReminders($result);
+            
             $this->load->view('templates/page', array('menu' => 'board/toolbar',
                 'container' => 'board/boardContainer',
                 'rezultat' => $result,
-                'grupa' => $group));
+                'grupa' => $group,
+                'podsetnici' => $reminders));
+            
+            
+            
         }
     }
 
