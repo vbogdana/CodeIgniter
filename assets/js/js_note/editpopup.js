@@ -7,11 +7,11 @@
 
 
 /*
- *      POP UP NEW NOTE
+ *      POP UP EDIT NOTE
  * 
  */
 
-var dialog_edit, idNote, isGroup;
+var dialog_edit, idNote, isGroup, groupReminder, personalReminder;
 
 
 $(function() {
@@ -74,7 +74,7 @@ $(function() {
             if (document.getElementById('check-edit2').checked == true) {
                 pC = true;
                 pD = personal.datepicker({dateFormat: 'yy-mm-dd'}).val();
-                pR = pD + " " + $("#hourPersonal").find(":selected").text() + ":" + $("#minutePersonal-edit").find(":selected").text() + ":00";
+                pR = pD + " " + $("#hourPersonal-edit").find(":selected").text() + ":" + $("#minutePersonal-edit").find(":selected").text() + ":00";
             }
             var t = document.getElementById('title-edit').value;
             var c = document.getElementById('content-edit').value;
@@ -138,7 +138,6 @@ $(function() {
     $("#format-edit").buttonset();
 
 // NE ZAVISI VISE OD GRUPE VEC OD BELESKE
-    //document.getElementById('location-edit').value = idNote;
     group.datepicker({dateFormat: 'yy-mm-dd'});
     group.datepicker({defaultDate: '2015-06-01'});
     group.datepicker("option", "firstDay", 1);
@@ -158,6 +157,9 @@ $(function() {
   
 });
 
+/* 
+ * prikaz kalendara
+ */
 function showReminderEdit(check, d) {
     if (d == 1) {
         if (check.checked == true) 
@@ -173,9 +175,13 @@ function showReminderEdit(check, d) {
 }
 
 function editOnClick(note) {
-    // if note group then show, else don't
+    
     idNote = note;
-    //document.getElementById('location-edit').value = note;
+    document.getElementById('hourGroup-edit').selectedIndex = 12;
+    document.getElementById('minuteGroup-edit').selectedIndex = 0;
+    document.getElementById('hourPersonal-edit').selectedIndex = 12;
+    document.getElementById('minutePersonal-edit').selectedIndex = 0;
+    
     var post_data = {
         'idNote': note,
         '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
@@ -188,15 +194,84 @@ function editOnClick(note) {
         data: post_data,
         success: function (data) {
             if (data.length > 0) {
+                // setovanje polja na trenutne vrednosti beleske
+                document.getElementById('title-edit').value = document.getElementById('title'+idNote).innerHTML;
+                document.getElementById('content-edit').value = document.getElementById('content'+idNote).innerHTML;
+                personalReminder = document.getElementById('personal_Reminder'+idNote).innerHTML;
+                groupReminder = document.getElementById('rtext'+idNote).innerHTML;
+                var gy = groupReminder.substring(0,4),
+                    gm = groupReminder.substring(5,7),
+                    gd = groupReminder.substring(8,10),
+                    gh = groupReminder.substring(11,13),
+                    gmin = groupReminder.substring(14,16),
+                    py = personalReminder.substring(0,4),
+                    pm = personalReminder.substring(5,7),
+                    pd = personalReminder.substring(8,10),
+                    ph = personalReminder.substring(11,13),
+                    pmin = personalReminder.substring(14,16);
+            
                 if (data == 'group') {
                     isGroup = true;
                     $(".groupBlock").css({"visibility": "visible", "display": "block"});
+                    
+                    if (groupReminder == 'no group reminder') {
+                        $("#GROUP-EDIT").css({"visibility":"hidden", "display": "none"});
+                    } else {
+                        $("#check-edit1").prop("checked", true);
+                        $('#dateGroup-edit').datepicker("setDate", new Date(gy, gm, gd));
+                        $("#GROUP-EDIT").css({"visibility": "visible", "display": "block"});
+                        
+                        var dd = document.getElementById('hourGroup-edit');
+                        for (var i = 0; i < dd.options.length; i++) {
+                            if (dd.options[i].text == gh) {
+                                dd.selectedIndex = i;
+                                $("#hourGroup-edit-button .ui-selectmenu-text").html(gh);
+                                break;
+                            }
+                        }
+                        
+                        dd = document.getElementById('minuteGroup-edit');
+                        for (var i = 0; i < dd.options.length; i++) {
+                            if (dd.options[i].text == gmin) {
+                                dd.selectedIndex = i;
+                                $("#minuteGroup-edit-button .ui-selectmenu-text").html(gmin);
+                                break;
+                            }
+                        }
+                    }
                 } else {
                     isGroup = false;
                     $(".groupBlock").css({"visibility": "hidden", "display": "none"});
                 }
+                
+                if (personalReminder == 'no personal reminder') {
+                        $("#PERSONAL-EDIT").css({"visibility":"hidden", "display": "none"});
+                    } else {
+                        $("#check-edit2").prop("checked", true);
+                        $('#datePersonal-edit').datepicker("setDate", new Date(py,pm,pd) );
+                        $("#PERSONAL-EDIT").css({"visibility":"visible", "display": "block"});
+                        
+                        var ddd = document.getElementById('hourPersonal-edit');
+                        for (var i = 0; i < ddd.options.length; i++) {
+                            if (ddd.options[i].text == ph) {
+                                ddd.selectedIndex = i;
+                                $("#hourPersonal-edit-button .ui-selectmenu-text").html(ph);
+                                break;
+                            }
+                        }
+                        
+                        ddd = document.getElementById('minutePersonal-edit');
+                        for (var i = 0; i < ddd.options.length; i++) {
+                            if (ddd.options[i].text == pmin) {
+                                ddd.selectedIndex = i;
+                                $("#minutePersonal-edit-button .ui-selectmenu-text").html(pmin);
+                                break;
+                            }
+                        }
+                    }
 
-                dialog_edit.dialog("open");
+                dialog_edit.dialog("open");    
+                
             }
         }
     });
