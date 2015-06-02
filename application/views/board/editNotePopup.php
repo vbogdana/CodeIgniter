@@ -8,12 +8,10 @@
 
 /* pop up dialog form */
 echo '<div id="dialog-form-edit" title="Edit a note">';
-echo '<p class="validateTips">Title and content of a note are required.</p>
+echo '<p class="validateTips">Title of a note is required.</p>
  
                                         <form>
                                           <fieldset>
-                                            <label for="location-edit">You are editing note: </label>
-                                            <input type="text" name="location-edit" id="location-edit" value="' . $group . '" maxlength="45" class="text ui-widget-content ui-corner-all" readonly>
                                             <label for="title-edit">Title</label>
                                             <input type="text" name="title-edit" id="title-edit" value="" maxlength="45" class="text ui-widget-content ui-corner-all">';
                                       echo '<label for="content-edit">Content</label>
@@ -33,7 +31,7 @@ echo '<div id="format-edit" class="ui-buttonset">';
             <select name="hourGroup-edit" id="hourGroup-edit">';
     for ($i = 0; $i < 24; $i++) {
         if ($i < 10) {
-            echo '<option selected>0' . $i . '</option>';
+            echo '<option>0' . $i . '</option>';
         } else if ($i == 12) {
             echo '<option selected>' . $i . '</option>';
         } else {
@@ -75,7 +73,7 @@ echo '<label for="hourPersonal-edit">hours</label>
 
 for ($i = 0; $i < 24; $i++) {
     if ($i < 10) {
-        echo '<option selected>0' . $i . '</option>';
+        echo '<option>0' . $i . '</option>';
     } else if ($i == 12) {
         echo '<option selected>' . $i . '</option>';
     } else {

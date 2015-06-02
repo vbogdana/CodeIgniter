@@ -272,16 +272,15 @@ class BoardController extends CI_Controller {
         
         $idUser = $this->session->userdata('idUser');
         
-        $this->note->updateNote($idUser, $isGroup, $title, $content);
-        
-        /*
+        // ovo bi mozda trebalo posle svega zbog vremena menjanja
+        $this->note->updateNote($idUser, $idNote, $isGroup, $title, $content);
+  
         $this->reminder->updatePersonal($idUser, $idNote, $pC, $pR);
-
+        
         if ($isGroup == 'true') {
-            $this->reminder->updateGroup($group, $idNote, $gC, $gR);
+            $this->reminder->updateGroup($idNote, $gC, $gR);
         }
-         *
-         */    
+        
         echo $idNote;
     }
     

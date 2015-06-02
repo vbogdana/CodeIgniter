@@ -19,6 +19,85 @@ class Reminder_Model extends CI_Model {
         $this->load->model('IsMember_Model', 'ismember');
     }
     
+    public function updatePersonal($idUser, $idNote, $pC, $datetime) {
+        // check exist personal
+        $this->db->from('reminder');
+        $this->db->where('idNote', $idNote);
+        $this->db->where('idUser', $idUser);
+        $this->db->where('personal', '1');
+        $result = $this->db->get();
+        
+        if ($result->num_rows() == 1) {
+            // postoji personalni
+            if ($pC == 'true') {
+                // updateuj ga
+                $array = array(
+                    'datetime' => $datetime
+                );
+                
+                $this->db->where('idNote', $idNote);
+                $this->db->where('idUser', $idUser);
+                $this->db->where('personal', '1');
+                $this->db->update('reminder', $array);    
+            } else {
+                // obrisi ga
+                $this->db->where('idNote', $idNote);
+                $this->db->where('idUser', $idUser);
+                $this->db->where('personal', '1');
+                $this->db->delete('reminder');
+            }
+        } else {
+            // ne postoji personalni
+            if ($pC == 'true') {
+                // napravi novi
+                $this->createPersonal($idUser, $idNote, $datetime);
+            }
+        }
+    }
+    
+    public function updateGroup($idNote, $gC, $datetime) {
+        // check exist group reminder
+        $this->db->from('reminder');
+        $this->db->where('idNote', $idNote);
+        $this->db->where('personal', '0');
+        $result = $this->db->get();
+        
+        if ($result->num_rows() > 0) {
+            // postoji grupni
+            if ($gC == 'true') {
+                // updateuj ga
+                $array = array(
+                    'datetime' => $datetime
+                );
+                
+                $this->db->where('idNote', $idNote);
+                $this->db->where('personal', '0');
+                $this->db->update('reminder', $array);    
+            } else {
+                // obrisi ga
+                $this->db->where('idNote', $idNote);
+                $this->db->where('personal', '0');
+                $this->db->delete('reminder');
+            }
+        } else {
+            // ne postoji grupni
+            if ($gC == 'true') {
+                // napravi novi
+                $this->db->select('id_Group');
+                $this->db->from('group_note');
+                $this->db->where('idNote', $idNote);
+                $query = $this->db->get();
+                
+                if ($query->num_rows() == 1) {
+                    foreach ($query->result() as $row) {
+                        $group = $row->id_Group;
+                    }
+                }
+                $this->createGroup($group, $idNote, $datetime);
+            }
+        }
+    }
+    
     public function createPersonal($idUser, $idNote, $datetime) {
         $array = array(
             'idUser' => $idUser,
