@@ -120,7 +120,7 @@ class User_Model extends CI_Model {
     }
 
     public function get_autocomplete($search) {
-        $this->db->select('nickname');
+        $this->db->select('idUser, nickname');
         $this->db->like('nickname', $search);
         return $this->db->get('user', 8);
     }

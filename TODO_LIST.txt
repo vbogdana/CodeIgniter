@@ -2,7 +2,7 @@ TREBA URADITI
 
 1. kada se izmeni personalni reminder preko edit pop-upa, onda taj korisnik udje kao last_Editor, mada to je mozda i ok
 2. kada se ide na strelicu na glavnom searchu, a ne unese se dobra grupa - 404 error
-3. srediti live search i dodavanje clana u grupu
+3. srediti live search i izbacivanje clana iz grupe
 4. srediti updateovanje boje profila
 5. srediti css popupova
 6. srediti css notificationsa

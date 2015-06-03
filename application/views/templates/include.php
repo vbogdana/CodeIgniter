@@ -19,6 +19,7 @@ autor Bogdana, Dusan Spasojevic
 	<script src="<?php echo base_url()."/assets/js/js_menu/script.js"; ?>"> </script>
         <script src="<?php echo base_url()."/assets/js/js_menu/notifications.js"; ?>"> </script>
         <script src="<?php echo base_url()."/assets/js/js_note/note_buttons.js"; ?>"> </script>
+        <script src="<?php echo base_url()."/assets/js/js_menu/addmember.js"; ?>"> </script>
         <!-- popups -->
         <script src="<?php echo base_url()."/assets/js/js_note/popup.js"; ?>"> </script>
         <script src="<?php echo base_url()."/assets/js/js_note/editpopup.js"; ?>"> </script>

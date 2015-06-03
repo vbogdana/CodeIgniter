@@ -77,14 +77,23 @@ function checkMe1() {
         
       
           <center><h3>I am a member of a group:</h3></center></li>
-     <div id="addUser" > <input placeholder="add new member" type='text' style="width: 200px; margin: 0px; position: relative; float: left;"></imput> <button id="DODATI"  style=" background-color: transparent ; margin-left: 8px; cursor: pointer;border: 0px; width:40px; height: 40px; padding-left:8px; padding-top: 8px;"><img  src="<?php echo base_url()."/assets/images/png/adduser.png"; ?>"width="25px" height="25px"></button></div>
-        <?php 
+     <div id="addUser" > 
+         <input id="addmember" placeholder="add new member" type='text' style="width: 200px; margin: 0px; position: relative; float: left;" onkeyup="addMembersSearch()" oninput="addMembersSearch()" autocomplete="off"></input>
+         <div id="suggestions" >
+          <div id="autoSuggestionsList" style="top: 40px; width: 72%; z-index: 30">  </div>
+        </div>
+         <button id="DODATI"  onclick="checkMember()" style=" background-color: transparent ; margin-left: 8px; cursor: pointer;border: 0px; width:40px; height: 40px; padding-left:8px; padding-top: 8px;">
+             <img  src="<?php echo base_url()."/assets/images/png/adduser.png"; ?>" width="25px" height="25px">
+         </button>
+     </div>
+      
+  <?php 
                     
                    $n=count($nazivigrupa);
             
                    
                    for($i=0;$i<$n;$i++) {                   
-                   $NameGroup =$nazivigrupa[$i];
+                   $NameGroup = $nazivigrupa[$i];
                    $idGroup=$IdGrupa[$i]['IdGroup'];
                    $isAdmin=$IdGrupa[$i]['isAdmin'];
                    
@@ -92,7 +101,7 @@ function checkMe1() {
                    
                     echo '<div class="userrow">'. 
                            " <ul>"
-                                .'<li class="lli1">'.'<button id="mybutton" style=" background-color: transparent ; border: 0px; cursor:pointer; width:25px; height: 25px; padding: 0px; ">'.'<img  src="'. base_url()."/assets/images/png/plusbl.png".'"'. 'width="25px" height="25px">'."</button></li>"
+                                .'<li class="lli1">'.'<button id="mybutton" style=" background-color: transparent ; border: 0px; cursor:pointer; width:25px; height: 25px; padding: 0px; ">'.'<img  src="'. base_url().'/assets/images/png/plusbl.png" onclick="setGroupsetGroup(\''.$idGroup.'\',\''.$NameGroup.'\')" width="25px" height="25px"></button></li>'
                                 .'<li class="lli6">'."<center>$NameGroup</center></li>"
                                 .'<li class="lli0">'.'<a onClick="return checkMe1()" href="http://localhost/CodeIgniter/index.php/GroupPanelController/leave/'.$idGroup.'"> <img  src="'. base_url().'/assets/images/png/leavegroup.png" width="20" height="20"></a></li>
                              </ul>
@@ -103,7 +112,7 @@ function checkMe1() {
                        
                          echo '<div class="userrow">'. 
                            " <ul>"
-                                .'<li class="lli1">'.'<button id="mybutton" style=" background-color: transparent ; border: 0px; cursor:pointer; width:25px; height: 25px; padding: 0px; ">'.'<img  src="'. base_url()."/assets/images/png/plusbl.png".'"'. 'width="25px" height="25px">'."</button></li>" 
+                                .'<li class="lli1">'.'<button id="mybutton" style=" background-color: transparent ; border: 0px; cursor:pointer; width:25px; height: 25px; padding: 0px; ">'.'<img  src="'. base_url().'/assets/images/png/plusbl.png" onclick="setGroup(\''.$idGroup.'\',\''.$NameGroup.'\')" width="25px" height="25px"></button></li>'
                                 .'<li class="lli6">'."<center>$NameGroup</center></li> </ul>
                             </div>
                             ";

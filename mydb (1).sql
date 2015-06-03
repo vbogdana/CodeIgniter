@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2015 at 03:42 AM
+-- Generation Time: Jun 03, 2015 at 09:38 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `group` (
   PRIMARY KEY (`idGroup`),
   UNIQUE KEY `idGroup_UNIQUE` (`idGroup`),
   KEY `id_Creator_idx` (`id_Creator`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=53 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=62 ;
 
 --
 -- Dumping data for table `group`
@@ -49,16 +49,11 @@ INSERT INTO `group` (`idGroup`, `name`, `id_Creator`, `created_On`) VALUES
 (13, 'grupa10', 4, '2015-05-29 02:36:51'),
 (14, 'grupa100', 4, '2015-05-29 02:37:31'),
 (41, 'grupa6', 4, '2015-05-29 03:22:30'),
-(42, 'grupa2', 4, '2015-05-29 03:33:11'),
-(43, 'grupa3', 4, '2015-05-29 03:33:14'),
-(44, 'grupa7', 4, '2015-05-29 03:34:20'),
 (45, 'grupa4', 4, '2015-05-29 03:34:22'),
 (46, 'bogdanina', 4, '2015-05-29 05:56:00'),
-(47, 'aleksina', 4, '2015-05-29 05:56:41'),
 (48, 'dulovi', 4, '2015-05-29 06:00:21'),
 (49, 'grupa', 59, '2015-05-29 07:02:19'),
-(51, 'Grupa Bogdana', 4, '2015-05-31 18:51:25'),
-(52, 'Bogdanina grupa', 4, '2015-05-31 18:52:36');
+(51, 'Grupa Bogdana', 4, '2015-05-31 18:51:25');
 
 -- --------------------------------------------------------
 
@@ -160,7 +155,6 @@ CREATE TABLE IF NOT EXISTS `important` (
 
 INSERT INTO `important` (`idUser`, `idNote`) VALUES
 (4, 3),
-(4, 9),
 (4, 13),
 (4, 14);
 
@@ -199,21 +193,12 @@ INSERT INTO `ismember` (`id_User`, `id_Group`, `joined_On`, `is_Admin`) VALUES
 (1, 41, '2015-05-29 03:22:30', 0),
 (4, 41, '2015-05-29 03:22:30', 1),
 (5, 41, '2015-05-29 03:22:30', 0),
-(1, 42, '2015-05-29 03:33:12', 0),
-(4, 42, '2015-05-29 03:33:11', 1),
-(2, 43, '2015-05-29 03:33:14', 0),
-(4, 43, '2015-05-29 03:33:14', 1),
-(5, 43, '2015-05-29 03:33:14', 0),
-(2, 44, '2015-05-29 03:34:20', 0),
-(4, 44, '2015-05-29 03:34:20', 1),
 (1, 45, '2015-05-29 03:34:22', 0),
 (4, 45, '2015-05-29 03:34:22', 1),
 (5, 45, '2015-05-29 03:34:22', 0),
 (1, 46, '2015-05-29 05:56:01', 0),
 (2, 46, '2015-05-29 05:56:01', 0),
 (4, 46, '2015-05-29 05:56:01', 1),
-(2, 47, '2015-05-29 05:56:41', 0),
-(4, 47, '2015-05-29 05:56:41', 1),
 (1, 48, '2015-05-29 06:00:21', 0),
 (2, 48, '2015-05-29 06:00:21', 0),
 (4, 48, '2015-05-29 06:00:21', 1),
@@ -223,17 +208,12 @@ INSERT INTO `ismember` (`id_User`, `id_Group`, `joined_On`, `is_Admin`) VALUES
 (18, 48, '2015-05-29 06:00:21', 0),
 (35, 48, '2015-05-29 06:00:21', 0),
 (1, 49, '2015-05-29 07:02:19', 0),
-(4, 49, '2015-05-29 07:02:19', 0),
 (5, 49, '2015-05-29 07:02:19', 0),
 (59, 49, '2015-05-29 07:02:19', 1),
 (1, 51, '2015-05-31 18:51:26', 0),
 (2, 51, '2015-05-31 18:51:26', 0),
 (4, 51, '2015-05-31 18:51:25', 1),
-(5, 51, '2015-05-31 18:51:26', 0),
-(1, 52, '2015-05-31 18:52:37', 0),
-(2, 52, '2015-05-31 18:52:37', 0),
-(4, 52, '2015-05-31 18:52:36', 1),
-(5, 52, '2015-05-31 18:52:37', 0);
+(5, 51, '2015-05-31 18:51:26', 0);
 
 -- --------------------------------------------------------
 
@@ -250,7 +230,7 @@ CREATE TABLE IF NOT EXISTS `note` (
   `idUser` int(11) NOT NULL,
   PRIMARY KEY (`idNote`),
   UNIQUE KEY `idNote_UNIQUE` (`idNote`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=88 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=89 ;
 
 --
 -- Dumping data for table `note`
@@ -280,7 +260,32 @@ INSERT INTO `note` (`idNote`, `text`, `created_On`, `last_Edited_On`, `title`, `
 (84, 'oba remindera grupa id 14', '2015-06-02 03:53:49', '2015-06-03 00:19:51', 'nova id 84', 4),
 (85, '', '2015-06-02 19:12:14', '2015-06-02 19:12:14', 'proba personalna id 80 i nesto', 4),
 (86, '', '2015-06-02 19:40:39', '2015-06-02 19:40:39', 'grupna sa oba', 4),
-(87, '', '2015-06-02 19:41:38', '2015-06-02 19:41:38', 'mora naslov', 4);
+(87, '', '2015-06-02 19:41:38', '2015-06-02 19:41:38', 'mora naslov', 4),
+(88, 'NOVA IZ NEKE GRUPE ZA BRISANJE', '2015-06-17 00:00:00', '2015-06-17 00:00:00', 'NOVA IZ NEKE GRUPE ZA BRISANJE', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notification`
+--
+
+CREATE TABLE IF NOT EXISTS `notification` (
+  `idNotification` int(11) NOT NULL AUTO_INCREMENT,
+  `idUser` int(11) NOT NULL,
+  `idGroup` int(11) NOT NULL,
+  `content` varchar(100) DEFAULT NULL,
+  `created_On` datetime DEFAULT NULL,
+  PRIMARY KEY (`idNotification`),
+  KEY `fkGroup_idx` (`idGroup`),
+  KEY `fkUser_idx` (`idUser`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
+
+--
+-- Dumping data for table `notification`
+--
+
+INSERT INTO `notification` (`idNotification`, `idUser`, `idGroup`, `content`, `created_On`) VALUES
+(13, 4, 12, 'dsadas', '2015-06-01 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -294,6 +299,7 @@ CREATE TABLE IF NOT EXISTS `reminder` (
   `datetime` datetime DEFAULT NULL,
   `personal` tinyint(4) NOT NULL,
   `mute` tinyint(4) DEFAULT NULL,
+  `seen` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`idUser`,`idNote`,`personal`),
   KEY `fkNote_idx` (`idNote`),
   KEY `fkUser_idx` (`idUser`)
@@ -303,25 +309,25 @@ CREATE TABLE IF NOT EXISTS `reminder` (
 -- Dumping data for table `reminder`
 --
 
-INSERT INTO `reminder` (`idUser`, `idNote`, `datetime`, `personal`, `mute`) VALUES
-(1, 84, '2015-06-19 12:00:00', 0, 0),
-(1, 86, '2015-06-24 06:02:00', 0, 0),
-(1, 87, '2015-06-17 00:00:00', 0, 0),
-(2, 84, '2015-06-19 12:00:00', 0, 0),
-(2, 86, '2015-06-24 06:02:00', 0, 0),
-(2, 87, '2015-06-17 00:00:00', 0, 0),
-(4, 9, '2015-06-18 01:52:00', 1, 0),
-(4, 14, '2015-06-23 02:12:00', 1, 0),
-(4, 15, '2015-07-24 12:09:00', 1, 0),
-(4, 84, '2015-06-19 12:00:00', 0, 0),
-(4, 85, '2015-06-11 07:30:00', 1, 0),
-(4, 86, '2015-06-24 06:02:00', 0, 0),
-(4, 86, '2015-06-24 01:26:00', 1, 0),
-(4, 87, '2015-06-17 00:00:00', 0, 0),
-(4, 87, '2015-06-01 12:12:00', 1, 0),
-(5, 84, '2015-06-19 12:00:00', 0, 0),
-(5, 86, '2015-06-24 06:02:00', 0, 0),
-(5, 87, '2015-06-17 00:00:00', 0, 0);
+INSERT INTO `reminder` (`idUser`, `idNote`, `datetime`, `personal`, `mute`, `seen`) VALUES
+(1, 84, '2015-06-19 12:00:00', 0, 0, 0),
+(1, 86, '2015-06-24 06:02:00', 0, 0, 0),
+(1, 87, '2015-06-17 00:00:00', 0, 0, 0),
+(2, 84, '2015-06-19 12:00:00', 0, 0, 0),
+(2, 86, '2015-06-24 06:02:00', 0, 0, 0),
+(2, 87, '2015-06-17 00:00:00', 0, 0, 0),
+(4, 9, '2015-06-18 01:52:00', 1, 0, 0),
+(4, 14, '2015-06-23 02:12:00', 1, 0, 0),
+(4, 15, '2015-07-24 12:09:00', 1, 0, 0),
+(4, 84, '2015-06-19 12:00:00', 0, 0, 0),
+(4, 85, '2015-06-11 07:30:00', 1, 0, 0),
+(4, 86, '2015-06-24 06:02:00', 0, 0, 0),
+(4, 86, '2015-06-24 01:26:00', 1, 0, 0),
+(4, 87, '2015-06-17 00:00:00', 0, 0, 0),
+(4, 87, '2015-06-01 12:12:00', 1, 0, 1),
+(5, 84, '2015-06-19 12:00:00', 0, 0, 0),
+(5, 86, '2015-06-24 06:02:00', 0, 0, 0),
+(5, 87, '2015-06-17 00:00:00', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -357,7 +363,6 @@ INSERT INTO `user` (`idUser`, `nickname`, `email`, `is_Admin`, `note_Color`, `pa
 (50, 'duleee3', 'duleee3@gjdfk.com', 0, 'FFFFFF', 'duleee3'),
 (51, 'duleee5', 'duleee5@gjdfk.com', 0, 'FFFFFF', 'duleee5'),
 (55, 'duleee7', 'duleee7@gjdfk.com', 0, 'FFFFFF', 'duleee7'),
-(58, 'duleee8', 'duleee8@gjdfk.com', 0, 'FFFFFF', 'duleee8'),
 (59, 'username', 'username@email.com', 0, 'FFFFFF', 'password');
 
 --
@@ -398,6 +403,13 @@ ALTER TABLE `important`
 ALTER TABLE `ismember`
   ADD CONSTRAINT `fkGroup_IM` FOREIGN KEY (`id_Group`) REFERENCES `group` (`idGroup`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fkUser_IM` FOREIGN KEY (`id_User`) REFERENCES `user` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `notification`
+--
+ALTER TABLE `notification`
+  ADD CONSTRAINT `fkGroup_NT` FOREIGN KEY (`idGroup`) REFERENCES `group` (`idGroup`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fkUser_NT` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `reminder`
