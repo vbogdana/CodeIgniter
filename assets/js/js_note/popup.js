@@ -106,7 +106,7 @@ $(function() {
                             dialog.dialog("close");
                             //window.location.reload();
                             window.location.href = "http://localhost/CodeIgniter/index.php/boardController/board/" + g;
-                        }, 1000);
+                        }, 500);
                         
                     }
                 }

@@ -16,6 +16,52 @@ class BoardController extends CI_Controller {
         $this->load->model('IsMember_Model', 'ismember');
         $this->load->model('User_Model', 'user');
         $this->load->model('Reminder_Model', 'reminder');
+        $this->load->model('Notification_Model', 'notification');
+    }
+    
+    public function getNotifications($mode) {
+        $idUser = $this->session->userdata('idUser');
+        
+        // sortiraj ih pomocu orderby
+        $notifications = $this->notification->getNotifications($idUser);
+        $alarms = $this->reminder->getAlarms($idUser);
+        
+        if ($mode == 'count') {
+            $num = count($notifications) + count($alarms);
+            echo $num;
+        } else {
+            foreach ($alarms as $a) {
+                echo '<div class="NotifWrapper id="alarm'.$a['idNote'].'" onclick="seeAlarm(\''.$a['idNote'].'\',\''.$a['personal'].'\')">You have a reminder on '.$a['datetime'].'</div>';
+            }
+            foreach ($notifications as $n) {
+                echo '<div class="NotifWrapper id="notification'.$n['idGroup'].'" onclick="seeNotification(\''.$n['idNotification'].'\',\''.$n['idGroup'].'\')">'.$n['content'].'</div>';
+            }
+            echo '<div class="NotifWrapper">No more notifications</div>';
+        }
+
+    }
+    
+    public function readNotification() {
+        $idNotification = $_POST['idNotification'];
+        
+        $this->notification->deleteNotification($idNotification);
+        echo 'success';
+    }
+    
+    public function readAlarm($idNote, $personal) {
+        $this->reminder->see($idNote, $personal);
+
+        $result = $this->note->readNote($idNote);
+        $reminders = $this->reminder->getReminders($result);
+        $colors = $this->note->getColors($result);
+        
+        $this->load->view('templates/page', array('menu' => 'board/toolbar',
+                'container' => 'board/boardContainer',
+                'rezultat' => $result,
+                'grupa' => 'global',
+                'podsetnici' => $reminders,
+                'boje' => $colors));
+
     }
 
     public function loadMore() {

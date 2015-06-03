@@ -54,7 +54,7 @@ $isAdmin = $this->session->userdata('admin');
 				</div>';
                            }
                                 echo '<div class="ToolButton ImportantButton">
-						<div class="ToolbarImg" id="4">
+						<div class="ToolbarImg" id="8">
                                                     <a href="http://localhost/CodeIgniter/index.php/boardController/board/important">
 							<img src="'.base_url().'/assets/images/png/star.png" />
                                                     </a>
@@ -92,21 +92,24 @@ $isAdmin = $this->session->userdata('admin');
                                */
                                  
                                 
-                                        
-				echo '<div class="ToolButton NotifButton" onClick="menuClick(4)">
+                          
+				echo '<div class="ToolButton NotifButton" onClick="loadNotifications()">
+                                                <div class="NotificationCount" id="nc"></div>
 						<div class="ToolbarImg" id="2">
 							<img src="'.base_url().'assets/images/png/notification.png" />
 						</div>
-				</div>	
-                             
-				<div class="HiddenMenu NotifMenu" id="4">
-					<div class="NotifWrapper"> </div>
+				</div>';	
+                                echo '
+				<div class="HiddenMenu NotifMenu" id="4">';
+					/*<div class="NotifWrapper"> </div>
 					<div class="NotifWrapper"> </div>
 					<div class="NotifWrapper"> </div>	
-					<div class="NotifWrapper"> </div>				
-				</div>
-				<!-- End of Menu Buttons -->
+					<div class="NotifWrapper"> </div>*/
+                                echo
+				'</div>
+				<!-- End of Menu Buttons -->';
 				
+                                echo '
 				<!-- Search bar -->
                                 <div class="Searchbar">
                                     <div class="Flexsearch">

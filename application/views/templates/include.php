@@ -17,6 +17,7 @@ autor Bogdana, Dusan Spasojevic
 	<!-- SKRIPT FAJLOVI -->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 	<script src="<?php echo base_url()."/assets/js/js_menu/script.js"; ?>"> </script>
+        <script src="<?php echo base_url()."/assets/js/js_menu/notifications.js"; ?>"> </script>
         <script src="<?php echo base_url()."/assets/js/js_note/note_buttons.js"; ?>"> </script>
         <!-- popups -->
         <script src="<?php echo base_url()."/assets/js/js_note/popup.js"; ?>"> </script>

@@ -12,6 +12,28 @@ class Note_Model extends CI_Model {
         $this->load->database();
     }
     
+    public function readNote($idNote) {
+        $result = array();
+        
+        $this->db->from('note');
+        $this->db->where('idNote', $idNote);
+        $query = $this->db->get();
+        
+        if ($query->num_rows() == 1) {
+            $i = 0;
+            foreach ($query->result() as $row) {
+                $result[$i]['idNote'] = $row->idNote;
+                $result[$i]['idUser'] = $row->idUser;
+                $result[$i]['title'] = $row->title;
+                $result[$i]['last_Edited_On'] = $row->last_Edited_On;
+                $result[$i]['created_On'] = $row->created_On;
+                $result[$i++]['text'] = $row->text; 
+            }
+        }
+        
+        return $result;
+    }
+    
     public function createEntry($idUser, $group, $title, $content) {
         $date = date('Y-m-d H:i:s');
         
