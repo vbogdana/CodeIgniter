@@ -32,7 +32,7 @@ function changeIcon(image) {
             muted = "1";
         }
         image.style.opacity = muted;
-    } else if (image.src === "http://localhost/CodeIgniter/assets/images/png/plus_black.png") {
+    } else if (image.src === "http://localhost/CodeIgniter/assets/images/png/plusbl.png") {
         if (per == "1") {
             per = "0.6";
         } else {

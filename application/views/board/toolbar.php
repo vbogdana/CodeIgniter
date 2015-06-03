@@ -21,8 +21,9 @@ $isAdmin = $this->session->userdata('admin');
 						</div>
 					</div>
 					<div class="MenuButton">
-						<div class="MenuImg">
+						<div class="MenuImg"><a href="http://localhost/CodeIgniter/index.php/groupPanelController/">
 							<img src="'.base_url().'/assets/images/png/group.png" />
+                                                    </a>
 						</div>
 					</div>
 					<div class="MenuButton">

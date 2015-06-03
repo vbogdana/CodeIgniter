@@ -90,7 +90,7 @@
                                                             echo $personalni;
                                                     if ($personalni == 'no personal reminder')  {
                                                         echo '</div><div class="rbutton">';
-                                                        echo '<img src="'.base_url()."assets/images/png/plus_black.png".'" style="opacity: 0.6" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="addPersonal(\''.$row['idNote'].'\')">';
+                                                        echo '<img src="'.base_url()."assets/images/png/plusbl.png".'" style="opacity: 0.6" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="addPersonal(\''.$row['idNote'].'\')">';
                                                     }
                                                     echo '</div></div>'; 
                                                     echo '<div class="created_By" id="created_By'.$row['idNote'].'">';
