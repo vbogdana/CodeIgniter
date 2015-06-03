@@ -111,7 +111,7 @@ and open the template in the editor.
     margin-top:40px;
     margin-left: 35px;
     margin-right: 0px;
-    width: 40%;
+    width: 28%;
     background-color: #FBFBFF;
     padding: 7px 7px 7px 7px;
     border: solid 1px #E4E4E4;
@@ -128,7 +128,25 @@ and open the template in the editor.
     display: inline;
     margin-top:40px;
     margin-left: 50px;
-    width: 40%;
+    width: 30%;
+    background-color: #FBFBFF;
+      padding: 7px 7px 7px 7px;
+    border: solid 1px #E4E4E4;
+    border-radius: 4px;
+    height: 75%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    
+}
+
+
+.membergroup {
+    position: relative;
+    float:left;   
+    display: inline;
+    margin-top:40px;
+    margin-left: 50px;
+    width: 20%;
     background-color: #FBFBFF;
       padding: 7px 7px 7px 7px;
     border: solid 1px #E4E4E4;

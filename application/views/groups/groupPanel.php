@@ -64,7 +64,7 @@ function checkMe1() {
                     echo '<div class="userrow1">'. 
                            " <ul>"
                                 .'<li class="lli0">'.'<a onClick="return checkMe()" href="http://localhost/CodeIgniter/index.php/GroupPanelController/deleteGro/'.$idGroup.'">'.'<img  src="'. base_url()."/assets/images/png/delete_black.png".'"'. 'width="20" height="20">'."</a></li>"
-                                .'<li class="lli2">'."<center>$NameGroup</center></li>   
+                                .'<li class="lli2">'.'<a  href="http://localhost/CodeIgniter/index.php/GroupPanelController/viewMember/'.$idGroup.'">'."<center>$NameGroup</center></a></li>   
                             </div> ";
                     }
         
@@ -119,6 +119,36 @@ function checkMe1() {
                        
                        
                    }
+                    }
+        
+        ?>
+    </div>
+    
+    
+   
+
+    <div class='membergroup'>
+        <h3> Members of my group:  </h3>
+
+        <?php 
+                   
+                    $k=count($clanoviGrupa);
+            
+                   for($i=0;$i<$k;$i++) {
+                       
+                     if ( $clanoviGrupa==0) break;
+                     
+                     $ime=$this->session->userdata('nickname');
+                             
+                     $imeClana    =$clanoviGrupa[$i];
+                   
+                     if($ime==$imeClana)                         continue;
+
+                    echo '<div class="userrow1">'. 
+                           " <ul>"
+                                .'<li class="lli0">'.'<a onClick="return checkMe()" href="http://localhost/CodeIgniter/index.php/GroupPanelController/deleteGro/'.$idGroup.'">'.'<img  src="'. base_url()."/assets/images/png/delete_black.png".'"'. 'width="20" height="20">'."</a></li>"
+                                .'<li class="lli2">'."<center>$imeClana</center></li>   
+                            </div> ";
                     }
         
         ?>
