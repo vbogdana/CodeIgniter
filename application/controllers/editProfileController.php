@@ -43,3 +43,6 @@ class editProfileController extends CI_Controller {
  
     
 }
+
+
+// E3FFDA, FFFAF0, FFFFFF, FFFFD1, E9FFFF
