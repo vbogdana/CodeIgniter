@@ -35,7 +35,7 @@ and open the template in the editor.
                 Add at least one member
             </div>
             <br />
-            <input id="member" type="text" name="member" maxlength="30" value="<?php echo set_value('member'); ?>" onkeyup="membersSearch();" /> 
+            <input id="member" type="text" name="member" maxlength="30" value="<?php echo set_value('member'); ?>" onkeyup="membersSearch()" oninput="membersSearch()" /> 
             <div id="suggestions">
                 <div id="autoSuggestionsList">  </div>
             </div>

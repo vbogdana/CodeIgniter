@@ -112,7 +112,7 @@ $isAdmin = $this->session->userdata('admin');
                                     <div class="Flexsearch">
                                         <form class="Flexsearch--form" action="#" method="post">
                                             <div class="Flexsearch--input-wrapper">
-                                                <input id="group" class="Flexsearch--input" type="search" placeholder="Search..." onkeyup="groupsSearch()">
+                                                <input id="group" class="Flexsearch--input" type="search" placeholder="Search..." onkeyup="groupsSearch()" oninput="groupsSearch()">
                                             </div>
                                             
                                             <input class="Flexsearch--submit" type="submit" value="&#10140;"/>
