@@ -58,7 +58,8 @@ class Group_Model extends CI_Model {
             // neuspesno kreirana
             echo "NIJE KREIRANA GRESKA DO BAZE \n";
         } else {
-            $this->ismember->createEntry($creator, $idGroup, '1');
+            // dodaje i admina odmah
+            $this->ismember->createEntry($creator, $idGroup, $name, '1', 'false');
         }
 
         return $idGroup;

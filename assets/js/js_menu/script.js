@@ -29,8 +29,12 @@ function  menuClick(menu) {
 function showMenu(menu) {
 
     if (menu == 4) {
-        document.getElementById(menu).style.width = "400px";	// 
-        document.getElementById(menu).style.height = "400%";	// izvlaci traku s notifikacijama
+        //document.getElementById(menu).style.width = "400px";	// 
+        //document.getElementById(menu).style.height = "400%";	// izvlaci traku s notifikacijama
+        //document.getElementById(menu).style.display = "block";
+        document.getElementById(menu).style.visibility = "visible";
+        document.getElementById(menu).style.opacity = "1";
+        document.getElementById(menu).style.height = "800%";
     } else {
         document.getElementById(menu - 2).style.transform = "rotate(135deg)";	// rotira dugme
         document.getElementById(menu).style.top = "115%";	// izvlaci meni
@@ -40,8 +44,12 @@ function showMenu(menu) {
 function hideMenu(menu) {
 
     if (menu == 4) {
-        document.getElementById(menu).style.width = "0";	//
-        document.getElementById(menu).style.height = "0";	// sakriva traku s notifikacijama
+        //document.getElementById(menu).style.width = "0";	//
+        //document.getElementById(menu).style.height = "0";	// sakriva traku s notifikacijama
+        //document.getElementById(menu).style.display = "none";
+        document.getElementById(menu).style.visibility = "hidden";
+        document.getElementById(menu).style.opacity = "0";
+        document.getElementById(menu).style.height = "0%";
     } else {
         document.getElementById(menu - 2).style.transform = "rotate(0deg)";	// rotira dugme
         document.getElementById(menu).style.top = "-300%";	// sakriva meni

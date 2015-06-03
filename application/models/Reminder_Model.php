@@ -19,14 +19,25 @@ class Reminder_Model extends CI_Model {
         $this->load->model('IsMember_Model', 'ismember');
     }
     
+    public function see($idNote, $personal) {
+        $idUser = $this->session->userdata('idUser');
+        $array = array(
+            'seen' => '1',
+        );
+        
+        $this->db->where('idUser', $idUser);
+        $this->db->where('idNote', $idNote);
+        $this->db->where('personal', $personal);
+        $this->db->update('reminder', $array);
+    }
+    
     public function existPersonal($idUser, $idNote) {
         $this->db->from('reminder');
         $this->db->where('idNote', $idNote);
         $this->db->where('idUser', $idUser);
         $this->db->where('personal', '1');
         $result = $this->db->get();
-        
-        
+  
     }
     
     public function updatePersonal($idUser, $idNote, $pC, $datetime) {
@@ -235,5 +246,30 @@ class Reminder_Model extends CI_Model {
                 }
             }
         }
+    }
+    
+    public function getAlarms($idUser) {
+        $current_time = date('Y-m-d H:i:s');
+        $alarms = array();
+        
+        $this->db->from('reminder');
+        $this->db->where('idUser', $idUser);
+        $this->db->where('mute', '0');
+        $this->db->where('seen', '0');
+        $this->db->where('datetime <=', $current_time);
+        $this->db->order_by('datetime', 'desc'); 
+        $query = $this->db->get();
+        
+        if ($query->num_rows() > 0) {
+            $i = 0;
+            foreach($query->result() as $row) {
+                $alarms[$i]['idNote'] = $row->idNote;
+                $alarms[$i]['datetime'] = $row->datetime;
+                $alarms[$i]['personal'] = $row->personal;
+                $i++;
+            }  
+        }
+        
+        return $alarms;
     }
 }

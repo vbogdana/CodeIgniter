@@ -44,8 +44,8 @@ class NewGroupController extends CI_Controller {
             echo "NEUSPESNO KREIRANO \n";
         } else {
             for ($i = 0; $i<$num; $i++) {
-            $id_member = $this->user->exist($members[$i]);
-            $this->ismember->createEntry($id_member, $id_group, '0');
+                $id_member = $this->user->exist($members[$i]);
+                $this->ismember->createEntry($id_member, $id_group, $groupname, '0', 'true');
             }
             
             //$data  = $this->load->view('templates/page', array('menu' => 'board/toolbar', 'container' => 'board/container'), TRUE);

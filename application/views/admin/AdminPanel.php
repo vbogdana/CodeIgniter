@@ -80,7 +80,7 @@ function checkMe1() {
                    
                     echo '<div class="userrow">'. 
                            " <ul>"
-                                .'<li class="li0">'.'<a onClick="return checkMe()" href=adminPanelController/delete/'."$idUser>".'<img  src="'. base_url()."/assets/images/png/delete_black.png".'"'. 'width="20" height="20">'."</a></li>"
+                                .'<li class="li0">'.'<a onClick="return checkMe()" href="http://localhost/CodeIgniter/index.php/adminPanelController/delete/'.$idUser.'">'.'<img  src="'. base_url()."/assets/images/png/delete_black.png".'"'. 'width="20" height="20">'."</a></li>"
                                 .'<li class="li1">'."$idUser</li>"
                                 .'<li class="li2">'."$nickname</li>"
                                 .'<li class="li3">'."$email</li>"
@@ -119,7 +119,7 @@ function checkMe1() {
                    
                     echo '<div class="userrow">'. 
                            " <ul>"
-                                .'<li class="li0">'.'<a onClick="return checkMe1()" href=adminPanelController/deleteG/'."$idGroup>".'<img  src="'. base_url()."/assets/images/png/delete_black.png".'"'. 'width="20" height="20">'."</a></li>"
+                                .'<li class="li0">'.'<a onClick="return checkMe1()" href="http://localhost/CodeIgniter/index.php/adminPanelController/deleteG/'.$idGroup.'">'.'<img  src="'. base_url()."/assets/images/png/delete_black.png".'"'. 'width="20" height="20">'."</a></li>"
                                 .'<li class="li6">'."<center>$NameGroup</center></li>
                              </ul>
                             </div>

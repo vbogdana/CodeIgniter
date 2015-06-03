@@ -63,7 +63,7 @@ function checkMe1() {
 
                     echo '<div class="userrow1">'. 
                            " <ul>"
-                                .'<li class="lli0">'.'<a onClick="return checkMe()" href=GroupPanelController/deleteGro/'."$idGroup>".'<img  src="'. base_url()."/assets/images/png/delete_black.png".'"'. 'width="20" height="20">'."</a></li>"
+                                .'<li class="lli0">'.'<a onClick="return checkMe()" href="http://localhost/CodeIgniter/index.php/GroupPanelController/deleteGro/'.$idGroup.'">'.'<img  src="'. base_url()."/assets/images/png/delete_black.png".'"'. 'width="20" height="20">'."</a></li>"
                                 .'<li class="lli2">'."<center>$NameGroup</center></li>   
                             </div> ";
                     }
@@ -94,10 +94,10 @@ function checkMe1() {
                            " <ul>"
                                 .'<li class="lli1">'.'<button id="mybutton" style=" background-color: transparent ; border: 0px; cursor:pointer; width:25px; height: 25px; padding: 0px; ">'.'<img  src="'. base_url()."/assets/images/png/plusbl.png".'"'. 'width="25px" height="25px">'."</button></li>"
                                 .'<li class="lli6">'."<center>$NameGroup</center></li>"
-                                .'<li class="lli0">'.'<a onClick="return checkMe1()" href=GroupPanelController/leave/'."$idGroup>".'<img  src="'. base_url()."/assets/images/png/leavegroup.png".'"'. 'width="20" height="20">'."</a></li>
+                                .'<li class="lli0">'.'<a onClick="return checkMe1()" href="http://localhost/CodeIgniter/index.php/GroupPanelController/leave/'.$idGroup.'"> <img  src="'. base_url().'/assets/images/png/leavegroup.png" width="20" height="20"></a></li>
                              </ul>
                             </div>
-                            ";
+                            ';
                     
                    }else{
                        

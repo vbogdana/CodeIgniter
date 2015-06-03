@@ -63,7 +63,7 @@ class IsMember_Model extends CI_Model {
         }
     }
     
-    public function createEntry($id_User, $id_Group, $is_Admin) {
+    public function createEntry($id_User, $id_Group, $groupname, $is_Admin, $notification) {
         if ($this->isMember($id_User, $id_Group) == TRUE) {
             return FALSE;
         }
@@ -78,6 +78,19 @@ class IsMember_Model extends CI_Model {
         );
 
         $this->db->insert('ismember', $entry);
+        // ovde dodaje notifikaciju
+        if ($notification == 'true') {
+            $content = 'You were added to the group '.$groupname.' '.$entry['joined_On'].'.';
+            $notification = array(
+                'idUser' => $id_User,
+                'idGroup' => $id_Group,
+                'content' => $content,
+                'created_On' => date('Y-m-d H:i:s')
+            );
+            $this->db->insert('notification', $notification);
+
+        }
+        
         return TRUE;
         
     }
