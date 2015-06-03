@@ -143,11 +143,15 @@ class BoardController extends CI_Controller {
         }
     }
     
-    public function edit() {
+    public function addPersonal() {
         $idNote = $_POST['idNote'];
+        $datetime = $_POST['pR'];
         
-        //otvori view za editovanje
-        echo "edit note";
+        $idUser = $this->session->userdata('idUser');
+        
+        $this->reminder->updatePersonal($idUser, $idNote, 'true', $datetime);
+        
+        echo $datetime;
     }
 
     public function importantImg() {

@@ -883,6 +883,12 @@ fieldset {
     display: none;
 }
 
+#PERSONAL-ADD {
+    visibility: visible;
+    display: block;
+}
+
+
 .groupBlock {
     visibility: hidden;
     display: none;

@@ -58,9 +58,6 @@ if ($group != 'global' && $group != 'important' && $group != 'hidden') {
 }
 
 echo '<input type="checkbox" id="check2" onclick="showReminder(this, 2)"><label for="check2">Personal</label>';
-echo '</div>';
-
-
 
 // PERSONAL REMINDER
 echo '<!-- Datepicker -->
@@ -95,6 +92,7 @@ for ($i = 0; $i < 60; $i++) {
 echo '</select>';
 // PERSONAL REMINDER END
 echo '</div>';
+echo '</div>';  // button set end
 
 echo '<input type="submit" id="note-submit" tabindex="-1" style="position:absolute; top:-1000px">
                                           </fieldset>

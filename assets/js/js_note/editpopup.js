@@ -60,6 +60,7 @@ $(function() {
         allFields.removeClass("ui-state-error");
 
         valid = valid && checkLength(title, "title", 3, 45);
+        valid = valid && checkLength(content, "content", 0, 500);
         valid = valid && checkRegexp(title, /^[a-z]([0-9a-z_\s])+$/i, "Title may consist of a-z, 0-9, underscores, spaces and must begin with a letter.");
 
         if (valid) {

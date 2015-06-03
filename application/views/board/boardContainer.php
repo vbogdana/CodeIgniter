@@ -27,6 +27,7 @@
                                 echo '';
                                     $this->load->view('board/newNotePopup', array('group'=>$group));
                                     $this->load->view('board/editNotePopup', array('group'=>$group));
+                                    $this->load->view('board/addReminderPopup', array('group'=>$group));
                                 
                                 echo '</div>';  // kraj load Boarda
                           
