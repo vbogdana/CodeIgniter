@@ -3,7 +3,7 @@
 /**
  * Description of mgroup
  *
- * @author Bogdana
+ * @author Bogdana, Dusan
  */
 class Group_Model extends CI_Model {
     
@@ -232,7 +232,8 @@ class Group_Model extends CI_Model {
         
     }
     
-    
+
+
     public function Member($IdGroup){
         
           $this->db->from('ismember');
@@ -285,5 +286,37 @@ class Group_Model extends CI_Model {
         
         return $data;
         
+    }
+    
+    public function deleteUsersNote($IdUser,$idGroup){
+        $this->db->from('note');
+        $this->db->where('idUser', $IdUser);
+            
+              $query = $this->db->get();
+              
+              $idNote = array();
+               $j = 0;
+              
+              foreach ($query->result() as $row) {
+
+                 $user_data = $row->idNote;
+ 
+                 $idNote[$j] = $user_data;
+                 $j++;
+               }
+               
+               $n=count($idNote);
+  
+               for($i=0;$i<$n;$i++) {
+                   
+                   $note=$idNote[$i];
+                   
+                   $this->db->where('idNote', $note);
+                    $this->db->where('id_Group', $idGroup);
+                    $this->db->delete('group_note');
+                   
+               }
+                    
+                    
     }
 }

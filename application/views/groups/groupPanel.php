@@ -128,7 +128,7 @@ function checkMe1() {
    
 
     <div class='membergroup'>
-        <h3> Members of my group:  </h3>
+        <h3> Members of my group:   </h3>
 
         <?php 
                    
@@ -139,21 +139,25 @@ function checkMe1() {
                      if ( $clanoviGrupa==0) break;
                      
                      $ime=$this->session->userdata('nickname');
-                             
-                     $imeClana    =$clanoviGrupa[$i];
+                     
+                      $imeClana    =$clanoviGrupa[$i];
+                        
+                        $uri = $_SERVER['REQUEST_URI'];
+                        $grupa = filter_var($uri, FILTER_SANITIZE_NUMBER_INT);
+             
                    
                      if($ime==$imeClana)                         continue;
 
                     echo '<div class="userrow1">'. 
                            " <ul>"
-                                .'<li class="lli0">'.'<a onClick="return checkMe()" href="http://localhost/CodeIgniter/index.php/GroupPanelController/deleteGro/'.$idGroup.'">'.'<img  src="'. base_url()."/assets/images/png/delete_black.png".'"'. 'width="20" height="20">'."</a></li>"
+                                .'<li class="lli0">'.'<a onClick="return checkMe()" href="http://localhost/CodeIgniter/index.php/GroupPanelController/deleteUserFromGroup/'.$imeClana.'/'.$grupa.'">'.'<img  src="'. base_url()."/assets/images/png/deleteUsers.png".'"'. 'width="20" height="20">'."</a></li>"
                                 .'<li class="lli2">'."<center>$imeClana</center></li>   
                             </div> ";
                     }
         
         ?>
     </div>
-        
+   
 </div>
 
     

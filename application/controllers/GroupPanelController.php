@@ -53,7 +53,24 @@ class GroupPanelController extends CI_Controller {
         
     }
     
- 
+    
+    public function deleteUserFromGroup($username,$idGroup){
+        $this->load->model('Group_Model', 'GroupPanel');
+        $this->load->model('User_Model', 'UserModel');
+        
+        $idUser=$this->UserModel->exist($username);
+        
+       
+      //  $this->GroupPanel->leaveGroup($idGroup,$idUser);
+        $aaa= $this->GroupPanel->deleteUsersNote($idUser,$idGroup);
+        
+        
+        print_r($aaa);
+       // redirect('GroupPanelController/viewMember/'."$idGroup");
+    }
+
+
+    
 
     public function autocomplete() {
         $search = $_POST['member'];
