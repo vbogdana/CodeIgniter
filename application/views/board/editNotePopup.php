@@ -12,16 +12,25 @@ echo '<p class="validateTips">Title of a note is required.</p>
  
                                         <form>
                                           <fieldset>
+                                            <div class="titlepopup">
                                             <label for="title-edit">Title</label>
-                                            <input type="text" name="title-edit" id="title-edit" value="" maxlength="45" class="text ui-widget-content ui-corner-all">';
-                                      echo '<label for="content-edit">Content</label>
-                                            <textarea id="content-edit" name="content-edit" maxvalue="500"></textarea>';
+                                            <input type="text" name="title-edit" id="title-edit" value="" maxlength="45" class="text ui-widget-content ui-corner-all">
+                                            </div>';
+                                            echo '
+                                                <div class="contentpopup">
+                                                <label for="content-edit">Content</label>
+                                            <textarea id="content-edit" name="content-edit" maxvalue="500"></textarea>
+                                            </div>';
 
 echo '<div id="format-edit" class="ui-buttonset">';
+     echo '<input type="checkbox" id="check-edit2" onclick="showReminderEdit(this, 2)">'
+    . '<label for="check-edit2">Personal</label>';
+    echo '<div class="groupCheck"><input type="checkbox" id="check-edit1" onclick="showReminderEdit(this, 1)">'
+    . '<label for="check-edit1">Group</label></div>';
+   
+    echo '</div>';
+    
     echo '<div class="groupBlock">';
-    echo '<input type="checkbox" id="check-edit1" onclick="showReminderEdit(this, 1)">'
-    . '<label for="check-edit1">Group</label>';
-
     // GROUP REMINDER
     echo '<!-- Datepicker -->
         <div id="GROUP-EDIT">
@@ -57,8 +66,7 @@ echo '<div id="format-edit" class="ui-buttonset">';
     echo '</div>';  // end /groupBlock
 
 
-echo '<input type="checkbox" id="check-edit2" onclick="showReminderEdit(this, 2)">'
-    . '<label for="check-edit2">Personal</label>';
+
 
 
 
@@ -97,7 +105,6 @@ echo '</select>';
 // PERSONAL REMINDER END
 echo '</div>';
 
-echo '</div>';  // button set end
 
 echo '<input type="submit" id="note-submit-edit" tabindex="-1" style="position:absolute; top:-1000px">
                                           </fieldset>

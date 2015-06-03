@@ -49,7 +49,7 @@ $(function () {
     dialog_add = $( "#dialog-form-add" ).dialog({
       autoOpen: false,
       height: 500,
-      width: 700,
+      width: 450,
       modal: true,
       buttons: {
         'Add a reminder': addReminder,
@@ -64,7 +64,7 @@ $(function () {
     
     // definise elemente popupa
     personal.datepicker({dateFormat: 'yy-mm-dd'});
-    personal.datepicker( {defaultDate: '2015-06-01'} ); 
+    personal.datepicker( {defaultDate: '2015-06-10'} ); 
     personal.datepicker( "option", "firstDay", 1 );
     $( "#hourPersonal-add" ).selectmenu().selectmenu( "menuWidget" ).addClass( "overflow" );
     $( "#minutePersonal-add" ).selectmenu().selectmenu( "menuWidget" ).addClass( "overflow" );
@@ -74,12 +74,7 @@ $(function () {
       event.preventDefault();
       dialog_add.dialog( "close" );
     });
-    
-    // on click na add note
-    $("#create-note").on("click", function () {
-        dialog_add.dialog("open"); 
-    });
-    
+ 
 });
 
 function addPersonal(note) {

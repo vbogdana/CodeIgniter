@@ -9,7 +9,7 @@
 /* pop up dialog form */
 echo '<div id="dialog-form-add" title="Add a personal reminder">';
 echo '<form>
-        <fieldset>';
+        <fieldset style="width: 90%">';
 
 // PERSONAL REMINDER
 echo '<!-- Datepicker -->

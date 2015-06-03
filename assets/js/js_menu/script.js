@@ -278,8 +278,37 @@ function chooseGroup(group, idGroup) {
 
 function goToGroup() {
     var groupname = document.getElementById('group').value;
-    window.href.location = '';
+
+    $.ajax({
+        type: "POST",
+        //url: "<?php echo base_url(); ?>index.php/NewGroupController/autocomplete/",
+        url: "http://localhost/CodeIgniter/index.php/boardController/goToGroup/" + groupname,
+        success: function (data) {   // ako je funkcija kontrolera uspesna
+            // return success
+            $('#suggestions1').show();
+            $('#autoSuggestionsList1').addClass('auto_list1');
+            $('#autoSuggestionsList1').html(data);
+            /*
+            if (data == 'No such group or you are not a member of it.') {
+                setTimeout(function () {
+                    document.getElementById('group').value = 'lalalala';
+                    $('#suggestions1').hide();
+                }, 2000);
+            }
+            */
+        }
+    });
+    
+    //window.location.href = "http://localhost/CodeIgniter/index.php/boardController/goToGroup/" + groupname; 
 }
+
+$(function() {
+$("#search_id").find( "form" ).on( "submit", function( event ) {
+      goToGroup();
+      event.preventDefault();
+      
+    });
+});
 
 /*
  * 

@@ -32,23 +32,35 @@ class Group_Model extends CI_Model {
     }
     
     public function existGroupByName($groupname) {
-        $this->db->select('idGroup');
+        $data = array();
+        $this->db->select('idGroup, id_Creator');
         $this->db->from('group');
         $this->db->where('name', $groupname);
         
         $query = $this->db->get();
 
-        if ($query->num_rows() == 1) {
+        if ($query->num_rows() > 0) {
+            $i = 0;
             foreach ($query->result() as $row) {
-                return $row->idGroup;
+                
+                // izaberi kreatora
+                $this->db->select('nickname');
+                $this->db->from('user');
+                $this->db->where('idUser', $row->id_Creator);
+                
+                foreach ($this->db->get()->result() as $row1) {
+                    $data[$i]['idGroup'] = $row->idGroup;
+                    $data[$i]['creator'] = $row1->nickname;   
+                }
+                
+                $i++;
             }
-        } else if ($query->num_rows() > 1) {
-            // postoji ih vise - greska
-            return '-2';
         } else {
             // ne postoji nijedna
             return '-1';
         }
+        
+        return $data;
     }
 
     public function existGroup($groupname, $id_Creator) {

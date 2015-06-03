@@ -143,13 +143,13 @@ $(function() {
 
     if (g != "global" && g != "important" && g != "hidden") {  
         group.datepicker({dateFormat: 'yy-mm-dd'});
-        group.datepicker( {defaultDate: '2015-06-01'} );
+        group.datepicker( {defaultDate: '2015-06-10'} );
         group.datepicker( "option", "firstDay", 1 );
         $( "#hourGroup" ).selectmenu().selectmenu( "menuWidget" ).addClass( "overflow" );
         $( "#minuteGroup" ).selectmenu().selectmenu( "menuWidget" ).addClass( "overflow" );
     }
     personal.datepicker({dateFormat: 'yy-mm-dd'});
-    personal.datepicker( {defaultDate: '2015-06-01'} ); 
+    personal.datepicker( {defaultDate: '2015-06-10'} ); 
     personal.datepicker( "option", "firstDay", 1 );
     $( "#hourPersonal" ).selectmenu().selectmenu( "menuWidget" ).addClass( "overflow" );
     $( "#minutePersonal" ).selectmenu().selectmenu( "menuWidget" ).addClass( "overflow" );
