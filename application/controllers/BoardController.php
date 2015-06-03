@@ -32,10 +32,14 @@ class BoardController extends CI_Controller {
         }
  
         $reminders = $this->reminder->getReminders($result);
+        $colors = $this->note->getColors($result);
+        
         $this->load->view('board/container', array('iteracija' => $iteration,
             'rezultat' => $result,
             'grupa' => $group,
-            'podsetnici' => $reminders));
+            'podsetnici' => $reminders,
+            'boje' => $colors));
+        
     }
 
     public function board($group) {
@@ -47,15 +51,16 @@ class BoardController extends CI_Controller {
 
             $result = $this->note->getNotes($group);          
             $reminders = $this->reminder->getReminders($result);
+            $colors = $this->note->getColors($result);
+            
             
             $this->load->view('templates/page', array('menu' => 'board/toolbar',
                 'container' => 'board/boardContainer',
                 'rezultat' => $result,
                 'grupa' => $group,
-                'podsetnici' => $reminders));
-            
-            
-            
+                'podsetnici' => $reminders,
+                'boje' => $colors));
+   
         }
     }
 

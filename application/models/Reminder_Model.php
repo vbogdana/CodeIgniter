@@ -19,6 +19,16 @@ class Reminder_Model extends CI_Model {
         $this->load->model('IsMember_Model', 'ismember');
     }
     
+    public function existPersonal($idUser, $idNote) {
+        $this->db->from('reminder');
+        $this->db->where('idNote', $idNote);
+        $this->db->where('idUser', $idUser);
+        $this->db->where('personal', '1');
+        $result = $this->db->get();
+        
+        
+    }
+    
     public function updatePersonal($idUser, $idNote, $pC, $datetime) {
         // check exist personal
         $this->db->from('reminder');

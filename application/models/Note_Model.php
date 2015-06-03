@@ -62,6 +62,30 @@ class Note_Model extends CI_Model {
         }
     }
     
+    public function getColors($notes) {
+        $colors = array();
+
+        $i = 0;
+        foreach ($notes as $note) {
+            $this->db->select('note_Color');
+            $this->db->from('user');
+            $this->db->where('idUser', $note['idUser']);
+
+            $result = $this->db->get();
+
+            if ($result->num_rows() == 1) {
+                foreach ($result->result() as $row) {
+                    $colors[$i] = $row->note_Color;
+                }
+            } else {
+                $colors[$i] = 'FFFFFF';
+            }
+            $i++;
+        }
+        
+        return $colors;
+    }
+
     public function getCreatorInfo($idNote) {
         $user = array();
         

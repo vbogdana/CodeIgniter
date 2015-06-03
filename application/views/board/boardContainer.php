@@ -18,11 +18,13 @@
                                 $iteration = 1;
                                 $group = $grupa;
                                 $reminders = $podsetnici;
+                                $colors = $boje;
                                 echo '<div id="loadBoard">';
                                     $this->load->view('board/container', array('iteracija' => $iteration, 
                                                                                'rezultat' => $result,
                                                                                'grupa' => $group,
-                                                                               'podsetnici' => $reminders));
+                                                                               'podsetnici' => $reminders,
+                                                                               'boje' => $colors));
                                
                                 echo '';
                                     $this->load->view('board/newNotePopup', array('group'=>$group));

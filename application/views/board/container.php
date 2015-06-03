@@ -7,8 +7,8 @@
                                 
                                     $result = $rezultat;
                                     $reminders = $podsetnici;
+                                    $colors = $boje;
                                     $group = $grupa;
-                                    $notes = array(); $n = 0;
                                     $num = count($result);
                                     $iteration = $iteracija;
                                     $height = ((((($iteration - 1) * 12) ) / 4) ) * 375 + 23 + 40;
@@ -40,19 +40,19 @@
                                         }
                                         $r = 0;
                                     foreach ($result as $row)
-                                    //while ($row = mysqli_fetch_assoc($result))
                                     {
                                             if (($cnt % 4) == 0 && $cnt > 1) {
                                                 echo '<div class="one-row">';
                                             }
-                                            //$notes[$n] = $row['idNote'];
+
                                             $text=$row['text'];
                                             $datum = $row['last_Edited_On'];
                                             $naslov = $row['title'];
                                             $grupni = $reminders[$r]['group'];
-                                            $personalni = $reminders[$r++]['personal'];
+                                            $personalni = $reminders[$r]['personal'];
+                                            $boja = $colors[$r++];
 
-                                            echo '<div class="one-note">
+                                            echo '<div class="one-note" style="background: #'.$boja.'">
                                                     <div class="buttons">';
                                                     if ($group == "hidden") {
                                                         echo '<div class="note_button" id="hide'.$row['idNote'].'">';
