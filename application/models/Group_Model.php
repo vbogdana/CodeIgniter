@@ -232,4 +232,58 @@ class Group_Model extends CI_Model {
         
     }
     
+    
+    public function Member($IdGroup){
+        
+          $this->db->from('ismember');
+         $this->db->where('id_Group', $IdGroup);
+         
+         $query = $this->db->get();
+         
+         $data = array();
+         $i = 0;
+         
+         foreach ($query->result() as $row) {
+
+            $user_data = array(
+            'id_User'      => $row->id_User,
+            'isAdmin'      => $row->is_Admin
+             );
+            $data[$i] = $user_data;
+            $i++;
+        }
+        
+        return $data;
+        
+    }
+    
+    public  function nameMembers($allMembers){
+        
+         $data = array();
+         $j = 0;
+         
+        $n=count($allMembers);
+  
+        for($i=0;$i<$n;$i++) {
+            
+             $IdUser=$allMembers[$i]['id_User'];
+             $this->db->from('user');
+             $this->db->where('idUser', $IdUser);
+            
+              $query = $this->db->get();
+              
+              foreach ($query->result() as $row) {
+
+                 $user_data = $row->nickname;
+ 
+                 $data[$j] = $user_data;
+                 $j++;
+               }
+        
+             
+        }
+        
+        return $data;
+        
+    }
 }

@@ -18,8 +18,8 @@ class GroupPanelController extends CI_Controller {
 
         $isMember = $this->GroupPanel->isMemberGroup($IdUser);
         $nameOfGroup = $this->GroupPanel->takeGroupName($isMember);
-
-        $this->load->view('templates/page', array('menu' => 'board/toolbar', 'container' => 'groups/groupPanel', 'niz' => $allGroups, 'nazivigrupa' => $nameOfGroup, 'IdGrupa' => $isMember));
+        
+        $this->load->view('templates/page', array('menu' => 'board/toolbar', 'container' => 'groups/groupPanel', 'niz' => $allGroups, 'nazivigrupa' => $nameOfGroup, 'IdGrupa' => $isMember,'clanoviGrupa'=>0));
     }
 
     public function deleteGro($idGroup) {
@@ -36,6 +36,24 @@ class GroupPanelController extends CI_Controller {
         $this->GroupModel->leaveGroup($idGroup, $IdUser);
         redirect('GroupPanelController');
     }
+    
+      public function viewMember($IdGroup){
+        
+        $this->load->model('Group_Model', 'GroupPanel');
+        $allMembers = $this->GroupPanel->Member($IdGroup);
+        $names=$this->GroupPanel->nameMembers($allMembers);
+            
+        $IdUser = $this->session->userdata('idUser');
+        $allGroups = $this->GroupPanel->allGroupsUser($IdUser);
+
+        $isMember = $this->GroupPanel->isMemberGroup($IdUser);
+        $nameOfGroup = $this->GroupPanel->takeGroupName($isMember);
+
+        $this->load->view('templates/page', array('menu' => 'board/toolbar', 'container' => 'groups/groupPanel', 'niz' => $allGroups, 'nazivigrupa' => $nameOfGroup, 'IdGrupa' => $isMember,'clanoviGrupa'=>$names));
+        
+    }
+    
+ 
 
     public function autocomplete() {
         $search = $_POST['member'];
@@ -79,4 +97,7 @@ class GroupPanelController extends CI_Controller {
         }
     }
 
+    
+  
+    
 }
