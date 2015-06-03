@@ -12,7 +12,7 @@
  */
 
 $(function() {
-    var dialog, dialog_edit, form,
+    var dialog, form,
       //emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
       title = $( "#title" ),
       content = $( "#content" ),
@@ -56,7 +56,7 @@ $(function() {
         allFields.removeClass("ui-state-error");
 
         valid = valid && checkLength(title, "title", 3, 45);
-        //valid = valid && checkLength(content, "content", 1, 500);
+        valid = valid && checkLength(content, "content", 0, 500);
         //valid = valid && checkLength( password, "password", 5, 16 );
 
         valid = valid && checkRegexp(title, /^[a-z]([0-9a-z_\s])+$/i, "Title may consist of a-z, 0-9, underscores, spaces and must begin with a letter.");

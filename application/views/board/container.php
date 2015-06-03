@@ -88,10 +88,10 @@
                                                     <div class="personal_Reminder" >
                                                         <div class="rtext" id="personal_Reminder'.$row['idNote'].'">'; 
                                                             echo $personalni;
-                                                    if ($personalni == 'no personal reminder')  {
+                                                    //if ($personalni == 'no personal reminder')  {
                                                         echo '</div><div class="rbutton">';
                                                         echo '<img src="'.base_url()."assets/images/png/plusbl.png".'" style="opacity: 0.6" onmouseover="changeIcon(this)" onmouseout="changeIcon(this)" onclick="addPersonal(\''.$row['idNote'].'\')">';
-                                                    }
+                                                    //}
                                                     echo '</div></div>'; 
                                                     echo '<div class="created_By" id="created_By'.$row['idNote'].'">';
                                                         echo '<div class="note_button edit" id="edit'.$row['idNote'].'">';
