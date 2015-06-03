@@ -105,8 +105,8 @@ $isAdmin = $this->session->userdata('admin');
                                 echo '
 				<!-- Search bar -->
                                 <div class="Searchbar">
-                                    <div class="Flexsearch">
-                                        <form class="Flexsearch--form" action="http://localhost/CodeIgniter/index.php/boardController/goToGroup" method="post">
+                                    <div class="Flexsearch" id="search_id">
+                                        <form class="Flexsearch--form" action="" method="post">
                                             <div class="Flexsearch--input-wrapper">
                                                 <input id="group" class="Flexsearch--input" type="search" placeholder="Search..." onkeyup="groupsSearch()" oninput="groupsSearch()" autocomplete="off">
                                             </div>

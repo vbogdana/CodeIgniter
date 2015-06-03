@@ -110,21 +110,36 @@ class BoardController extends CI_Controller {
         }
     }
 
-    public function goToGroup() {
-        $search = $this->input->post('group');
+    public function goToGroup($search) {
+        $result = array();
         $idUser = $this->session->userdata('idUser');
-        echo 'No such group or you are not a member of it. '.$idUser;
-/*
-        $idGroup = $this->group->existGroupByName($search);
+
+        $groups = $this->group->existGroupByName($search);
         
-        if (($idGroup != '-1') && ($this->ismember->isMember($idUser, $idGroup))){
-            $this->board($idGroup);
+        if ($groups == '-1') {
+            echo '<li>No such group or you are not a member of it.</li> ';
+        } else {
+            $i = 0;
+            foreach ($groups as $group) {
+                if ($this->ismember->isMember($idUser, $group['idGroup'])) {
+                    $result[$i]['idGroup'] = $group['idGroup'];
+                    $result[$i++]['creator'] = $group['creator'];
+                }
+            }
+
+            if (count($result) == 0) {
+                echo 'No such group or you are not a member of it. ';
+            } else if (count($result) == 1) {
+                foreach ($result as $r) {
+                    echo '<li onclick="chooseGroup(\'' . $search . '\',' . $r['idGroup'] . ')" >' . $search. ' created by ' . $r['creator'] . '</li>';
+                }
+            } else {
+                foreach ($result as $r) {
+                    echo '<li onclick="chooseGroup(\'' . $search . '\',' . $r['idGroup'] . ')" >' . $search. ' created by ' . $r['creator'] . '</li>';
+                }
+            }
+
         }
-        else  {
-            echo 'No such group or you are not a member of it. '.$search;
-        }
- * 
- */
     }
     
     public function autocomplete() {
