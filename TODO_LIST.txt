@@ -5,7 +5,7 @@ TREBA URADITI
 3. srediti live search za dodavanja clana i izbacivanje clana iz grupe																		// LIVE SEARCH I DODAVANJE SREDJENO
 4. srediti updateovanje boje profila
 5. srediti css popupova																														// SREDJEN CSS POPUPOVA
-6. srediti css notificationsa
+6. srediti css notificationsa																												// SREDJEN
 7. srediti css edit profile
 8. srediti css signinova
 9. izbaciti index.php i srediti adrese
@@ -16,3 +16,4 @@ TREBA URADITI
 
 
 14. proveriti setovanje remindera kod edit note, kao i remindere jer ide za mesec unapred
+15. kada stigne notifikacija za grupni reminder, a ne vidi se i dalje, sta se desava ako se on mute-uje
