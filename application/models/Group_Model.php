@@ -119,8 +119,10 @@ class Group_Model extends CI_Model {
          
          foreach ($query->result() as $row) {
 
-            $user_data = $row->id_Group;
- 
+            $user_data = array(
+            'IdGroup'      => $row->id_Group,
+            'isAdmin'      => $row->is_Admin
+             );
             $data[$i] = $user_data;
             $i++;
         }
@@ -134,11 +136,14 @@ class Group_Model extends CI_Model {
         
          $data = array();
          $j = 0;
-        
+         
         $n=count($isMember);
+  
         for($i=0;$i<$n;$i++) {
+            
+             $IdGroup=$isMember[$i]['IdGroup'];
              $this->db->from('group');
-             $this->db->where('idGroup', $isMember[$i]);
+             $this->db->where('idGroup',$IdGroup);
             
               $query = $this->db->get();
               
