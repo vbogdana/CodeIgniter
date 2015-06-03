@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2015 at 04:28 AM
+-- Generation Time: Jun 03, 2015 at 03:42 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -86,12 +86,14 @@ INSERT INTO `group_note` (`idNote`, `last_Editor`, `is_Locked`, `id_Group`) VALU
 (3, 2, '1', 14),
 (5, 4, '0', 14),
 (7, 2, '0', 14),
-(15, 2, '1', 14),
+(15, 4, '0', 14),
 (17, 2, '1', 14),
 (36, 4, '0', 14),
 (38, 4, '0', 13),
 (75, 4, '0', 14),
-(84, 4, '0', 14);
+(84, 4, '0', 14),
+(86, 4, '0', 14),
+(87, 4, '0', 14);
 
 -- --------------------------------------------------------
 
@@ -125,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `image` (
   `product_pic` varchar(500) NOT NULL,
   `title` varchar(50) NOT NULL,
   PRIMARY KEY (`image`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=78 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=77 ;
 
 --
 -- Dumping data for table `image`
@@ -248,7 +250,7 @@ CREATE TABLE IF NOT EXISTS `note` (
   `idUser` int(11) NOT NULL,
   PRIMARY KEY (`idNote`),
   UNIQUE KEY `idNote_UNIQUE` (`idNote`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=85 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=88 ;
 
 --
 -- Dumping data for table `note`
@@ -261,12 +263,12 @@ INSERT INTO `note` (`idNote`, `text`, `created_On`, `last_Edited_On`, `title`, `
 (5, 'Hidden beleska koju je dule napravio grupna', '2015-05-21 08:00:00', '2015-05-22 15:00:00', 'Hidden Dule grupna', 2),
 (7, 'Grupna dule napravio', '2015-05-13 00:00:00', '2015-05-30 23:02:06', 'Grupna not important', 2),
 (8, 'personalna kasnije izmenjena', '2015-05-20 10:00:00', '2015-05-31 05:53:21', 'Personalna', 4),
-(9, 'fsdjkjfkjasnkjnfkjdf', '2015-05-28 13:25:00', '2015-05-28 19:00:28', 'Personalna', 4),
+(9, 'obirsan personalni reminder', '2015-05-28 13:25:00', '2015-06-02 22:23:13', 'Personalna izmenjena', 4),
 (11, 'lkfvkldsfgm;slkdf', '2015-05-21 00:00:00', '2015-05-22 00:00:00', 'id11', 4),
 (12, 'krgmvklfdgks;gsklm', '2015-05-18 00:00:00', '2015-05-25 00:00:00', 'id12', 4),
 (13, 'ldskmflkadfkladvm', '2015-05-04 00:00:00', '2015-05-04 00:00:00', 'id13', 4),
-(14, 'lkdfvmkadfl', '2015-05-04 00:00:00', '2015-05-04 00:00:00', 'id14', 4),
-(15, 'kfdsnvkkdzfnvkldfs creator Dule', '2015-05-21 00:00:00', '2015-05-25 00:00:00', 'Nova id15 grupna', 2),
+(14, 'izmena  probskdfbsbpksfmb', '2015-05-04 00:00:00', '2015-06-03 01:49:12', 'id14 ', 4),
+(15, 'grupna, obrisan grupni reminder', '2015-05-21 00:00:00', '2015-06-03 01:31:26', 'izmenjena id 15', 2),
 (17, 'najranija creator Dule', '2015-05-02 00:00:00', '2015-05-03 00:00:00', 'id17', 2),
 (18, 'Test 3', '2015-06-01 05:52:32', '2015-06-01 05:52:32', 'Novaa', 4),
 (19, 'ajde ddkjnskjdkvad', '2015-06-01 05:56:31', '2015-06-01 05:56:31', 'IDemooooo', 4),
@@ -275,7 +277,10 @@ INSERT INTO `note` (`idNote`, `text`, `created_On`, `last_Edited_On`, `title`, `
 (37, 'probandsvnkjsdlkkds', '2015-06-01 07:09:22', '2015-06-01 07:09:22', 'personalna nova 2 proba', 4),
 (38, 'fkm vkds vkdsf k', '2015-06-01 07:10:32', '2015-06-01 07:12:47', 'nova grupna grupa 10 proba', 4),
 (75, 'aaaaaaa', '2015-06-02 01:29:00', '2015-06-02 01:29:00', 'aaaaa', 4),
-(84, 'oba remindera grupa id 14', '2015-06-02 03:53:49', '2015-06-02 03:53:49', 'nova id 83', 4);
+(84, 'oba remindera grupa id 14', '2015-06-02 03:53:49', '2015-06-03 00:19:51', 'nova id 84', 4),
+(85, '', '2015-06-02 19:12:14', '2015-06-02 19:12:14', 'proba personalna id 80 i nesto', 4),
+(86, '', '2015-06-02 19:40:39', '2015-06-02 19:40:39', 'grupna sa oba', 4),
+(87, '', '2015-06-02 19:41:38', '2015-06-02 19:41:38', 'mora naslov', 4);
 
 -- --------------------------------------------------------
 
@@ -299,11 +304,24 @@ CREATE TABLE IF NOT EXISTS `reminder` (
 --
 
 INSERT INTO `reminder` (`idUser`, `idNote`, `datetime`, `personal`, `mute`) VALUES
-(1, 84, '2015-06-02 12:00:00', 0, 0),
-(2, 84, '2015-06-02 12:00:00', 0, 0),
-(4, 84, '2015-06-02 12:00:00', 0, 0),
-(4, 84, '2015-06-02 12:00:00', 1, 0),
-(5, 84, '2015-06-02 12:00:00', 0, 0);
+(1, 84, '2015-06-19 12:00:00', 0, 0),
+(1, 86, '2015-06-24 06:02:00', 0, 0),
+(1, 87, '2015-06-17 00:00:00', 0, 0),
+(2, 84, '2015-06-19 12:00:00', 0, 0),
+(2, 86, '2015-06-24 06:02:00', 0, 0),
+(2, 87, '2015-06-17 00:00:00', 0, 0),
+(4, 9, '2015-06-18 01:52:00', 1, 0),
+(4, 14, '2015-06-23 02:12:00', 1, 0),
+(4, 15, '2015-07-24 12:09:00', 1, 0),
+(4, 84, '2015-06-19 12:00:00', 0, 0),
+(4, 85, '2015-06-11 07:30:00', 1, 0),
+(4, 86, '2015-06-24 06:02:00', 0, 0),
+(4, 86, '2015-06-24 01:26:00', 1, 0),
+(4, 87, '2015-06-17 00:00:00', 0, 0),
+(4, 87, '2015-06-01 12:12:00', 1, 0),
+(5, 84, '2015-06-19 12:00:00', 0, 0),
+(5, 86, '2015-06-24 06:02:00', 0, 0),
+(5, 87, '2015-06-17 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -315,8 +333,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `idUser` int(11) NOT NULL AUTO_INCREMENT,
   `nickname` varchar(20) NOT NULL,
   `email` varchar(45) NOT NULL,
-  `link_Photo` varchar(45) DEFAULT NULL,
-  `is_Admin` tinyint(1) NOT NULL,
+  `is_Admin` tinyint(4) DEFAULT '0',
   `note_Color` varchar(6) DEFAULT 'FFFFFF',
   `password` varchar(45) NOT NULL,
   PRIMARY KEY (`idUser`),
@@ -327,22 +344,21 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`idUser`, `nickname`, `email`, `link_Photo`, `is_Admin`, `note_Color`, `password`) VALUES
-(1, 'aleksa93', 'aleksa@mail.com', '', 0, '1', '1234'),
-(2, 'dule', 'dule@mail.com', '', 0, '1', '1234'),
-(4, 'vbogdana', 'bveselinovic555@gmail.com', '', 0, '1', 'sifrab'),
-(5, 'dulenba', 'dulenba@gmail.com', NULL, 0, '2', 'sifrad'),
-(6, 'dulo', 'dulo@gjdfk.com', NULL, 0, '5', 'dulo'),
-(15, 'dulooo', 'dulooo@fkjs.com', NULL, 0, '5', 'dulooo'),
-(18, 'duleee', 'duleee@gjdfk.com', NULL, 0, '5', 'duleee'),
-(35, 'dulence', 'dulence@fkjs.com', NULL, 0, '5', 'dulence'),
-(43, 'duleee1', 'duleee1@gjdfk.com', NULL, 0, '5', 'duleee1'),
-(44, 'duleee2', 'duleee2@gjdfk.com', NULL, 0, '5', 'duleee2'),
-(50, 'duleee3', 'duleee3@gjdfk.com', NULL, 0, '5', 'duleee3'),
-(51, 'duleee5', 'duleee5@gjdfk.com', NULL, 0, '5', 'duleee5'),
-(55, 'duleee7', 'duleee7@gjdfk.com', NULL, 0, '5', 'duleee7'),
-(58, 'duleee8', 'duleee8@gjdfk.com', NULL, 0, '5', 'duleee8'),
-(59, 'username', 'username@email.com', '', 0, '1', 'password');
+INSERT INTO `user` (`idUser`, `nickname`, `email`, `is_Admin`, `note_Color`, `password`) VALUES
+(1, 'aleksa93', 'aleksa@mail.com', 0, 'FFFAF0', '1234'),
+(2, 'dule', 'dule@mail.com', 0, 'E3FFDA', '1234'),
+(4, 'vbogdana', 'bveselinovic555@gmail.com', 1, 'FFFFFF', 'sifrab'),
+(5, 'dulenba', 'dulenba@gmail.com', 0, 'FFFFD1', 'sifrad'),
+(6, 'dulo', 'dulo@gjdfk.com', 0, 'E9FFFF', 'dulo'),
+(15, 'dulooo', 'dulooo@fkjs.com', 0, 'FFFFFF', 'dulooo'),
+(18, 'duleee', 'duleee@gjdfk.com', 0, 'FFFFFF', 'duleee'),
+(35, 'dulence', 'dulence@fkjs.com', 0, 'FFFFFF', 'dulence'),
+(43, 'duleee1', 'duleee1@gjdfk.com', 0, 'FFFFFF', 'duleee1'),
+(50, 'duleee3', 'duleee3@gjdfk.com', 0, 'FFFFFF', 'duleee3'),
+(51, 'duleee5', 'duleee5@gjdfk.com', 0, 'FFFFFF', 'duleee5'),
+(55, 'duleee7', 'duleee7@gjdfk.com', 0, 'FFFFFF', 'duleee7'),
+(58, 'duleee8', 'duleee8@gjdfk.com', 0, 'FFFFFF', 'duleee8'),
+(59, 'username', 'username@email.com', 0, 'FFFFFF', 'password');
 
 --
 -- Constraints for dumped tables
