@@ -278,31 +278,26 @@ function chooseGroup(group, idGroup) {
 
 function goToGroup() {
     var groupname = document.getElementById('group').value;
-    
+
     $.ajax({
-            type: "POST",
-            //url: "<?php echo base_url(); ?>index.php/NewGroupController/autocomplete/",
-            url: "http://localhost/CodeIgniter/index.php/boardController/goToGroup/" + groupname,
-            success: function (data) {   // ako je funkcija kontrolera uspesna
-                // return success
-                 $('#suggestions1').show();
-                 $('#autoSuggestionsList1').addClass('auto_list1');
-                 $('#autoSuggestionsList1').html(data);
-                 
-                //document.getElementById('group').value = data;
-                /*
-                if (data.length > 0 && data != 'No such group or you are not a member of it. ') {
-                    $('#suggestions1').show();
-                    $('#autoSuggestionsList1').addClass('auto_list1');
-                    $('#autoSuggestionsList1').html(data);
-                }
-                else {
+        type: "POST",
+        //url: "<?php echo base_url(); ?>index.php/NewGroupController/autocomplete/",
+        url: "http://localhost/CodeIgniter/index.php/boardController/goToGroup/" + groupname,
+        success: function (data) {   // ako je funkcija kontrolera uspesna
+            // return success
+            $('#suggestions1').show();
+            $('#autoSuggestionsList1').addClass('auto_list1');
+            $('#autoSuggestionsList1').html(data);
+            /*
+            if (data == 'No such group or you are not a member of it.') {
+                setTimeout(function () {
+                    document.getElementById('group').value = 'lalalala';
                     $('#suggestions1').hide();
-                    document.getElementById('group').value = data;
-                }
-                */
+                }, 2000);
             }
-        });
+            */
+        }
+    });
     
     //window.location.href = "http://localhost/CodeIgniter/index.php/boardController/goToGroup/" + groupname; 
 }

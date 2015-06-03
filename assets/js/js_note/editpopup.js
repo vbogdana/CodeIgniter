@@ -140,12 +140,12 @@ $(function() {
 
 // NE ZAVISI VISE OD GRUPE VEC OD BELESKE
     group.datepicker({dateFormat: 'yy-mm-dd'});
-    group.datepicker({defaultDate: '2015-06-01'});
+    group.datepicker({defaultDate: '2015-06-10'});
     group.datepicker("option", "firstDay", 1);
     $("#hourGroup-edit").selectmenu().selectmenu("menuWidget").addClass("overflow");
     $("#minuteGroup-edit").selectmenu().selectmenu("menuWidget").addClass("overflow");
     personal.datepicker({dateFormat: 'yy-mm-dd'});
-    personal.datepicker({defaultDate: '2015-06-01'});
+    personal.datepicker({defaultDate: '2015-06-10'});
     personal.datepicker("option", "firstDay", 1);
     $("#hourPersonal-edit").selectmenu().selectmenu("menuWidget").addClass("overflow");
     $("#minutePersonal-edit").selectmenu().selectmenu("menuWidget").addClass("overflow");
@@ -214,6 +214,7 @@ function editOnClick(note, group) {
                 if (data == 'group') {
                     isGroup = true;
                     $(".groupBlock").css({"visibility": "visible", "display": "block"});
+                    $(".groupCheck").css({"visibility": "visible"});
                     
                     if (groupReminder == 'no group reminder') {
                         $("#GROUP-EDIT").css({"visibility":"hidden", "display": "none"});
@@ -243,6 +244,7 @@ function editOnClick(note, group) {
                 } else {
                     isGroup = false;
                     $(".groupBlock").css({"visibility": "hidden", "display": "none"});
+                    $(".groupCheck").css({"visibility": "hidden"});
                 }
                 
                 if (personalReminder == 'no personal reminder') {

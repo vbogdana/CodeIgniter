@@ -12,16 +12,23 @@ echo '<p class="validateTips">Title of a note is required.</p>
  
                                         <form>
                                           <fieldset>
-                                            <label for="location">You are creating a note in group: </label>
-                                            <input type="text" name="location" id="location" value="' . $group . '" maxlength="45" class="text ui-widget-content ui-corner-all" readonly>
+                                           
+                                            <input type="text" name="location" id="location" style="display: none" value="' . $group . '" maxlength="45" class="text ui-widget-content ui-corner-all" readonly>
+                                            <div class="titlepopup">
                                             <label for="title">Title</label>
-                                            <input type="text" name="title" id="title" value="" maxlength="45" class="text ui-widget-content ui-corner-all">';
-echo '<label for="content">Content</label>
-                                            <textarea id="content" name="content" maxvalue="500"></textarea>';
+                                            <input type="text" name="title" id="title" value="" maxlength="45" class="text ui-widget-content ui-corner-all">
+                                            </div>';
+                                            echo '
+                                            <div class="contentpopup">
+                                            <label for="content">Content</label>
+                                            <textarea id="content" name="content" maxvalue="500"></textarea>
+                                            </div>';
 
 echo '<div id="format" class="ui-buttonset">';
+echo '<input type="checkbox" id="check2" onclick="showReminder(this, 2)"><label for="check2">Personal</label>';
 if ($group != 'global' && $group != 'important' && $group != 'hidden') {
-    echo '<input type="checkbox" id="check1" onclick="showReminder(this, 1)"><label for="check1">Group</label>';
+    echo '<input type="checkbox" id="check1" onclick="showReminder(this, 1)"><label for="check1">Group</label></div>';
+
 
     // GROUP REMINDER
     echo '<!-- Datepicker -->
@@ -42,7 +49,7 @@ if ($group != 'global' && $group != 'important' && $group != 'hidden') {
     echo '</select>';
 
     echo '<label for="minuteGroup">minutes</label>
-                                                    <select name="minuteGroup" id="minuteGroup">';
+        <select name="minuteGroup" id="minuteGroup">';
     for ($i = 0; $i < 60; $i++) {
         if ($i == 0) {
             echo '<option selected>' . $i . $i . '</option>';
@@ -55,9 +62,11 @@ if ($group != 'global' && $group != 'important' && $group != 'hidden') {
     echo '</select>';
     // GROUP REMINDER END
     echo '</div>';
+} else {
+    echo '</div>';
 }
 
-echo '<input type="checkbox" id="check2" onclick="showReminder(this, 2)"><label for="check2">Personal</label>';
+//echo '<input type="checkbox" id="check2" onclick="showReminder(this, 2)"><label for="check2">Personal</label>';
 
 // PERSONAL REMINDER
 echo '<!-- Datepicker -->
@@ -92,7 +101,6 @@ for ($i = 0; $i < 60; $i++) {
 echo '</select>';
 // PERSONAL REMINDER END
 echo '</div>';
-echo '</div>';  // button set end
 
 echo '<input type="submit" id="note-submit" tabindex="-1" style="position:absolute; top:-1000px">
                                           </fieldset>

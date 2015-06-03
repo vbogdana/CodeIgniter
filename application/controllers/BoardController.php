@@ -128,7 +128,7 @@ class BoardController extends CI_Controller {
             }
 
             if (count($result) == 0) {
-                echo 'No such group or you are not a member of it. ';
+                echo 'No such group or you are not a member of it.';
             } else if (count($result) == 1) {
                 foreach ($result as $r) {
                     echo '<li onclick="chooseGroup(\'' . $search . '\',' . $r['idGroup'] . ')" >' . $search. ' created by ' . $r['creator'] . '</li>';

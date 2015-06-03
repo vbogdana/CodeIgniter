@@ -771,7 +771,7 @@ select {
 textarea {
     padding: 0.75em 1em;
 }
-
+/*
 input[type="checkbox"],
 input[type="radio"] {
     -moz-appearance: none;
@@ -847,6 +847,7 @@ input[type="checkbox"] + label:before {
 input[type="radio"] + label:before {
     border-radius: 100%;
 }
+*/
 
 ::-webkit-input-placeholder {
     color: #999 !important;
@@ -887,35 +888,68 @@ fieldset {
     font-weight: 300;
     height: 80%;
     position: absolute;
-    width: 50%;
-}
-
-#dialog-form {
-    //visibility: hidden;
+    width: 97%;
 }
 
 .overflow {
       height: 200px;
 }
 
+.titlepopup {
+    width: 30%;
+    height: 5%;
+}
+
+.contentpopup {
+    position: relative;
+    top: 20%;
+    height: 55%;
+    width: 30%;
+    float: left;
+}
+
+
+.contentpopup > textarea {
+    height: 100%;
+}
+
+#format {
+    position: relative;
+    left: 30%;
+    width: 65%;
+}
+#format-edit {
+    position: relative;
+    left: 30%;
+    width: 65%;
+}
+
 #PERSONAL {
     visibility: hidden;
     display: none;
+    position: absolute;
+    left: 36%;
 }
 
 #GROUP {
     visibility: hidden;
     display: none;
+    position: absolute;
+    right: 0%;
 }
 
 #PERSONAL-EDIT {
-    visibility: hidden;
+   visibility: hidden;
     display: none;
+    position: absolute;
+    left: 36%;
 }
 
 #GROUP-EDIT {
     visibility: hidden;
     display: none;
+    position: absolute;
+    right: 0%;
 }
 
 #PERSONAL-ADD {
@@ -928,4 +962,10 @@ fieldset {
     visibility: hidden;
     display: none;
 }
+
+.groupCheck {
+    visibility: hidden;
+    display: inline;
+}
+
 
