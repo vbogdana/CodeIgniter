@@ -22,6 +22,7 @@ class GroupPanelController extends CI_Controller{
       public function deleteGro($idGroup) {  
           
           $this->load->model('Group_Model','GroupModel');
+
           $this->GroupModel->deleteGroup($idGroup);
           redirect('GroupPanelController');
           

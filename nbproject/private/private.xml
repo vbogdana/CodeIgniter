@@ -3,11 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/CodeIgniter/application/models/GroupNote_Model.php</file>
-            <file>file:/C:/wamp/www/CodeIgniter/assets/js/js_menu/script.js</file>
-            <file>file:/C:/wamp/www/CodeIgniter/application/controllers/BoardController.php</file>
-            <file>file:/C:/wamp/www/CodeIgniter/assets/css/css_board/style.css</file>
-            <file>file:/C:/wamp/www/CodeIgniter/application/views/board/container.php</file>
+            <file>file:/C:/wamp/www/CodeIgniter/application/views/groups/groupPanel.php</file>
+            <file>file:/C:/wamp/www/CodeIgniter/application/views/templates/include.php</file>
+            <file>file:/C:/wamp/www/CodeIgniter/application/models/Group_Model.php</file>
+            <file>file:/C:/wamp/www/CodeIgniter/application/views/admin/AdminPanel.php</file>
+            <file>file:/C:/wamp/www/CodeIgniter/assets/js/js-edit-profile/iconselect.js</file>
+            <file>file:/C:/wamp/www/CodeIgniter/application/views/profile/editProfile.php</file>
+            <file>file:/C:/wamp/www/CodeIgniter/assets/js/js-edit-profile/iscroll.js</file>
+            <file>file:/C:/wamp/www/CodeIgniter/application/controllers/GroupPanelController.php</file>
+            <file>file:/C:/wamp/www/CodeIgniter/assets/css/css_board/groupPanel.css</file>
         </group>
     </open-files>
 </project-private>

@@ -103,10 +103,33 @@ autor Dusan
     </div>
     
      <div class="picknote">
-         Choose color of your note: <div class="notes">  <div  id="my-icon-select"></div> </div>
-         
-     
-                  
+         Choose color of your note: <div class="notes">   
+             
+             <button id="1" onClick="reply_click(this)">B1</button>
+             <button id="2" onClick="reply_click(this)">B2</button>
+             <button id="3" onClick="reply_click(this)">B3</button>
+             <button id="4" onClick="reply_click(this)">B2</button>
+             <button id="5" onClick="reply_click(this)">B3</button>
+             
+            <script>
+                $.ajax({
+                   type: "POST",
+                   url: "http://currentpage.com",
+                   data: {variablename:'value'},
+                   dataType: "text", //Available types xml, json, script, html, jsonp, text
+                   success:function(response){
+                    //Returned from server
+                    alert(response);
+                   }
+                 });
+            </script>
+             
+               <?php
+                    $name=$_POST['value'];
+                    echo "$name";
+               ?>
+             
+             <!--<div  id="my-icon-select"></div> </div> -->   
             </div>     
     <div class="buttonposition"><input type="submit" value="save and exit" class="button"></div>
           

@@ -63,7 +63,7 @@ function checkMe1() {
 
                     echo '<div class="userrow1">'. 
                            " <ul>"
-                                .'<li class="lli0">'.'<a onClick="return checkMe()" href=GroupPanelController/deleteGro/'."$idGroup>".'<img  src="'. base_url()."/assets/images/png/delete_black.png".'"'. 'width="20" height="20">'."</a></li>"
+                                .'<li class="lli0">'.'<a onClick="return checkMe()" href=deleteGro/'."$idGroup>".'<img  src="'. base_url()."/assets/images/png/delete_black.png".'"'. 'width="20" height="20">'."</a></li>"
                                 .'<li class="lli2">'."<center>$NameGroup</center></li>   
                             </div> ";
                     }
