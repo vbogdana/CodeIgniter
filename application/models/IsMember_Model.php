@@ -10,11 +10,31 @@ class IsMember_Model extends CI_Model {
     //put your code here
     function __construct() {
         parent::__construct();
-        $this->load->database();  
+        $this->load->database();
+        $this->load->model('Group_Model', 'group');
     }
     
     public function getEntries() {
         return $this->db->get('ismember')->result();
+    }
+    
+    public function addmember($idUser, $idGroup, $groupname) {
+        $array = array(
+            'id_User' => $idUser,
+            'id_Group' => $idGroup,
+            'joined_On' => date('Y-m-d H:i:s')
+        );
+
+        $this->db->insert('ismember', $array);
+        
+        $content = 'You were added to the group '.$groupname.' on '.$array['joined_On'].'.';
+            $notification = array(
+                'idUser' => $idUser,
+                'idGroup' => $idGroup,
+                'content' => $content,
+                'created_On' => date('Y-m-d H:i:s')
+            );
+        $this->db->insert('notification', $notification);
     }
     
     function getMembers($group) {

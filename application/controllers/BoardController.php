@@ -110,18 +110,35 @@ class BoardController extends CI_Controller {
         }
     }
 
+    public function goToGroup() {
+        $search = $this->input->post('group');
+        $idUser = $this->session->userdata('idUser');
+        echo 'No such group or you are not a member of it. '.$idUser;
+/*
+        $idGroup = $this->group->existGroupByName($search);
+        
+        if (($idGroup != '-1') && ($this->ismember->isMember($idUser, $idGroup))){
+            $this->board($idGroup);
+        }
+        else  {
+            echo 'No such group or you are not a member of it. '.$search;
+        }
+ * 
+ */
+    }
+    
     public function autocomplete() {
         $search = $this->input->post('group');
         $echoed = false;
+        $idUser = $this->session->userdata('idUser');
 
-        $this->load->model('Group_Model', 'group');
         $query = $this->group->get_autocomplete($search);
 
         foreach ($query->result() as $row):
-            //if ($row->name != $this->session->userdata('currentGroup')) {
-            echo '<li onclick="chooseGroup(\'' . $row->name . '\',' . $row->idGroup . ')" >' . $row->name . '</li>';
-            $echoed = true;
-            //   }     
+            if ($this->ismember->isMember($idUser, $row->idGroup) == true) {
+                echo '<li onclick="chooseGroup(\'' . $row->name . '\',' . $row->idGroup . ')" >' . $row->name . '</li>';
+                $echoed = true;
+            }
         endforeach;
 
         if (!$echoed) {

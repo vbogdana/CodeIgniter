@@ -83,13 +83,6 @@ $isAdmin = $this->session->userdata('admin');
                                             echo $nickname; 
                                     echo '</div>       
 				</div>';
-                               /*
-                                <div class="ToolButton LogOut" onClick="">
-                                        <div class="Text">   
-                                            <a href="<?php echo base_url()."index.php/LogoutController"; ?>">sign out</a>
-                                        </div>       
-				</div>
-                               */
                                  
                                 
                           
@@ -113,9 +106,9 @@ $isAdmin = $this->session->userdata('admin');
 				<!-- Search bar -->
                                 <div class="Searchbar">
                                     <div class="Flexsearch">
-                                        <form class="Flexsearch--form" action="#" method="post">
+                                        <form class="Flexsearch--form" action="http://localhost/CodeIgniter/index.php/boardController/goToGroup" method="post">
                                             <div class="Flexsearch--input-wrapper">
-                                                <input id="group" class="Flexsearch--input" type="search" placeholder="Search..." onkeyup="groupsSearch()" oninput="groupsSearch()">
+                                                <input id="group" class="Flexsearch--input" type="search" placeholder="Search..." onkeyup="groupsSearch()" oninput="groupsSearch()" autocomplete="off">
                                             </div>
                                             
                                             <input class="Flexsearch--submit" type="submit" value="&#10140;"/>

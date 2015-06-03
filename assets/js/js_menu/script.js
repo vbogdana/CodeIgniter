@@ -276,6 +276,11 @@ function chooseGroup(group, idGroup) {
 
 }
 
+function goToGroup() {
+    var groupname = document.getElementById('group').value;
+    window.href.location = '';
+}
+
 /*
  * 
  *  LOAD MORE NOTES

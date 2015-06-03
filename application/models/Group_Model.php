@@ -17,6 +17,40 @@ class Group_Model extends CI_Model {
         return $this->db->get('group')->result();
     }
     
+    public function getName($idGroup) {
+        $this->db->select('name');
+        $this->db->from('group');
+        $this->db->where('idGroup', $idGroup);
+
+        $query = $this->db->get();
+
+        if ($query->num_rows() == 1) {
+            foreach ($query->result() as $row) {
+                return $row->name;
+            }
+        }
+    }
+    
+    public function existGroupByName($groupname) {
+        $this->db->select('idGroup');
+        $this->db->from('group');
+        $this->db->where('name', $groupname);
+        
+        $query = $this->db->get();
+
+        if ($query->num_rows() == 1) {
+            foreach ($query->result() as $row) {
+                return $row->idGroup;
+            }
+        } else if ($query->num_rows() > 1) {
+            // postoji ih vise - greska
+            return '-2';
+        } else {
+            // ne postoji nijedna
+            return '-1';
+        }
+    }
+
     public function existGroup($groupname, $id_Creator) {
         
         $this->db->select('idGroup');
@@ -67,10 +101,23 @@ class Group_Model extends CI_Model {
 
     public function get_autocomplete($search) {
         $idUser = $this->session->userdata('idUser');
+        
         $this->db->select('name, idGroup');
         $this->db->like('name', $search);
-        $this->db->where('id_Creator', $idUser);
         return $this->db->get('group', 8);
+        
+        /*
+        $link = mysqli_connect("localhost", "root", "") or die(mysql_error());
+        mysqli_select_db($link, "mydb") or die(mysql_error());
+        
+        $result = mysqli_query($link, "SELECT name, idGroup "
+                . "FROM group g "
+                . "WHERE exists (SELECT * FROM ismember im WHERE im.id_User='$idUser' and g.idGroup=im.id_Group) ")
+                or die(mysql_error()); 
+        
+        return $result;
+         * 
+         */
     }
     
     
