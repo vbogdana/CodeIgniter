@@ -5,8 +5,21 @@ class editProfileController extends CI_Controller {
     
  
     public function editProfile() {
-     $this->load->view('templates/page', array('menu' => 'board/toolbar', 'container' => 'profile/editprofile')); 
-    
+        $idUser=$this->session->userdata('idUser');
+         $this->load->model('EditProfile_Model','EditProfileModel');
+        $boja=  $this->EditProfileModel->dohvatiBoju($idUser);
+        $flag=0;
+       
+       if($boja=="E3FFDA") {$flag=1;}
+        $this->load->view('templates/page', array('menu' => 'board/toolbar', 'container' => 'profile/editprofile','boja'=>$flag)); 
+        if($boja=="FFFAF0") {$flag=2;}
+        $this->load->view('templates/page', array('menu' => 'board/toolbar', 'container' => 'profile/editprofile','boja'=>$flag));
+        if($boja=="FFFFFF"){$flag=3;}
+        $this->load->view('templates/page', array('menu' => 'board/toolbar', 'container' => 'profile/editprofile','boja'=>$flag));
+        if($boja=="FFFFD1"){$flag=4;}
+        $this->load->view('templates/page', array('menu' => 'board/toolbar', 'container' => 'profile/editprofile','boja'=>$flag));
+        if($boja=="E9FFFF") {$flag=5;}
+        $this->load->view('templates/page', array('menu' => 'board/toolbar', 'container' => 'profile/editprofile','boja'=>$flag));
     }
     
 
@@ -42,7 +55,15 @@ class editProfileController extends CI_Controller {
     }
  
     
+    public function selectColor($idColor){
+        
+        $this->load->model('EditProfile_Model','EditProfileModel');
+        $aaa=$this->EditProfileModel->color($idColor);
+        $this->load->view('templates/page', array('menu' => 'board/toolbar', 'container' => 'profile/editprofile','boja'=>$aaa));
+        
+        
+    }
+    
 }
 
 
-// E3FFDA, FFFAF0, FFFFFF, FFFFD1, E9FFFF

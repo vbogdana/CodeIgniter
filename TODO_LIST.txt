@@ -2,17 +2,17 @@ TREBA URADITI
 
 1. kada se izmeni personalni reminder preko edit pop-upa, onda taj korisnik udje kao last_Editor, mada to je mozda i ok						// MOZE DA BUDE OK
 2. kada se ide na strelicu na glavnom searchu, a ne unese se dobra grupa - 404 error														// SREDJENO
-3. srediti live search za dodavanja clana i izbacivanje clana iz grupe																		// LIVE SEARCH I DODAVANJE SREDJENO
-4. srediti updateovanje boje profila
-5. srediti css popupova																														// SREDJEN CSS POPUPOVA
-6. srediti css notificationsa																												// SREDJEN
-7. srediti css edit profile
+3. srediti live search za dodavanja clana i izbacivanje clana iz grupe																		// SREDJENO
+4. srediti updateovanje boje profila																										// SREDJENO
+5. srediti css popupova																														// SREDJEN0 CSS POPUPOVA
+6. srediti css notificationsa																												// SREDJEN0
+7. srediti css edit profile																													// SREDJENO
 8. srediti css signinova
 9. izbaciti index.php i srediti adrese
 10. hesirati password u sesiji
 11. uraditi filter
-12. uraditi demo tour
-13. srediti malo hover dugmica i font na admin/group panelima
+12. uraditi demo tour																														// SREDJENO
+13. srediti malo hover dugmica i font na admin/group panelima																				// SREDJENO
 
 
 14. proveriti setovanje remindera kod edit note, kao i remindere jer ide za mesec unapred

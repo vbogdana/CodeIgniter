@@ -31,14 +31,13 @@ class BoardController extends CI_Controller {
             echo $num;
         } else {
             foreach ($alarms as $a) {
-                echo '<div class="NotifWrapper id="alarm'.$a['idNote'].'" onclick="seeAlarm(\''.$a['idNote'].'\',\''.$a['personal'].'\')">You have a reminder on '.$a['datetime'].'</div>';
+                echo '<div class="NotifWrapper id="alarm' . $a['idNote'] . '" onclick="seeAlarm(\'' . $a['idNote'] . '\',\'' . $a['personal'] . '\')"><div class="NotifText">You have a reminder on ' . $a['datetime'] . '</div></div>';
             }
             foreach ($notifications as $n) {
-                echo '<div class="NotifWrapper id="notification'.$n['idGroup'].'" onclick="seeNotification(\''.$n['idNotification'].'\',\''.$n['idGroup'].'\')">'.$n['content'].'</div>';
+                echo '<div class="NotifWrapper id="notification' . $n['idGroup'] . '" onclick="seeNotification(\'' . $n['idNotification'] . '\',\'' . $n['idGroup'] . '\')"><div class="NotifText">' . $n['content'] . '</div></div>';
             }
-            echo '<div class="NotifWrapper">No more notifications</div>';
+            echo '<div class="NotifWrapper"><div class="NotifText">No new notifications...</div></div>';
         }
-
     }
     
     public function readNotification() {

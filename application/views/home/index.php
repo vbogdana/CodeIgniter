@@ -131,9 +131,10 @@
 						</header>	
 						<div id="wowslider-container1">
 							<div class="ws_images"><ul>
-								<li><img src="<?php echo base_url()."/assets/slider/data1/images/slide3.png"; ?>" alt="PinBoard preview" title="PinBoard preview" id="wows1_0"/></li>
-								<li><img src="<?php echo base_url()."/assets/slider/data1/images/slide1.png"; ?>" alt="image slider jquery" title="PinBoard preview" id="wows1_1"/></a></li>
-								<li><img src="<?php echo base_url()."/assets/slider/data1/images/slide2.png"; ?>" alt="PinBoard preview" title="PinBoard preview" id="wows1_2"/></li>
+								<li><img src="<?php echo base_url()."/assets/slider/data1/images/slide1.png"; ?>" alt="PinBoard preview" title="PinBoard preview" id="wows1_0"/></li>
+								<li><img src="<?php echo base_url()."/assets/slider/data1/images/slide2.png"; ?>" alt="image slider jquery" title="PinBoard preview" id="wows1_1"/></a></li>
+								<li><img src="<?php echo base_url()."/assets/slider/data1/images/slide3.png"; ?>" alt="PinBoard preview" title="PinBoard preview" id="wows1_2"/></li>
+                                                                <li><img src="<?php echo base_url()."/assets/slider/data1/images/slide4.png"; ?>" alt="PinBoard preview" title="PinBoard preview" id="wows1_3"/></li>
 							</ul></div>
 							<div class="ws_bullets">
 								<div>
