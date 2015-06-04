@@ -23,7 +23,7 @@
     <body class="Body">
 
         <div id="bg">
-            <img src="<?php echo base_url() . "/assets/images/photos/wallpaper2.jpg"; ?>" width="100%" height="100%">
+            <img src="<?php echo base_url() . "/assets/images/photos/wallpaper.jpg"; ?>" width="100%" height="100%">
         </div>
         <div class="Slide">
             <div class="SlideTitle">

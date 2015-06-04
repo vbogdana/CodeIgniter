@@ -22,11 +22,15 @@ and open the template in the editor.
     border-radius: 4px;
     background: #F7F7F7;
     border: solid 1px #E4E4E4;
-    font-family: 'Calibri Light', sans-serif;
     font-family: "Source Sans Pro", sans-serif;
+    color: #888;
 }
 
-
+.BoardAdminPanel h2 {
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 400;
+    color: #888;
+}
 
 
 .Optionsusers {
@@ -107,6 +111,13 @@ and open the template in the editor.
 .li0{
     width: 30px;
 }
+.li0 img {
+    opacity: 0.6;
+}
+
+.li0 img:hover {
+    opacity: 1;
+}
 .li1{
     width: 25px;
 }
@@ -162,7 +173,7 @@ and open the template in the editor.
     top: 12%;
     left: 10%;
     width: 80%;
-    height: 85%;
+    height: 80%;
     //height: 190%;
     //height: 300%;
     border-radius: 4px;

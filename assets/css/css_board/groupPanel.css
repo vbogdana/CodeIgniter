@@ -7,7 +7,7 @@ and open the template in the editor.
     Created on : 02.06.2015., 21.36.10
     Author     : Dule
 */
-
+a {text-decoration:none}
 
 .userrow1 {
     position: relative;
@@ -52,16 +52,44 @@ and open the template in the editor.
     padding-top: 5px;
     margin-top: 8px;
 }
+
+.lli0 img {
+    opacity: 0.6;
+}
+
+.lli0 img:hover {
+    opacity: 1;
+}
+
 .lli1{
     width: 25px;
      padding-top: 5px;
       margin-top: 8px;
 }
+
+.lli1 img {
+    opacity: 0.6;
+}
+
+.lli1 img:hover {
+    opacity: 1;
+}
+
 .lli2{
     width: 150px;
      padding-top: 5px;
       margin-top: 8px;
 }
+
+.lli2 a {
+    text-decoration: none;
+    color: #888;
+}
+
+.lli2 a:hover {
+    color: #e89980;
+}
+
 .lli3{
     width: 225px;
      padding-top: 5px;
@@ -118,8 +146,17 @@ and open the template in the editor.
     border-radius: 4px;
     height: 75%;
     
+    font-family: "Source Sans Pro", sans-serif;
      overflow-y: scroll;
-    overflow-x: hidden;  
+    overflow-x: hidden; 
+    font-weight: 300;
+    color: #888;
+}
+
+.GroupPanel h2,h3 {
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 400;
+    color: #888;
 }
 
 .leavegroup {
@@ -136,6 +173,8 @@ and open the template in the editor.
     height: 75%;
     overflow-y: scroll;
     overflow-x: hidden;
+    font-weight: 300;
+    color: #888;
     
 }
 
@@ -154,6 +193,8 @@ and open the template in the editor.
     height: 75%;
     overflow-y: scroll;
     overflow-x: hidden;
+    font-weight: 300;
+    color: #888;
     
 }
 
@@ -206,4 +247,5 @@ and open the template in the editor.
 .leavegroup > li {
     list-style: none;
     margin: 0 0 4em -1em;
+    
 }

@@ -61,12 +61,12 @@ class GroupPanelController extends CI_Controller {
         $idUser=$this->UserModel->exist($username);
         
        
-      //  $this->GroupPanel->leaveGroup($idGroup,$idUser);
+      $this->GroupPanel->leaveGroup($idGroup,$idUser);
         $aaa= $this->GroupPanel->deleteUsersNote($idUser,$idGroup);
         
         
-        print_r($aaa);
-       // redirect('GroupPanelController/viewMember/'."$idGroup");
+       
+        redirect('GroupPanelController/viewMember/'."$idGroup");
     }
 
 

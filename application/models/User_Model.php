@@ -86,8 +86,7 @@ class User_Model extends CI_Model {
             'nickname' => $nickname,
             'password' => $pass,
             'email' => $email,
-            'note_color' => '1',
-            'link_photo' => '',
+            'note_color' => 'FFFFFF',
             'is_Admin' => '0',
         );
 
@@ -125,6 +124,14 @@ class User_Model extends CI_Model {
         return $this->db->get('user', 8);
     }
 
+    
+    
+
 }
+
+   
+
+
+
 
 ?>

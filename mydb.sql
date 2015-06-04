@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2015 at 10:00 PM
+-- Generation Time: Jun 04, 2015 at 11:30 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `group` (
   PRIMARY KEY (`idGroup`),
   UNIQUE KEY `idGroup_UNIQUE` (`idGroup`),
   KEY `id_Creator_idx` (`id_Creator`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=66 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=67 ;
 
 --
 -- Dumping data for table `group`
@@ -46,7 +46,8 @@ INSERT INTO `group` (`idGroup`, `name`, `id_Creator`, `created_On`) VALUES
 (62, 'College', 4, '2015-06-03 20:01:04'),
 (63, 'Highschool', 4, '2015-06-03 20:06:52'),
 (64, 'Family', 4, '2015-06-03 20:50:23'),
-(65, 'Friends', 4, '2015-06-03 20:52:31');
+(65, 'Friends', 4, '2015-06-03 20:52:31'),
+(66, 'Hometown', 2, '2015-06-04 11:22:33');
 
 -- --------------------------------------------------------
 
@@ -134,7 +135,7 @@ CREATE TABLE IF NOT EXISTS `important` (
 --
 
 INSERT INTO `important` (`idUser`, `idNote`) VALUES
-(4, 93),
+(2, 95),
 (4, 94),
 (4, 98),
 (4, 99),
@@ -177,7 +178,9 @@ INSERT INTO `ismember` (`id_User`, `id_Group`, `joined_On`, `is_Admin`) VALUES
 (3, 65, '2015-06-03 20:52:31', 0),
 (4, 65, '2015-06-03 20:52:31', 1),
 (5, 65, '2015-06-03 20:52:31', 0),
-(6, 65, '2015-06-03 20:52:31', 0);
+(6, 65, '2015-06-03 20:52:31', 0),
+(2, 66, '2015-06-04 11:22:34', 1),
+(4, 66, '2015-06-04 11:22:34', 0);
 
 -- --------------------------------------------------------
 
@@ -225,7 +228,7 @@ CREATE TABLE IF NOT EXISTS `notification` (
   PRIMARY KEY (`idNotification`),
   KEY `fkGroup_idx` (`idGroup`),
   KEY `fkUser_idx` (`idUser`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=32 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=33 ;
 
 --
 -- Dumping data for table `notification`
@@ -274,6 +277,7 @@ INSERT INTO `reminder` (`idUser`, `idNote`, `datetime`, `personal`, `mute`, `see
 (1, 98, '2015-06-08 19:30:00', 0, 0, 0),
 (1, 99, '2015-06-08 12:00:00', 0, 0, 0),
 (2, 97, '2015-06-04 15:00:00', 0, 0, 0),
+(2, 97, '2015-06-04 11:25:00', 1, 0, 0),
 (2, 98, '2015-06-08 19:30:00', 0, 0, 0),
 (2, 99, '2015-06-08 12:00:00', 0, 0, 0),
 (3, 97, '2015-06-04 15:00:00', 0, 0, 0),
@@ -306,7 +310,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` varchar(45) NOT NULL,
   PRIMARY KEY (`idUser`),
   UNIQUE KEY `idUser_UNIQUE` (`idUser`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=60 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=62 ;
 
 --
 -- Dumping data for table `user`
@@ -316,9 +320,11 @@ INSERT INTO `user` (`idUser`, `nickname`, `email`, `is_Admin`, `note_Color`, `pa
 (1, 'mracnivitez', 'mracnivitez@mail.com', 0, 'FFFAF0', '11111'),
 (2, 'dulenba', 'dulenba@mail.com', 1, 'E3FFDA', '22222'),
 (3, 'dule', 'dule@mail.com', 0, 'FFFFD1', '33333'),
-(4, 'vbogdana', 'vbogdana@mail.com', 1, 'FFFFFF', '44444'),
+(4, 'vbogdana', 'vbogdana@mail.com', 1, 'E9FFFF', '44444'),
 (5, 'natasa', 'natasa@mail.com', 0, 'E9FFFF', '55555'),
-(6, 'cmiki', 'cmiki@mail.com', 0, 'FFFFFF', '66666');
+(6, 'cmiki', 'cmiki@mail.com', 0, 'FFFFFF', '66666'),
+(60, 'novikorisnik', 'novikorisnik@mail.com', 0, 'FFFFFF', '777777'),
+(61, 'novikorisnik1', 'novikorisnik1@mail.com', 0, 'FFFFFF', '888888');
 
 --
 -- Constraints for dumped tables

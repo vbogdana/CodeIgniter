@@ -64,7 +64,7 @@ function checkMe1() {
                     echo '<div class="userrow1">'. 
                            " <ul>"
                                 .'<li class="lli0">'.'<a onClick="return checkMe()" href="http://localhost/CodeIgniter/index.php/GroupPanelController/deleteGro/'.$idGroup.'">'.'<img  src="'. base_url()."/assets/images/png/delete_black.png".'"'. 'width="20" height="20">'."</a></li>"
-                                .'<li class="lli2">'.'<a  href="http://localhost/CodeIgniter/index.php/GroupPanelController/viewMember/'.$idGroup.'">'."<center>$NameGroup</center></a></li>   
+                                .'<li class="lli2">'.'<a  href="http://localhost/CodeIgniter/index.php/GroupPanelController/viewMember/'.$idGroup.'">'."<center>"."$NameGroup</center></a></li>   
                             </div> ";
                     }
         
