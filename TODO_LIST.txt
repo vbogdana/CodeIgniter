@@ -19,3 +19,4 @@ TREBA URADITI
 15. kada stigne notifikacija za grupni reminder, a ne vidi se i dalje, sta se desava ako se on mute-uje
 16. proveri brisanje clana iz grupe mozda je dule zeznuo
 17. da se doda notifikacija kad neko nesto postuje u grupu
+18. kad se rucno kuca boardcontroller/board/idgrupe da se uradi provera da li je clan grupe
