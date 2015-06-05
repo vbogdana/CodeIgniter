@@ -40,6 +40,8 @@ function checkMe1() {
       $("button#mybutton").click(function(){
           $("#addUser").slideToggle(150);
       });  
+      
+      getNotifications(); 
         
     });    
         

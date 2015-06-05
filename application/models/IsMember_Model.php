@@ -69,7 +69,7 @@ class IsMember_Model extends CI_Model {
     }
     
     public function isMember($id_User, $id_Group) {
-        //$this->db->select('*');
+        $this->db->select('*');
         $this->db->from('ismember');
         $this->db->where('id_User', $id_User);
         $this->db->where('id_Group', $id_Group);
@@ -78,7 +78,7 @@ class IsMember_Model extends CI_Model {
         
         if ($query->num_rows() == 1) {
             return TRUE;
-        } else if ($query->num_rows() > 1) {
+        } else {
             return FALSE;
         }
     }
