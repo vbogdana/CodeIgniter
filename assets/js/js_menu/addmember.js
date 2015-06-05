@@ -58,6 +58,7 @@ function addMembersSearch() {
 
 function checkMember() {
     var member = document.getElementById('addmember').value;
+    document.getElementById('addmember').value = member;
     
     var post_data = {
             'member': member,

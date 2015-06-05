@@ -101,7 +101,8 @@ class GroupPanelController extends CI_Controller {
         
         if ($idUser == '-1') {
             // ne postoji
-            echo 'This member does not exist';
+            echo 'This member does not exist.';
+            //echo 'lalalala';
         } else {
             $inGroup = $this->ismember->isMember($idUser, $idGroup);
             
